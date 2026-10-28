@@ -1,0 +1,35 @@
+# Pastas geradas automaticamente e arquivos temporários da Unity
+/[L|l]ibrary/
+/[T|t]emp/
+/[O|o]bj/
+/[B|b]uild/
+/[B|b]uilds/
+/[L|l]ogs/
+/[U|u]ser[S|s]ettings/
+/[M|m]emoryCaptures/
+/[R|r]ecordings/
+
+# Arquivos de solução do IDE (Visual Studio, Rider, Visual Studio Code)
+/*.csproj
+/*.unityproj
+/*.sln
+/*.suo
+/*.user
+/*.userprefs
+/*.pidb
+/*.booproj
+/*.svd
+/*.pdb
+/*.opendb
+/*.VC.db
+/.vs/
+/.vscode/
+/.idea/
+/*.sln.docstates
+
+# Arquivos de Build/Exportação do SO
+.DS_Store
+Thumbs.db
+*.apk
+*.aab
+*.unitypackage
