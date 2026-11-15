@@ -1,0 +1,16 @@
+topo grama=1,192093E-07 degrau=1 topo agua=-0,1999998
+hex_river_A mascara=001001
+hex_river_A_curvy mascara=001001
+hex_river_B mascara=010001
+hex_river_C mascara=100001
+hex_river_D mascara=010101
+hex_river_E mascara=011001
+hex_river_F mascara=001101
+hex_river_G mascara=100011
+hex_river_H mascara=101011
+hex_river_I mascara=110110
+hex_river_J mascara=001111
+hex_river_K mascara=110111
+hex_river_L mascara=111111
+hex_road_A_sloped_high: altura borda3=-340282300000000000000000000000000000000,00 borda0=-340282300000000000000000000000000000000,00 -> borda baixa=3 desnivel=0,00
+hex_road_A_sloped_low: altura borda3=-340282300000000000000000000000000000000,00 borda0=-340282300000000000000000000000000000000,00 -> borda baixa=3 desnivel=0,00
