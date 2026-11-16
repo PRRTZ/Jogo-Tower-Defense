@@ -235,8 +235,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Running_B
-      takeName: Running_B
+      name: Running_A (1)
+      takeName: Running_A
       internalID: -1640158340307531623
       firstFrame: 0
       lastFrame: 24
