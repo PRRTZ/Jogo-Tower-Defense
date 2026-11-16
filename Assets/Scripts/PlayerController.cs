@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,11 +13,16 @@ public class PlayerController : MonoBehaviour
     [Header("Suavização da Animação")]
     public float animDampTime = 0.1f;
 
+    [Header("Chão / Degraus")]
+    public float groundSnapDistance = 0.6f;   // até quantos metros ele desce "colado" no chão
+    public float groundedGrace = 0.15f;       // tempo que ainda conta como no chão para o Animator
+
     private CharacterController controller;
     private Animator animator;
 
     private Vector3 velocity;
     private bool jumpRequested;
+    private float lastGroundedTime;           // última vez que estava no chão
 
     void Awake()
     {
@@ -36,7 +40,6 @@ public class PlayerController : MonoBehaviour
         if (animator != null)
         {
             animator.SetBool("IsGrounded", true);
-            Debug.Log("Speed enviado: " + animator.GetFloat("Speed"));
             animator.SetFloat("Speed", 0f);
         }
     }
@@ -50,9 +53,13 @@ public class PlayerController : MonoBehaviour
             jumpRequested = true;
         }
 
-        // 2. Verifica se está no chão
-        if (controller.isGrounded)
+        // 2. Verifica se está no chão (resultado do Move do frame anterior)
+        bool groundedBefore = controller.isGrounded;
+
+        if (groundedBefore)
         {
+            lastGroundedTime = Time.time;
+
             if (velocity.y < 0f)
             {
                 velocity.y = -2f;
@@ -98,10 +105,6 @@ public class PlayerController : MonoBehaviour
             moveZ
         ).normalized;
 
-        Debug.Log("Teclado: " + Keyboard.current);
-        Debug.Log("Movimento: " + moveDirection);
-        Debug.Log("Animator: " + animator);
-
         // 4. Rotação do personagem
         if (moveDirection.sqrMagnitude > 0.01f)
         {
@@ -130,14 +133,20 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(finalMove * Time.deltaTime);
 
+        // 7.1 Saiu de um degrau sem pular? Gruda no chão logo abaixo
+        if (!controller.isGrounded && groundedBefore && velocity.y <= 0f)
+        {
+            SnapToGround();
+        }
+
         // 8. Atualização do Animator
         if (animator != null)
         {
-            // Atualiza se o personagem está no chão
-            animator.SetBool(
-                "IsGrounded",
-                controller.isGrounded
-            );
+            // Tolerância curta: um soluço de 1-2 frames sem chão não dispara a animação de queda
+            bool animGrounded = controller.isGrounded ||
+                                (velocity.y <= 0f && Time.time - lastGroundedTime < groundedGrace);
+
+            animator.SetBool("IsGrounded", animGrounded);
 
             // Atualiza a velocidade da Blend Tree
             float targetAnimSpeed = currentSpeed;
@@ -154,6 +163,24 @@ public class PlayerController : MonoBehaviour
         if (!controller.isGrounded)
         {
             jumpRequested = false;
+        }
+    }
+
+    // Desce o personagem até o chão se ele estiver a até groundSnapDistance de distância
+    void SnapToGround()
+    {
+        Vector3 origin = controller.bounds.center;
+        float halfHeight = controller.bounds.extents.y;
+
+        if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit,
+                            halfHeight + groundSnapDistance, ~0, QueryTriggerInteraction.Ignore))
+        {
+            float drop = hit.distance - halfHeight;
+            if (drop > 0.001f)
+            {
+                controller.Move(Vector3.down * drop);
+                velocity.y = -2f;          // zera a velocidade de queda acumulada
+            }
         }
     }
 }
