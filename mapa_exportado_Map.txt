@@ -1,0 +1,904 @@
+# raiz: Map
+# caminho | modelo de origem | x y z (mundo) | rotY | escala xyz | componentes
+Map |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/01_Terreno |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/01_Terreno/Grama |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -22.400 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -22.400 0.600 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -20.900 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -20.900 0.600 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -20.900 1.200 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -19.400 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -19.400 0.600 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -19.400 1.200 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -17.900 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -17.900 0.600 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/GrassBlock |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/01_Terreno/Grama/GrassBlock/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | -23.900 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/GrassBlock/dirt (8) | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -23.902 0.600 44.784 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/GrassBlock/grass (33) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -23.902 1.200 44.805 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/GrassBlock (2) |  | -22.394 0.000 36.963 | 0.000 | 1.500 1.500 1.500 | 
+Map/01_Terreno/Grama/GrassBlock (2)/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | -25.394 0.000 57.748 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/GrassBlock (2)/dirt (8) | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -25.396 0.600 57.747 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/GrassBlock (2)/grass (33) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -25.396 1.200 57.768 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/GrassBlock (1) |  | -20.915 0.000 34.356 | 0.000 | 1.500 1.500 1.500 | 
+Map/01_Terreno/Grama/GrassBlock (1)/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | -23.915 0.000 55.141 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/GrassBlock (1)/dirt (8) | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -23.917 0.600 55.140 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/GrassBlock (1)/grass (33) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -23.917 1.200 55.161 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/GrassBlock (3) |  | -20.905 0.000 39.506 | 0.000 | 1.500 1.500 1.500 | 
+Map/01_Terreno/Grama/GrassBlock (3)/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | -23.905 0.000 60.290 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/GrassBlock (3)/dirt (8) | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -23.906 0.600 60.290 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/GrassBlock (3)/grass (33) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -23.906 1.200 60.311 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt (5) | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -23.905 0.000 49.950 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -20.900 0.600 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt (6) | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -23.905 0.600 49.950 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt (7) | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -25.370 0.600 47.364 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -20.900 1.200 49.981 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (31) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -23.905 1.200 49.971 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (32) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -25.370 1.200 47.385 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (24) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -20.900 1.200 44.790 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (8) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -20.900 1.200 55.182 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -19.400 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -19.400 0.600 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -19.400 1.200 52.579 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (33) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -22.388 1.200 52.575 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (9) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -19.400 1.200 57.780 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -17.900 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -17.900 0.600 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -17.900 1.200 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -16.400 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -16.400 0.600 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -16.400 1.200 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -14.900 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -14.900 0.600 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand-rocks | Assets/Packs/Kenney_Hexagon/Models/sand-rocks.fbx | -22.400 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -20.900 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -20.900 0.600 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -19.400 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -19.400 0.600 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt (3) | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -22.405 0.600 57.755 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt (4) | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -20.894 0.600 60.305 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -19.400 1.200 47.383 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (28) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -22.382 1.200 47.383 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (29) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -22.405 1.200 57.755 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (30) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -20.894 1.200 60.305 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -17.900 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -17.900 0.600 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -17.900 1.200 49.981 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (25) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -17.900 1.200 44.790 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (10) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -17.900 1.200 55.182 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (18) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -17.900 1.200 60.300 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -16.400 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -16.400 0.600 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -16.400 1.200 52.579 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (11) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -16.400 1.200 57.780 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -14.900 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -14.900 0.600 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -14.900 1.200 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -13.400 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -13.400 0.600 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -13.400 1.200 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -11.900 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -11.900 0.600 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | -20.900 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -19.400 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass (4) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -16.400 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -17.900 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -17.900 0.600 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -16.400 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -16.400 0.600 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -16.400 1.200 47.383 | 359.823 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -14.900 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -14.900 0.600 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -14.900 1.200 49.981 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (26) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -14.900 1.200 44.790 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (12) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -14.900 1.200 55.182 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (19) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -14.900 1.200 60.300 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -13.400 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -13.400 0.600 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -13.400 1.200 52.579 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (13) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -13.400 1.200 57.780 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -11.900 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -11.900 0.600 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -11.900 1.200 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -10.400 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -10.400 0.600 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -10.400 1.200 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -8.900 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -8.900 0.600 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -17.900 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -14.900 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -14.900 0.600 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -13.400 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -13.400 0.600 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -13.400 1.200 47.383 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -11.900 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -11.900 0.600 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -11.900 1.200 49.981 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (27) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -11.900 1.200 44.790 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (14) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -11.900 1.200 55.182 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (20) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -11.900 1.200 60.300 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -10.400 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -10.400 0.600 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -10.400 1.200 52.579 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (15) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -10.400 1.200 57.780 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -8.900 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -8.900 0.600 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -8.900 1.200 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -7.400 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -7.400 0.600 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -7.400 1.200 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -5.900 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -5.900 0.600 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -16.400 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -14.900 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -13.400 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -11.900 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -11.900 0.600 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -10.400 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -10.400 0.600 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -10.400 1.200 47.383 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -8.900 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -8.900 0.600 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -8.900 1.200 49.981 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (16) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -8.900 1.200 55.182 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (21) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -8.900 1.200 60.300 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -7.400 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -7.400 0.600 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -7.400 1.200 52.579 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (17) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -7.400 1.200 57.780 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -5.900 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -5.900 0.600 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -5.900 1.200 55.177 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (22) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -5.900 1.200 60.295 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -4.400 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -4.400 0.600 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -4.400 1.200 57.775 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -2.900 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -2.900 0.600 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -14.900 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -13.400 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -11.900 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -10.400 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -8.900 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -8.900 0.600 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -8.900 1.200 44.785 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -7.400 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -7.400 0.600 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -7.400 1.200 47.383 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -5.900 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -4.400 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -4.400 0.600 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -4.400 1.200 52.579 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (34) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -1.386 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -2.900 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -2.900 0.600 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -2.900 1.200 55.177 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (23) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -2.900 1.200 60.295 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -1.400 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -1.400 0.600 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -1.400 1.200 57.775 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/stone-hill | Assets/Packs/Kenney_Hexagon/Models/stone-hill.fbx | 0.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -11.900 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -10.400 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone | Assets/Packs/Kenney_Hexagon/Models/stone.fbx | -8.900 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -7.400 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -5.900 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -5.900 0.600 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -5.900 1.200 44.785 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass (5) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -5.900 1.200 49.980 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -4.400 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -4.400 0.600 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -4.400 1.200 47.383 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -2.900 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -2.900 0.600 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -2.900 1.200 49.981 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -1.400 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone-hill | Assets/Packs/Kenney_Hexagon/Models/stone-hill.fbx | 1.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -10.400 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -8.900 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -7.400 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -5.900 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -4.400 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -2.900 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -2.900 0.600 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -2.900 1.200 44.785 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -1.400 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | -1.400 0.600 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -1.400 1.200 47.383 | 0.000 | 3.000 3.000 3.000 | MeshCollider
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 0.100 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass (6) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 0.100 0.000 55.170 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass (7) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 3.100 0.000 55.170 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 1.600 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | 4.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | 4.600 0.600 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone-mountain | Assets/Packs/Kenney_Hexagon/Models/stone-mountain.fbx | 4.600 1.200 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -8.900 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -7.400 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -5.900 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -4.400 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -2.900 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -1.400 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 0.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 1.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 3.100 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 4.600 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 6.100 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass-hill | Assets/Packs/Kenney_Hexagon/Models/grass-hill.fbx | 7.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -7.400 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -5.900 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -4.400 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -2.900 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -1.400 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 0.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 1.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 3.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 4.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 6.100 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone | Assets/Packs/Kenney_Hexagon/Models/stone.fbx | 7.600 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 9.100 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass-hill | Assets/Packs/Kenney_Hexagon/Models/grass-hill.fbx | 10.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -4.400 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -2.900 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone | Assets/Packs/Kenney_Hexagon/Models/stone.fbx | -1.400 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 0.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 1.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 3.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 4.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone | Assets/Packs/Kenney_Hexagon/Models/stone.fbx | 6.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 7.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 9.100 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 10.600 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass (3) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 16.600 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone-hill | Assets/Packs/Kenney_Hexagon/Models/stone-hill.fbx | 13.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | -1.400 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 0.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 1.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 3.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass (35) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 3.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 6.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 7.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 9.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 10.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 12.100 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass-hill | Assets/Packs/Kenney_Hexagon/Models/grass-hill.fbx | 16.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 1.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 3.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 4.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass (36) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 4.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 6.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 7.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 9.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 10.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 12.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 13.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass-hill | Assets/Packs/Kenney_Hexagon/Models/grass-hill.fbx | 19.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 4.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 6.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 7.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 9.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 10.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 12.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 13.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone | Assets/Packs/Kenney_Hexagon/Models/stone.fbx | 15.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 16.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass-hill | Assets/Packs/Kenney_Hexagon/Models/grass-hill.fbx | 22.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 9.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 10.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 12.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone | Assets/Packs/Kenney_Hexagon/Models/stone.fbx | 13.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 15.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 16.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 18.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 19.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | 25.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | 25.600 0.600 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass-hill | Assets/Packs/Kenney_Hexagon/Models/grass-hill.fbx | 25.600 1.200 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 10.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone | Assets/Packs/Kenney_Hexagon/Models/stone.fbx | 12.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 13.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 15.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 16.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 18.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 19.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 21.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 24.100 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass (1) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 22.593 0.000 52.571 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone-hill | Assets/Packs/Kenney_Hexagon/Models/stone-hill.fbx | 27.100 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 13.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 15.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 16.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 18.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 19.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 21.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 22.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone | Assets/Packs/Kenney_Hexagon/Models/stone.fbx | 24.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 27.100 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass-hill | Assets/Packs/Kenney_Hexagon/Models/grass-hill.fbx | 30.100 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 15.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 18.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 19.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 21.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone | Assets/Packs/Kenney_Hexagon/Models/stone.fbx | 22.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 24.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 25.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 27.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | 33.100 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/dirt | Assets/Packs/Kenney_Hexagon/Models/dirt.fbx | 33.100 0.600 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass-hill | Assets/Packs/Kenney_Hexagon/Models/grass-hill.fbx | 33.100 1.200 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand-rocks | Assets/Packs/Kenney_Hexagon/Models/sand-rocks.fbx | 18.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 19.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass (2) | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 24.100 0.000 24.002 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone | Assets/Packs/Kenney_Hexagon/Models/stone.fbx | 21.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 22.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 24.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 25.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 27.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 28.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 30.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass-hill | Assets/Packs/Kenney_Hexagon/Models/grass-hill.fbx | 34.600 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 21.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 22.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 24.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 25.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 27.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 28.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 30.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 31.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone-hill | Assets/Packs/Kenney_Hexagon/Models/stone-hill.fbx | 37.600 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 22.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 25.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 27.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone | Assets/Packs/Kenney_Hexagon/Models/stone.fbx | 28.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 30.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 31.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 33.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone-hill | Assets/Packs/Kenney_Hexagon/Models/stone-hill.fbx | 40.600 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 25.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 27.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 28.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 30.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 31.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 33.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 34.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone-hill | Assets/Packs/Kenney_Hexagon/Models/stone-hill.fbx | 43.600 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 28.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 30.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 31.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 33.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 34.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 36.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass-hill | Assets/Packs/Kenney_Hexagon/Models/grass-hill.fbx | 45.100 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 33.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 34.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 36.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 37.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 39.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 45.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass-hill | Assets/Packs/Kenney_Hexagon/Models/grass-hill.fbx | 46.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand-rocks | Assets/Packs/Kenney_Hexagon/Models/sand-rocks.fbx | 36.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 37.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 39.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 40.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 42.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 46.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand-rocks | Assets/Packs/Kenney_Hexagon/Models/sand-rocks.fbx | 39.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 40.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/stone | Assets/Packs/Kenney_Hexagon/Models/stone.fbx | 42.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 43.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 45.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 46.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 48.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 40.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 42.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 43.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 45.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 46.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 49.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 43.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 45.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 46.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 48.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/grass | Assets/Packs/Kenney_Hexagon/Models/grass.fbx | 49.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 51.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 48.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 49.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 51.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Grama/sand | Assets/Packs/Kenney_Hexagon/Models/sand.fbx | 52.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -29.900 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -28.400 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -26.900 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -25.400 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -23.900 0.000 65.569 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -31.400 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -29.900 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -28.400 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -26.900 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -25.400 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -23.900 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -22.400 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-island | Assets/Packs/Kenney_Hexagon/Models/water-island.fbx | -20.900 0.000 65.569 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -29.900 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -28.400 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -26.900 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -25.400 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -19.400 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -17.900 0.000 65.569 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -28.400 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -26.900 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-island | Assets/Packs/Kenney_Hexagon/Models/water-island.fbx | -16.400 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -14.900 0.000 65.569 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -26.900 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -25.400 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -13.400 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -11.900 0.000 65.569 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-island | Assets/Packs/Kenney_Hexagon/Models/water-island.fbx | -25.400 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -23.900 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-rocks | Assets/Packs/Kenney_Hexagon/Models/water-rocks.fbx | -10.400 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -8.900 0.000 65.569 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-island | Assets/Packs/Kenney_Hexagon/Models/water-island.fbx | -23.900 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -22.400 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -7.400 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -5.900 0.000 65.569 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -20.900 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -19.400 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -4.400 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -2.900 0.000 65.569 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -19.400 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -17.900 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -1.400 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 0.100 0.000 65.569 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -17.900 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -16.400 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 1.600 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 3.100 0.000 65.569 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -14.900 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -13.400 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 3.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 4.600 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -13.400 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -11.900 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 6.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 7.600 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -11.900 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -10.400 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-rocks | Assets/Packs/Kenney_Hexagon/Models/water-rocks.fbx | 9.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 10.600 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-rocks | Assets/Packs/Kenney_Hexagon/Models/water-rocks.fbx | -10.400 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -8.900 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 12.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 13.600 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -7.400 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -5.900 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 15.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 16.600 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -4.400 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -2.900 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 18.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 19.600 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | -1.400 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 0.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-rocks | Assets/Packs/Kenney_Hexagon/Models/water-rocks.fbx | 21.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 22.600 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 1.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 3.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 24.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-island | Assets/Packs/Kenney_Hexagon/Models/water-island.fbx | 25.600 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 4.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 6.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 7.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-rocks | Assets/Packs/Kenney_Hexagon/Models/water-rocks.fbx | 27.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 28.600 0.000 62.971 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 7.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 9.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 28.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 30.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 10.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 12.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 31.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 33.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 12.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 13.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 34.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 36.100 0.000 60.373 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 15.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-rocks | Assets/Packs/Kenney_Hexagon/Models/water-rocks.fbx | 16.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 36.100 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 37.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 18.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 19.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 39.100 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 40.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 19.600 0.000 16.206 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 21.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-rocks | Assets/Packs/Kenney_Hexagon/Models/water-rocks.fbx | 42.100 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 43.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 22.600 0.000 16.206 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 24.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 45.100 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 46.600 0.000 57.775 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 25.600 0.000 16.206 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 27.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 46.600 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 48.100 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 28.600 0.000 16.206 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 30.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 31.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 48.100 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 49.600 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-island | Assets/Packs/Kenney_Hexagon/Models/water-island.fbx | 31.600 0.000 16.206 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-island | Assets/Packs/Kenney_Hexagon/Models/water-island.fbx | 33.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 34.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 48.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 49.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 51.100 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-rocks | Assets/Packs/Kenney_Hexagon/Models/water-rocks.fbx | 36.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 37.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 49.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 51.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 52.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-rocks | Assets/Packs/Kenney_Hexagon/Models/water-rocks.fbx | 37.600 0.000 16.206 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 39.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 51.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 52.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 40.600 0.000 16.206 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 42.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 52.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 54.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 43.600 0.000 16.206 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 45.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 46.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 54.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-rocks | Assets/Packs/Kenney_Hexagon/Models/water-rocks.fbx | 55.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 46.600 0.000 16.206 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 48.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-island | Assets/Packs/Kenney_Hexagon/Models/water-island.fbx | 49.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 51.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 52.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-island | Assets/Packs/Kenney_Hexagon/Models/water-island.fbx | 54.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 55.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 57.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-rocks | Assets/Packs/Kenney_Hexagon/Models/water-rocks.fbx | 51.100 0.000 18.804 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-island | Assets/Packs/Kenney_Hexagon/Models/water-island.fbx | 52.600 0.000 21.402 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 54.100 0.000 24.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 55.600 0.000 26.598 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 57.100 0.000 29.196 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water-rocks | Assets/Packs/Kenney_Hexagon/Models/water-rocks.fbx | 58.600 0.000 31.794 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 31.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 33.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 34.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 34.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 36.100 0.000 44.785 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 37.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 36.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 37.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 40.600 0.000 47.383 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 37.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 39.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 40.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 43.600 0.000 36.990 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Agua/water | Assets/Packs/Kenney_Hexagon/Models/water.fbx | 45.100 0.000 39.588 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/01_Terreno/Rio/river-start | Assets/Packs/Kenney_Hexagon/Models/river-start.fbx | 15.100 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-straight | Assets/Packs/Kenney_Hexagon/Models/river-straight.fbx | 18.100 0.000 55.177 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-straight | Assets/Packs/Kenney_Hexagon/Models/river-straight.fbx | 28.600 0.000 52.579 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-straight | Assets/Packs/Kenney_Hexagon/Models/river-straight.fbx | 36.100 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-straight (1) | Assets/Packs/Kenney_Hexagon/Models/river-straight.fbx | 25.599 0.000 47.382 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-straight | Assets/Packs/Kenney_Hexagon/Models/river-straight.fbx | 39.100 0.000 49.981 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-corner | Assets/Packs/Kenney_Hexagon/Models/river-corner.fbx | 42.100 0.000 44.780 | 180.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-corner (3) | Assets/Packs/Kenney_Hexagon/Models/river-corner.fbx | 39.104 0.000 44.780 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-corner (8) | Assets/Packs/Kenney_Hexagon/Models/river-corner.fbx | 30.107 0.000 49.995 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-corner (1) | Assets/Packs/Kenney_Hexagon/Models/river-corner.fbx | 43.590 0.000 47.380 | 120.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-corner (2) | Assets/Packs/Kenney_Hexagon/Models/river-corner.fbx | 42.094 0.000 49.976 | 60.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-corner (4) | Assets/Packs/Kenney_Hexagon/Models/river-corner.fbx | 31.600 0.000 52.580 | 60.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-corner (7) | Assets/Packs/Kenney_Hexagon/Models/river-corner.fbx | 24.095 0.000 55.168 | 60.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-corner (10) | Assets/Packs/Kenney_Hexagon/Models/river-corner.fbx | 19.590 0.000 52.578 | 300.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-corner (6) | Assets/Packs/Kenney_Hexagon/Models/river-corner.fbx | 31.600 0.000 52.580 | 60.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-corner (5) | Assets/Packs/Kenney_Hexagon/Models/river-corner.fbx | 25.600 0.000 52.580 | 240.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-corner (9) | Assets/Packs/Kenney_Hexagon/Models/river-corner.fbx | 28.598 0.000 47.380 | 180.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-intersectionC (1) | Assets/Packs/Kenney_Hexagon/Models/river-intersectionC.fbx | 33.110 0.000 50.000 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-intersectionB | Assets/Packs/Kenney_Hexagon/Models/river-intersectionB.fbx | 21.095 0.000 55.174 | 0.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/river-corner (11) | Assets/Packs/Kenney_Hexagon/Models/river-corner.fbx | 22.599 0.000 47.384 | 240.000 | 3.000 3.000 3.000 | 
+Map/01_Terreno/Rio/bridge | Assets/Packs/Kenney_Hexagon/Models/bridge.fbx | 21.098 0.000 49.985 | 60.000 | 3.000 3.000 3.000 | 
+Map/02_Caminho |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/02_Caminho/path-start | Assets/Packs/Kenney_Hexagon/Models/path-start.fbx | -1.760 0.608 52.793 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.130,0.013,-0.056 tam 0.740,0.025,0.416)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 1.244 0.608 52.797 | 0.000 | 3.023 3.000 3.041 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 7.600 0.608 47.383 | 240.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 10.600 0.608 47.383 | 60.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 12.100 0.608 44.785 | 120.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 10.600 0.608 42.187 | 300.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 12.100 0.608 39.588 | 120.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 10.600 0.608 36.990 | 180.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 7.600 0.608 36.990 | 240.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 6.100 0.608 39.588 | 60.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 4.600 0.608 42.187 | 60.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 3.100 0.608 44.785 | 60.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 0.100 0.608 44.785 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | -1.400 0.608 42.187 | 300.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 0.100 0.608 39.588 | 60.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 1.600 0.608 36.990 | 120.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 0.100 0.608 34.392 | 180.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | -2.900 0.608 34.392 | 240.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | -4.400 0.608 36.990 | 60.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | -5.900 0.608 39.588 | 60.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | -7.400 0.608 42.187 | 60.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | -10.400 0.608 42.187 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | -13.400 0.608 42.187 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | -14.900 0.608 39.588 | 300.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | -13.400 0.608 36.990 | 240.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | -10.400 0.608 36.990 | 60.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | -8.900 0.608 34.392 | 60.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | -7.400 0.608 31.794 | 60.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | -5.900 0.608 29.196 | 240.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | -2.900 0.608 29.196 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 0.100 0.608 29.196 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 3.100 0.608 29.196 | 180.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 4.600 0.608 31.794 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 7.600 0.608 31.794 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 10.600 0.608 31.794 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 13.600 0.608 31.794 | 180.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 15.100 0.608 34.392 | 120.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 16.600 0.608 36.990 | 120.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 18.100 0.608 39.588 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 21.100 0.608 39.588 | 180.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 22.600 0.608 42.187 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 25.600 0.608 42.187 | 60.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 27.100 0.608 39.588 | 120.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 25.600 0.608 36.990 | 120.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 24.100 0.608 34.392 | 120.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 22.600 0.608 31.794 | 300.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 24.100 0.608 29.196 | 240.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 27.100 0.608 29.196 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 30.100 0.608 29.196 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 33.100 0.608 29.196 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 36.100 0.608 29.196 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 39.100 0.608 29.196 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/02_Caminho/path-square-end | Assets/Packs/Kenney_Hexagon/Models/path-square-end.fbx | 42.100 0.608 29.196 | 180.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.050,0.013,0.000 tam 0.900,0.025,0.800)
+Map/03_Construcoes |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/03_Construcoes/Vila_e_Fazenda |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/03_Construcoes/Vila_e_Fazenda/building-house | Assets/Packs/Kenney_Hexagon/Models/building-house.fbx | 12.100 0.000 55.177 | 60.000 | 3.000 3.000 3.000 | 
+Map/03_Construcoes/Vila_e_Fazenda/building-cabin | Assets/Packs/Kenney_Hexagon/Models/building-cabin.fbx | 13.600 0.000 52.579 | 180.000 | 3.000 3.000 3.000 | 
+Map/03_Construcoes/Vila_e_Fazenda/building-smelter | Assets/Packs/Kenney_Hexagon/Models/building-smelter.fbx | 15.100 0.000 49.981 | 240.000 | 3.000 3.000 3.000 | 
+Map/03_Construcoes/Vila_e_Fazenda/building-mine | Assets/Packs/Kenney_Hexagon/Models/building-mine.fbx | 18.100 0.000 49.981 | 300.000 | 3.000 3.000 3.000 | 
+Map/03_Construcoes/Vila_e_Fazenda/building-mill | Assets/Packs/Kenney_Hexagon/Models/building-mill.fbx | 16.600 0.000 26.598 | 120.000 | 3.000 3.000 3.000 | 
+Map/03_Construcoes/Vila_e_Fazenda/building-farm | Assets/Packs/Kenney_Hexagon/Models/building-farm.fbx | 40.600 0.000 42.187 | 240.000 | 3.000 3.000 3.000 | 
+Map/03_Construcoes/Vila_e_Fazenda/building-sheep | Assets/Packs/Kenney_Hexagon/Models/building-sheep.fbx | 42.100 0.000 39.588 | 180.000 | 3.000 3.000 3.000 | 
+Map/03_Construcoes/Vila_e_Fazenda/building-farm | Assets/Packs/Kenney_Hexagon/Models/building-farm.fbx | 43.600 0.000 42.187 | 0.000 | 3.000 3.000 3.000 | 
+Map/03_Construcoes/Vila_e_Fazenda/building-wizard-tower | Assets/Packs/Kenney_Hexagon/Models/building-wizard-tower.fbx | 48.100 0.000 34.392 | 0.000 | 3.000 3.000 3.000 | 
+Map/03_Construcoes/Fortress |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/03_Construcoes/Spawn |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/03_Construcoes/Finish |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/04_Natureza |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/04_Natureza/Arvores_Rochas |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/04_Natureza/Arvores_Rochas/rock_smallF | Assets/Packs/Kenney_Nature/Models/rock_smallF.fbx | -21.185 0.600 39.735 | 283.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Arvores_Rochas/tree_small | Assets/Packs/Kenney_Nature/Models/tree_small.fbx | 6.445 0.600 55.845 | 88.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_detailed | Assets/Packs/Kenney_Nature/Models/tree_detailed.fbx | 6.055 0.600 55.950 | 86.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_default_dark | Assets/Packs/Kenney_Nature/Models/tree_default_dark.fbx | 8.560 0.600 54.915 | 179.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_small | Assets/Packs/Kenney_Nature/Models/tree_small.fbx | 9.595 0.600 54.810 | 33.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_pineTallB | Assets/Packs/Kenney_Nature/Models/tree_pineTallB.fbx | 8.725 0.600 56.070 | 156.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_pineTallB | Assets/Packs/Kenney_Nature/Models/tree_pineTallB.fbx | 10.600 0.600 52.965 | 350.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_fat | Assets/Packs/Kenney_Nature/Models/tree_fat.fbx | 10.990 0.600 52.515 | 55.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_pineTallB | Assets/Packs/Kenney_Nature/Models/tree_pineTallB.fbx | 10.645 0.600 52.290 | 31.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_thin | Assets/Packs/Kenney_Nature/Models/tree_thin.fbx | 23.965 0.600 49.245 | 107.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_oak | Assets/Packs/Kenney_Nature/Models/tree_oak.fbx | 24.160 0.600 50.640 | 9.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_oak | Assets/Packs/Kenney_Nature/Models/tree_oak.fbx | 27.430 0.600 50.175 | 95.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_pineSmallA | Assets/Packs/Kenney_Nature/Models/tree_pineSmallA.fbx | 27.535 0.600 49.905 | 356.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/rock_largeB | Assets/Packs/Kenney_Nature/Models/rock_largeB.fbx | 15.100 0.600 24.795 | 181.574 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Arvores_Rochas/tree_pineTallB | Assets/Packs/Kenney_Nature/Models/tree_pineTallB.fbx | 30.625 0.600 45.180 | 357.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/rock_smallB | Assets/Packs/Kenney_Nature/Models/rock_smallB.fbx | 20.350 0.600 23.460 | 18.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Arvores_Rochas/stone_largeA | Assets/Packs/Kenney_Nature/Models/stone_largeA.fbx | 23.020 0.600 22.110 | 153.963 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Arvores_Rochas/tree_oak | Assets/Packs/Kenney_Nature/Models/tree_oak.fbx | 27.910 0.600 23.595 | 206.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_simple | Assets/Packs/Kenney_Nature/Models/tree_simple.fbx | 26.950 0.600 24.720 | 52.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_oak | Assets/Packs/Kenney_Nature/Models/tree_oak.fbx | 26.140 0.600 24.060 | 39.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_default_dark | Assets/Packs/Kenney_Nature/Models/tree_default_dark.fbx | 35.035 0.600 36.315 | 318.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/rock_largeA | Assets/Packs/Kenney_Nature/Models/rock_largeA.fbx | 30.100 0.600 24.600 | 111.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Arvores_Rochas/tree_pineSmallA | Assets/Packs/Kenney_Nature/Models/tree_pineSmallA.fbx | 35.380 0.600 34.635 | 168.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/rock_smallF | Assets/Packs/Kenney_Nature/Models/rock_smallF.fbx | 33.625 0.600 24.345 | 155.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Arvores_Rochas/rock_smallA | Assets/Packs/Kenney_Nature/Models/rock_smallA.fbx | 39.640 0.600 33.960 | 271.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Arvores_Rochas/tree_oak | Assets/Packs/Kenney_Nature/Models/tree_oak.fbx | 41.725 0.600 34.080 | 300.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/stone_largeA | Assets/Packs/Kenney_Nature/Models/stone_largeA.fbx | 45.865 0.600 42.285 | 347.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Arvores_Rochas/rock_smallE | Assets/Packs/Kenney_Nature/Models/rock_smallE.fbx | 39.835 0.600 21.255 | 41.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Arvores_Rochas/tree_oak_dark | Assets/Packs/Kenney_Nature/Models/tree_oak_dark.fbx | 41.125 0.600 23.775 | 91.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_pineRoundA | Assets/Packs/Kenney_Nature/Models/tree_pineRoundA.fbx | 42.880 0.600 23.955 | 95.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/tree_pineRoundA | Assets/Packs/Kenney_Nature/Models/tree_pineRoundA.fbx | 42.520 0.600 24.240 | 119.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/rock_smallA | Assets/Packs/Kenney_Nature/Models/rock_smallA.fbx | 49.375 0.600 37.650 | 204.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Arvores_Rochas/tree_thin | Assets/Packs/Kenney_Nature/Models/tree_thin.fbx | 48.070 0.600 29.505 | 145.000 | 2.400 2.400 2.400 | 
+Map/04_Natureza/Arvores_Rochas/stone_largeB | Assets/Packs/Kenney_Nature/Models/stone_largeB.fbx | 48.475 0.600 23.850 | 198.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Arvores_Rochas/stone_largeB | Assets/Packs/Kenney_Nature/Models/stone_largeB.fbx | 49.240 0.600 26.115 | 231.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/04_Natureza/Props/flower_purpleB | Assets/Packs/Kenney_Nature/Models/flower_purpleB.fbx | -11.975 0.600 38.955 | 18.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_purpleA | Assets/Packs/Kenney_Nature/Models/flower_purpleA.fbx | -7.805 0.600 36.855 | 328.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowA | Assets/Packs/Kenney_Nature/Models/flower_yellowA.fbx | 1.900 0.600 55.290 | 266.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_purpleC | Assets/Packs/Kenney_Nature/Models/flower_purpleC.fbx | -5.330 0.600 34.935 | 241.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_purpleC | Assets/Packs/Kenney_Nature/Models/flower_purpleC.fbx | -3.365 0.600 39.600 | 326.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowC | Assets/Packs/Kenney_Nature/Models/flower_yellowC.fbx | 3.625 0.600 39.195 | 255.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_purpleA | Assets/Packs/Kenney_Nature/Models/flower_purpleA.fbx | -1.535 0.600 26.970 | 232.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowC | Assets/Packs/Kenney_Nature/Models/flower_yellowC.fbx | 1.870 0.600 32.025 | 252.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_purpleA | Assets/Packs/Kenney_Nature/Models/flower_purpleA.fbx | 11.890 0.600 50.595 | 4.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_redB | Assets/Packs/Kenney_Nature/Models/flower_redB.fbx | 3.925 0.600 27.015 | 10.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_redB | Assets/Packs/Kenney_Nature/Models/flower_redB.fbx | 5.815 0.600 28.650 | 179.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowC | Assets/Packs/Kenney_Nature/Models/flower_yellowC.fbx | 9.145 0.600 34.710 | 333.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowC | Assets/Packs/Kenney_Nature/Models/flower_yellowC.fbx | 13.360 0.600 42.375 | 130.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_purpleB | Assets/Packs/Kenney_Nature/Models/flower_purpleB.fbx | 17.170 0.600 47.280 | 74.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_redB | Assets/Packs/Kenney_Nature/Models/flower_redB.fbx | 16.780 0.600 48.345 | 83.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_yellowA | Assets/Packs/Kenney_Nature/Models/flower_yellowA.fbx | 16.000 0.600 46.785 | 39.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_redB | Assets/Packs/Kenney_Nature/Models/flower_redB.fbx | 16.900 0.600 47.190 | 175.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_purpleC | Assets/Packs/Kenney_Nature/Models/flower_purpleC.fbx | 20.485 0.600 47.565 | 269.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_yellowC | Assets/Packs/Kenney_Nature/Models/flower_yellowC.fbx | 20.290 0.600 47.310 | 302.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_redC | Assets/Packs/Kenney_Nature/Models/flower_redC.fbx | 20.485 0.600 44.625 | 70.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/plant_bushSmall | Assets/Packs/Kenney_Nature/Models/plant_bushSmall.fbx | 23.725 0.600 50.295 | 343.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowA | Assets/Packs/Kenney_Nature/Models/flower_yellowA.fbx | 18.205 0.600 33.645 | 296.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowB | Assets/Packs/Kenney_Nature/Models/flower_yellowB.fbx | 19.765 0.600 36.255 | 166.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowA | Assets/Packs/Kenney_Nature/Models/flower_yellowA.fbx | 20.575 0.600 34.155 | 106.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_redB | Assets/Packs/Kenney_Nature/Models/flower_redB.fbx | 27.145 0.600 45.300 | 67.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_purpleB | Assets/Packs/Kenney_Nature/Models/flower_purpleB.fbx | 29.275 0.600 42.150 | 143.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/plant_bushDetailed | Assets/Packs/Kenney_Nature/Models/plant_bushDetailed.fbx | 30.385 0.600 44.610 | 303.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_purpleB | Assets/Packs/Kenney_Nature/Models/flower_purpleB.fbx | 23.020 0.600 26.130 | 134.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_purpleA | Assets/Packs/Kenney_Nature/Models/flower_purpleA.fbx | 24.970 0.600 31.365 | 38.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowB | Assets/Packs/Kenney_Nature/Models/flower_yellowB.fbx | 28.105 0.600 34.680 | 122.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_redB | Assets/Packs/Kenney_Nature/Models/flower_redB.fbx | 28.855 0.600 36.435 | 293.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/mushroom_red | Assets/Packs/Kenney_Nature/Models/mushroom_red.fbx | 31.795 0.600 41.505 | 73.000 | 3.300 3.300 3.300 | 
+Map/04_Natureza/Props/log | Assets/Packs/Kenney_Nature/Models/log.fbx | 31.825 0.600 41.415 | 147.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowC | Assets/Packs/Kenney_Nature/Models/flower_yellowC.fbx | 29.785 0.600 35.145 | 343.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_yellowB | Assets/Packs/Kenney_Nature/Models/flower_yellowB.fbx | 31.090 0.600 34.500 | 149.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_yellowB | Assets/Packs/Kenney_Nature/Models/flower_yellowB.fbx | 29.590 0.600 34.815 | 232.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_yellowC | Assets/Packs/Kenney_Nature/Models/flower_yellowC.fbx | 33.790 0.600 40.035 | 41.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_yellowB | Assets/Packs/Kenney_Nature/Models/flower_yellowB.fbx | 33.265 0.600 39.855 | 166.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_redA | Assets/Packs/Kenney_Nature/Models/flower_redA.fbx | 32.545 0.600 32.055 | 301.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowC | Assets/Packs/Kenney_Nature/Models/flower_yellowC.fbx | 32.890 0.600 33.495 | 31.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_redA | Assets/Packs/Kenney_Nature/Models/flower_redA.fbx | 33.625 0.600 33.720 | 230.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_redB | Assets/Packs/Kenney_Nature/Models/flower_redB.fbx | 33.295 0.600 34.845 | 298.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_yellowC | Assets/Packs/Kenney_Nature/Models/flower_yellowC.fbx | 33.445 0.600 34.905 | 338.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/plant_bushLarge | Assets/Packs/Kenney_Nature/Models/plant_bushLarge.fbx | 34.030 0.600 36.570 | 42.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/plant_bushSmall | Assets/Packs/Kenney_Nature/Models/plant_bushSmall.fbx | 36.325 0.600 33.840 | 301.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_redA | Assets/Packs/Kenney_Nature/Models/flower_redA.fbx | 37.510 0.600 30.915 | 30.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/plant_bushDetailed | Assets/Packs/Kenney_Nature/Models/plant_bushDetailed.fbx | 39.880 0.600 34.740 | 9.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_redA | Assets/Packs/Kenney_Nature/Models/flower_redA.fbx | 36.580 0.600 26.655 | 353.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/plant_bushLarge | Assets/Packs/Kenney_Nature/Models/plant_bushLarge.fbx | 41.965 0.600 35.295 | 323.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowB | Assets/Packs/Kenney_Nature/Models/flower_yellowB.fbx | 44.980 0.600 33.600 | 13.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/flower_yellowA | Assets/Packs/Kenney_Nature/Models/flower_yellowA.fbx | 47.665 0.600 31.560 | 112.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_yellowB | Assets/Packs/Kenney_Nature/Models/flower_yellowB.fbx | 46.585 0.600 31.290 | 264.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_yellowA | Assets/Packs/Kenney_Nature/Models/flower_yellowA.fbx | 45.910 0.600 32.115 | 222.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_purpleA | Assets/Packs/Kenney_Nature/Models/flower_purpleA.fbx | 46.720 0.600 32.670 | 48.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_redB | Assets/Packs/Kenney_Nature/Models/flower_redB.fbx | 46.810 0.600 26.205 | 132.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/flower_purpleA | Assets/Packs/Kenney_Nature/Models/flower_purpleA.fbx | 46.615 0.600 27.030 | 337.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/Props/plant_flatTall | Assets/Packs/Kenney_Nature/Models/plant_flatTall.fbx | 47.485 0.600 28.785 | 321.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/Props/mushroom_tanGroup | Assets/Packs/Kenney_Nature/Models/mushroom_tanGroup.fbx | 49.870 0.600 31.605 | 90.000 | 3.300 3.300 3.300 | 
+Map/04_Natureza/Props/stump_round | Assets/Packs/Kenney_Nature/Models/stump_round.fbx | 49.765 0.600 32.175 | 9.000 | 2.700 2.700 2.700 | 
+Map/04_Natureza/AguaDecor |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/04_Natureza/AguaDecor/lily_large | Assets/Packs/Kenney_Nature/Models/lily_large.fbx | 37.315 0.300 41.550 | 10.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/AguaDecor/lily_large | Assets/Packs/Kenney_Nature/Models/lily_large.fbx | 33.460 0.300 45.210 | 24.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/AguaDecor/lily_large | Assets/Packs/Kenney_Nature/Models/lily_large.fbx | 41.290 0.300 47.835 | 256.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/AguaDecor/lily_large | Assets/Packs/Kenney_Nature/Models/lily_large.fbx | 34.075 0.300 41.490 | 12.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/AguaDecor/lily_large | Assets/Packs/Kenney_Nature/Models/lily_large.fbx | 36.940 0.300 47.910 | 233.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/AguaDecor/lily_small | Assets/Packs/Kenney_Nature/Models/lily_small.fbx | 37.465 0.300 36.135 | 92.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/AguaDecor/lily_small | Assets/Packs/Kenney_Nature/Models/lily_small.fbx | 41.335 0.300 37.470 | 217.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/AguaDecor/lily_small | Assets/Packs/Kenney_Nature/Models/lily_small.fbx | 43.810 0.300 36.150 | 149.000 | 3.000 3.000 3.000 | 
+Map/04_Natureza/AguaDecor/canoe | Assets/Packs/Kenney_Nature/Models/canoe.fbx | 36.925 0.300 44.687 | 2.669 | 3.000 3.000 3.000 | 
+Map/04_Natureza/AguaDecor/unit-ship | Assets/Packs/Kenney_Hexagon/Models/unit-ship.fbx | 31.600 0.300 47.385 | 100.000 | 3.000 3.000 3.000 | 
+Map/05_Gameplay |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/TowerSpots |  | -20.900 0.000 -50.685 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/TowerSpots/TowerSpot_01 |  | 7.690 0.600 52.596 | 0.000 | 1.500 1.500 1.500 | SphereCollider(centro 0.000,0.600,0.000 raio 1.600 trigger), TowerSpot
+Map/05_Gameplay/TowerSpots/TowerSpot_02 |  | 6.100 0.600 44.775 | 0.000 | 1.500 1.500 1.500 | SphereCollider(centro 0.000,0.600,0.000 raio 1.600 trigger), TowerSpot
+Map/05_Gameplay/TowerSpots/TowerSpot_03 |  | 15.166 0.600 44.786 | 0.000 | 1.500 1.500 1.500 | SphereCollider(centro 0.000,0.600,0.000 raio 1.600 trigger), TowerSpot
+Map/05_Gameplay/TowerSpots/TowerSpot_04 |  | -8.900 0.600 39.597 | 0.000 | 1.500 1.500 1.500 | SphereCollider(centro 0.000,0.600,0.000 raio 1.600 trigger), TowerSpot
+Map/05_Gameplay/TowerSpots/TowerSpot_05 |  | -1.437 0.600 31.818 | 0.000 | 1.500 1.500 1.500 | SphereCollider(centro 0.000,0.600,0.000 raio 1.600 trigger), TowerSpot
+Map/05_Gameplay/TowerSpots/TowerSpot_06 |  | 12.025 0.600 29.250 | 0.000 | 1.500 1.500 1.500 | SphereCollider(centro 0.000,0.600,0.000 raio 1.600 trigger), TowerSpot
+Map/05_Gameplay/TowerSpots/TowerSpot_07 |  | 13.705 0.600 37.080 | 0.000 | 1.500 1.500 1.500 | SphereCollider(centro 0.000,0.600,0.000 raio 1.600 trigger), TowerSpot
+Map/05_Gameplay/TowerSpots/TowerSpot_08 |  | 22.600 0.600 36.975 | 0.000 | 1.500 1.500 1.500 | SphereCollider(centro 0.000,0.600,0.000 raio 1.600 trigger), TowerSpot
+Map/05_Gameplay/TowerSpots/TowerSpot_09 |  | 24.214 0.600 44.780 | 0.000 | 1.500 1.500 1.500 | SphereCollider(centro 0.000,0.600,0.000 raio 1.600 trigger), TowerSpot
+Map/05_Gameplay/TowerSpots/TowerSpot_10 |  | 21.190 0.600 29.130 | 0.000 | 1.500 1.500 1.500 | SphereCollider(centro 0.000,0.600,0.000 raio 1.600 trigger), TowerSpot
+Map/05_Gameplay/TowerSpots/TowerSpot_11 |  | 28.585 0.600 31.875 | 0.000 | 1.500 1.500 1.500 | SphereCollider(centro 0.000,0.600,0.000 raio 1.600 trigger), TowerSpot
+Map/05_Gameplay/Waypoints |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_00_1 |  | -3.785 2.175 52.665 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_00 |  | -1.775 0.675 52.665 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_01 |  | 1.435 0.675 52.635 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_02 |  | 4.060 0.675 52.665 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_03 |  | 7.600 0.675 47.385 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_04 |  | 10.600 0.675 47.385 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_05 |  | 12.100 0.675 44.790 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_06 |  | 10.600 0.675 42.180 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_07 |  | 12.100 0.675 39.585 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_08 |  | 10.600 0.675 36.990 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_09 |  | 7.600 0.675 36.990 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_10 |  | 6.100 0.675 39.585 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_11 |  | 4.600 0.675 42.180 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_12 |  | 3.100 0.675 44.790 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_13 |  | 0.100 0.675 44.790 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_14 |  | -1.400 0.675 42.180 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_15 |  | 0.100 0.675 39.585 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_16 |  | 1.600 0.675 36.990 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_17 |  | 0.100 0.675 34.395 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_18 |  | -2.900 0.675 34.395 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_19 |  | -4.400 0.675 36.990 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_20 |  | -5.900 0.675 39.585 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_21 |  | -7.400 0.675 42.180 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_22 |  | -10.400 0.675 42.180 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_23 |  | -13.400 0.675 42.180 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_24 |  | -14.900 0.675 39.585 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_25 |  | -13.400 0.675 36.990 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_26 |  | -10.400 0.675 36.990 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_27 |  | -8.900 0.675 34.395 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_28 |  | -7.400 0.675 31.800 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_29 |  | -5.900 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_30 |  | -2.900 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_31 |  | 0.100 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_32 |  | 3.100 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_33 |  | 4.600 0.675 31.800 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_34 |  | 7.600 0.675 31.800 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_35 |  | 10.600 0.675 31.800 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_36 |  | 13.600 0.675 31.800 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_37 |  | 15.100 0.675 34.395 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_38 |  | 16.600 0.675 36.990 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_39 |  | 18.100 0.675 39.585 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_40 |  | 21.100 0.675 39.585 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_41 |  | 22.600 0.675 42.180 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_42 |  | 25.600 0.675 42.180 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_43 |  | 27.100 0.675 39.585 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_44 |  | 25.600 0.675 36.990 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_45 |  | 24.100 0.675 34.395 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_46 |  | 22.600 0.675 31.800 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_47 |  | 24.100 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_48 |  | 27.100 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_49 |  | 30.100 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_50 |  | 33.100 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_51 |  | 36.100 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_52 |  | 39.100 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/Waypoints/WP_53 |  | 42.100 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/SpawnPoint |  | 0.100 0.675 49.980 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/BasePoint |  | 42.100 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/FinishLine |  | 42.100 0.675 29.190 | 0.000 | 1.500 1.500 1.500 | SphereCollider(centro 0.000,0.000,0.000 raio 1.600 trigger)
+Map/05_Gameplay/PlayerStart |  | 1.600 0.600 47.385 | 0.000 | 1.500 1.500 1.500 | 
+Map/05_Gameplay/WalkableGround |  | -20.900 0.000 24.000 | 0.000 | 1.500 1.500 1.500 | BoxCollider(centro 23.000,0.150,11.258 tam 62.000,0.500,34.909)
+Map/Castle |  | -7.639 2.000 46.737 | 0.000 | 1.000 1.000 1.000 | 
+Map/Castle/wall-corner-half-tower | Assets/Packs/Kenney_Castle/Models/wall-corner-half-tower.fbx | -7.639 2.000 46.737 | 180.000 | 3.000 3.000 3.000 | BoxCollider(centro -0.250,0.720,0.250 tam 1.500,1.440,1.500)
+Map/Castle/wall-corner-half-tower (2) | Assets/Packs/Kenney_Castle/Models/wall-corner-half-tower.fbx | -19.630 2.000 46.742 | 270.000 | 3.000 3.000 3.000 | BoxCollider(centro -0.250,0.720,0.250 tam 1.500,1.440,1.500)
+Map/Castle/wall-corner-half-tower (1) | Assets/Packs/Kenney_Castle/Models/wall-corner-half-tower.fbx | -7.642 2.000 58.330 | 90.000 | 3.000 3.000 3.000 | BoxCollider(centro -0.250,0.720,0.250 tam 1.500,1.440,1.500)
+Map/Castle/wall-corner-half-tower (3) | Assets/Packs/Kenney_Castle/Models/wall-corner-half-tower.fbx | -19.272 2.000 58.330 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro -0.250,0.720,0.250 tam 1.500,1.440,1.500)
+Map/Castle/wall-narrow | Assets/Packs/Kenney_Castle/Models/wall-narrow.fbx | -16.638 2.000 46.740 | 90.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.250,0.655,0.000 tam 0.500,1.310,1.000)
+Map/Castle/wall-narrow (4) | Assets/Packs/Kenney_Castle/Models/wall-narrow.fbx | -19.326 2.000 55.667 | 182.363 | 3.000 3.000 3.000 | BoxCollider(centro 0.250,0.655,0.000 tam 0.500,1.310,1.000)
+Map/Castle/wall-narrow (1) | Assets/Packs/Kenney_Castle/Models/wall-narrow.fbx | -13.638 2.000 46.740 | 90.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.250,0.655,0.000 tam 0.500,1.310,1.000)
+Map/Castle/wall-narrow (8) | Assets/Packs/Kenney_Castle/Models/wall-narrow.fbx | -10.644 2.000 58.337 | 269.923 | 3.000 3.000 3.000 | BoxCollider(centro 0.250,0.655,0.000 tam 0.500,1.310,1.000)
+Map/Castle/wall-narrow (5) | Assets/Packs/Kenney_Castle/Models/wall-narrow.fbx | -19.450 2.000 52.670 | 182.363 | 3.000 3.000 3.000 | BoxCollider(centro 0.250,0.655,0.000 tam 0.500,1.310,1.000)
+Map/Castle/wall-narrow (2) | Assets/Packs/Kenney_Castle/Models/wall-narrow.fbx | -10.638 2.000 46.740 | 90.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.250,0.655,0.000 tam 0.500,1.310,1.000)
+Map/Castle/wall-narrow (9) | Assets/Packs/Kenney_Castle/Models/wall-narrow.fbx | -13.644 2.000 58.333 | 269.923 | 3.000 3.000 3.000 | BoxCollider(centro 0.250,0.655,0.000 tam 0.500,1.310,1.000)
+Map/Castle/wall-narrow (6) | Assets/Packs/Kenney_Castle/Models/wall-narrow.fbx | -19.574 2.000 49.673 | 182.363 | 3.000 3.000 3.000 | BoxCollider(centro 0.250,0.655,0.000 tam 0.500,1.310,1.000)
+Map/Castle/wall-narrow (7) | Assets/Packs/Kenney_Castle/Models/wall-narrow.fbx | -7.640 2.000 49.724 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.250,0.655,0.000 tam 0.500,1.310,1.000)
+Map/Castle/wall-narrow (11) | Assets/Packs/Kenney_Castle/Models/wall-narrow.fbx | -7.640 2.000 55.335 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.250,0.655,0.000 tam 0.500,1.310,1.000)
+Map/Castle/wall-narrow (10) | Assets/Packs/Kenney_Castle/Models/wall-narrow.fbx | -16.644 2.000 58.329 | 269.923 | 3.000 3.000 3.000 | BoxCollider(centro 0.250,0.655,0.000 tam 0.500,1.310,1.000)
+Map/Castle/wall-narrow-gate | Assets/Packs/Kenney_Castle/Models/wall-narrow-gate.fbx | -7.640 2.000 52.530 | 180.000 | 3.000 3.000 3.000 | BoxCollider(centro -0.185,0.655,0.415 tam 0.630,1.310,0.171), BoxCollider(centro -0.185,0.655,-0.415 tam 0.630,1.310,0.170), BoxCollider(centro -0.185,1.131,0.000 tam 0.630,0.358,1.000)
+Map/Castle/tower-square-top-roof-high | Assets/Packs/Kenney_Castle/Models/tower-square-top-roof-high.fbx | -7.736 8.549 58.204 | 0.000 | 3.000 3.000 3.000 | 
+Map/Castle/tower-square-top-roof-high (1) | Assets/Packs/Kenney_Castle/Models/tower-square-top-roof-high.fbx | -7.736 8.549 46.835 | 0.000 | 3.000 3.000 3.000 | 
+Map/Castle/tower-square-top-roof-high (2) | Assets/Packs/Kenney_Castle/Models/tower-square-top-roof-high.fbx | -19.526 8.549 46.834 | 0.000 | 3.000 3.000 3.000 | 
+Map/Castle/tower-square-top-roof-high (3) | Assets/Packs/Kenney_Castle/Models/tower-square-top-roof-high.fbx | -19.170 8.549 58.230 | 0.000 | 3.000 3.000 3.000 | 
+Map/Castle/flag-pennant | Assets/Packs/Kenney_Castle/Models/flag-pennant.fbx | -7.736 12.597 58.202 | 0.000 | 2.000 2.000 2.000 | 
+Map/Castle/flag-pennant (1) | Assets/Packs/Kenney_Castle/Models/flag-pennant.fbx | -7.736 12.597 46.833 | 0.000 | 2.000 2.000 2.000 | 
+Map/Castle/flag-pennant (2) | Assets/Packs/Kenney_Castle/Models/flag-pennant.fbx | -19.526 12.597 46.832 | 0.000 | 2.000 2.000 2.000 | 
+Map/Castle/flag-pennant (3) | Assets/Packs/Kenney_Castle/Models/flag-pennant.fbx | -19.170 12.597 58.228 | 0.000 | 2.000 2.000 2.000 | 
+Map/Castle/tower-square-arch | Assets/Packs/Kenney_Castle/Models/tower-square-arch.fbx | -7.740 5.533 46.841 | 0.000 | 3.000 3.000 3.000 | 
+Map/Castle/tower-square-arch (1) | Assets/Packs/Kenney_Castle/Models/tower-square-arch.fbx | -7.740 5.533 58.210 | 0.000 | 3.000 3.000 3.000 | 
+Map/Castle/tower-square-arch (2) | Assets/Packs/Kenney_Castle/Models/tower-square-arch.fbx | -7.740 5.533 46.841 | 0.000 | 3.000 3.000 3.000 | 
+Map/Castle/tower-square-arch (3) | Assets/Packs/Kenney_Castle/Models/tower-square-arch.fbx | -19.530 5.533 46.840 | 0.000 | 3.000 3.000 3.000 | 
+Map/Castle/tower-square-arch (4) | Assets/Packs/Kenney_Castle/Models/tower-square-arch.fbx | -19.174 5.533 58.236 | 0.000 | 3.000 3.000 3.000 | 
+Map/Castle/tower-hexagon-base | Assets/Packs/Kenney_Castle/Models/tower-hexagon-base.fbx | -16.770 2.000 52.760 | 0.000 | 3.000 3.000 3.000 | BoxCollider(centro 0.000,0.655,0.000 tam 0.900,1.310,0.779)
+Map/Castle/tower-hexagon-mid | Assets/Packs/Kenney_Castle/Models/tower-hexagon-mid.fbx | -16.773 5.928 52.760 | 0.000 | 3.000 3.000 3.000 | 
+Map/Castle/tower-hexagon-roof-secondary | Assets/Packs/Kenney_Castle/Models/tower-hexagon-roof-secondary.fbx | -16.759 7.313 52.758 | 0.000 | 3.000 3.000 3.000 | 
+Map/Castle/flag | Assets/Packs/Kenney_Castle/Models/flag.fbx | -16.753 9.521 52.760 | 0.000 | 2.000 2.000 2.000 | 
+Map/Castle/flag-banner-short | Assets/Packs/Kenney_Castle/Models/flag-banner-short.fbx | -6.121 2.697 49.150 | 180.000 | 3.000 3.000 3.000 | BoxCollider(centro -0.020,0.390,0.000 tam 0.040,0.780,0.630)
+Map/Castle/flag-banner-short (1) | Assets/Packs/Kenney_Castle/Models/flag-banner-short.fbx | -6.121 2.697 56.050 | 180.000 | 3.000 3.000 3.000 | BoxCollider(centro -0.020,0.390,0.000 tam 0.040,0.780,0.630)
+Map/Castle/flag-banner-long | Assets/Packs/Kenney_Castle/Models/flag-banner-long.fbx | -18.221 5.741 46.850 | 180.000 | 1.500 1.300 1.500 | 
+Map/Castle/flag-banner-long (1) | Assets/Packs/Kenney_Castle/Models/flag-banner-long.fbx | -17.858 5.746 58.238 | 180.000 | 1.500 1.300 1.500 | 
+Map/Castle/spawn-round | Assets/Packs/Kenney_Tower_Defense/Models/spawn-round.fbx | -12.630 2.000 52.680 | 0.000 | 4.000 4.000 4.000 | BoxCollider(centro 0.000,0.050,0.000 tam 0.688,0.100,0.688)
+Map/Castle/path-straight | Assets/Packs/Kenney_Hexagon/Models/path-straight.fbx | 5.965 0.600 50.108 | 58.671 | 3.401 3.000 3.143 | BoxCollider(centro 0.000,0.013,-0.028 tam 1.000,0.025,0.335)
+Map/Castle/path-corner | Assets/Packs/Kenney_Hexagon/Models/path-corner.fbx | 4.338 0.600 52.848 | 60.130 | 3.002 3.000 3.272 | BoxCollider(centro 0.065,0.013,-0.182 tam 0.871,0.025,0.642)
+Map/Castle/spawn-round (1) | Assets/Packs/Kenney_Tower_Defense/Models/spawn-round.fbx | 42.106 0.600 29.190 | 0.000 | 3.000 3.000 3.000 | 
+Map/Clouds |  | 7.100 15.500 58.500 | 0.000 | 1.000 1.000 1.000 | 
+Map/Clouds/cloud_big | Assets/Packs/Medieval_Hexagon/Assets/decoration/nature/cloud_big.fbx | 7.100 15.500 58.500 | 340.000 | 1.000 1.000 1.000 | 
+Map/Clouds/cloud_big (2) | Assets/Packs/Medieval_Hexagon/Assets/decoration/nature/cloud_big.fbx | 22.500 15.500 46.600 | 340.000 | 1.000 1.000 1.000 | 
+Map/Clouds/cloud_big (1) | Assets/Packs/Medieval_Hexagon/Assets/decoration/nature/cloud_big.fbx | -8.490 17.600 51.160 | 340.000 | 1.000 1.000 1.000 | 
+Map/Clouds/cloud_small | Assets/Packs/Medieval_Hexagon/Assets/decoration/nature/cloud_small.fbx | 15.377 15.500 59.097 | 340.000 | 1.000 1.000 1.000 | 
+Map/Clouds/cloud_small (4) | Assets/Packs/Medieval_Hexagon/Assets/decoration/nature/cloud_small.fbx | 19.850 15.500 32.940 | 340.000 | 1.000 1.000 1.000 | 
+Map/Clouds/cloud_small (3) | Assets/Packs/Medieval_Hexagon/Assets/decoration/nature/cloud_small.fbx | 4.400 17.600 36.700 | 340.000 | 1.000 1.000 1.000 | 
+Map/Clouds/cloud_small (2) | Assets/Packs/Medieval_Hexagon/Assets/decoration/nature/cloud_small.fbx | 39.400 15.500 49.400 | 340.000 | 1.000 1.000 1.000 | 
+Map/Clouds/cloud_small (1) | Assets/Packs/Medieval_Hexagon/Assets/decoration/nature/cloud_small.fbx | -11.452 15.500 41.018 | 340.000 | 1.000 1.000 1.000 | 

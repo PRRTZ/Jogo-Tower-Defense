@@ -8,7 +8,7 @@ public class PlayerHealthUI : MonoBehaviour
     public Health playerHealth; 
 
     [Header("Configurações dos Corações")]
-    public float heartSize = 32f; // Use múltiplos de 16 (ex: 32 ou 48) para manter o pixel art nítido
+    public float heartSize = 32; // Use múltiplos de 16 (ex: 32 ou 48) para manter o pixel art nítido
 
     [Header("Sprites dos Corações")]
     public Sprite fullHeart;

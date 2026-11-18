@@ -1,50 +1,90 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
     public float speed = 2f;
-    public float turnSpeed = 540f;
+    public float turnSpeed = 540f;                 // graus por segundo
+    public int skipFirstWaypoints = 0;             // pula os N primeiros Waypoints (use 0 no vilarejo)
+    public bool followWaypointHeight = true;       // acompanha a altura dos pontos
+    public bool debugLog = true;                   // escreve o diagnóstico no Console
 
-    // outros scripts podem escutar isso (vida da base, pontuação, dança...)
     public static event Action<EnemyMovement> OnReachedBase;
 
-    Transform[] wps;
-    int index = 0;            // começa indo para o WP_00
+    readonly List<Transform> pts = new List<Transform>();
+    int index = 0;
     EnemyHealth health;
 
     void Start()
     {
         health = GetComponent<EnemyHealth>();
 
-        var root = GameObject.Find("Waypoints");
-        if (root == null) { Debug.LogWarning("EnemyMovement: não achei o objeto Waypoints"); enabled = false; return; }
+        // 1. avisa se há mais de um grupo com o mesmo nome (o Find pega só o primeiro)
+        CheckDuplicates("EntrancePoints");
+        CheckDuplicates("Waypoints");
 
-        wps = new Transform[root.transform.childCount];
-        for (int i = 0; i < wps.Length; i++) wps[i] = root.transform.GetChild(i);
+        // 2. monta a lista de pontos
+        AddChildren("EntrancePoints", 0);
+        AddChildren("Waypoints", skipFirstWaypoints);
+
+        if (pts.Count == 0)
+        {
+            Debug.LogWarning("EnemyMovement: não achei Waypoints nem EntrancePoints", this);
+            enabled = false;
+            return;
+        }
+
+        if (debugLog)
+            Debug.Log("[Movimento] " + name + ": " + pts.Count + " pontos. Primeiro: " + pts[0].name
+                + " em " + pts[0].position + " | eu estou em " + transform.position
+                + " | skipFirstWaypoints=" + skipFirstWaypoints + " | speed=" + speed, this);
+    }
+
+    void CheckDuplicates(string groupName)
+    {
+        int count = 0;
+        foreach (var t in FindObjectsByType<Transform>(FindObjectsSortMode.None))
+            if (t.name == groupName) count++;
+        if (count > 1)
+            Debug.LogWarning("[Movimento] Existem " + count + " objetos chamados \"" + groupName + "\". O Find usa só o primeiro: apague os que sobraram.");
+    }
+
+    void AddChildren(string groupName, int skip)
+    {
+        var g = GameObject.Find(groupName);
+        if (g == null) return;
+        if (debugLog) Debug.Log("[Movimento] Grupo \"" + groupName + "\" encontrado em " + GetPath(g.transform) + " com " + g.transform.childCount + " filhos");
+        for (int i = skip; i < g.transform.childCount; i++) pts.Add(g.transform.GetChild(i));
+    }
+
+    static string GetPath(Transform t)
+    {
+        string p = t.name;
+        while (t.parent != null) { t = t.parent; p = t.name + "/" + p; }
+        return p;
     }
 
     void Update()
     {
-        if (wps == null || wps.Length == 0) return;
+        if (index >= pts.Count) return;
         if (health != null && health.IsDead) return;
-        if (index >= wps.Length) return;
 
-        Vector3 target = wps[index].position;
+        Vector3 target = pts[index].position;
+        if (!followWaypointHeight) target.y = transform.position.y;
+
+        // gira em direção ao próximo ponto (só no plano horizontal)
         Vector3 flat = target - transform.position;
         flat.y = 0f;
         if (flat.sqrMagnitude > 0.0001f)
-        {
-            Quaternion look = Quaternion.LookRotation(flat);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, look, turnSpeed * Time.deltaTime);
-        }
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(flat), turnSpeed * Time.deltaTime);
 
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
         if ((transform.position - target).sqrMagnitude < 0.0001f)
         {
             index++;
-            if (index >= wps.Length) ReachedBase();
+            if (index >= pts.Count) ReachedBase();
         }
     }
 
@@ -52,5 +92,26 @@ public class EnemyMovement : MonoBehaviour
     {
         if (OnReachedBase != null) OnReachedBase(this);
         Destroy(gameObject);
+    }
+
+    // com o inimigo selecionado: EntrancePoints em amarelo, Waypoints em ciano
+    void OnDrawGizmosSelected()
+    {
+        DrawGroup("EntrancePoints", Color.yellow);
+        DrawGroup("Waypoints", Color.cyan);
+    }
+
+    static void DrawGroup(string groupName, Color c)
+    {
+        var g = GameObject.Find(groupName);
+        if (g == null) return;
+        Gizmos.color = c;
+        Transform prev = null;
+        foreach (Transform t in g.transform)
+        {
+            Gizmos.DrawSphere(t.position, 0.35f);
+            if (prev != null) Gizmos.DrawLine(prev.position, t.position);
+            prev = t;
+        }
     }
 }
