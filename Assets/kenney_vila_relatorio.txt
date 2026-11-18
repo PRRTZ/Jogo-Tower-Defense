@@ -1,0 +1,32 @@
+altura grass=0,2 stone=0,2
+ftk:wall: tamanho 0,10 x 1,00 x 1,00  base em y=0,00  centro xz=(-0,45,0,00)  arquivo=Assets/Packs/Kenney_Fantasy_Town/Models/wall.fbx
+ftk:wall-door: tamanho 0,10 x 1,00 x 1,00  base em y=0,00  centro xz=(-0,45,0,00)  arquivo=Assets/Packs/Kenney_Fantasy_Town/Models/wall-door.fbx
+ftk:wall-window-glass: tamanho 0,10 x 1,00 x 1,00  base em y=0,00  centro xz=(-0,45,0,00)  arquivo=Assets/Packs/Kenney_Fantasy_Town/Models/wall-window-glass.fbx
+ftk:wall-wood: tamanho 0,10 x 1,00 x 1,00  base em y=0,00  centro xz=(-0,45,0,00)  arquivo=Assets/Packs/Kenney_Fantasy_Town/Models/wall-wood.fbx
+ftk:pillar-stone: tamanho 0,16 x 1,00 x 0,16  base em y=0,00  centro xz=(0,00,0,00)  arquivo=Assets/Packs/Kenney_Fantasy_Town/Models/pillar-stone.fbx
+ftk:roof-point: tamanho 1,10 x 0,50 x 1,10  base em y=0,00  centro xz=(0,00,0,00)  arquivo=Assets/Packs/Kenney_Fantasy_Town/Models/roof-point.fbx
+ftk:roof-high-point: tamanho 1,10 x 1,00 x 1,10  base em y=0,00  centro xz=(0,00,0,00)  arquivo=Assets/Packs/Kenney_Fantasy_Town/Models/roof-high-point.fbx
+ftk:windmill: tamanho 0,47 x 3,11 x 3,11  base em y=-1,56  centro xz=(0,00,0,00)  arquivo=Assets/Packs/Kenney_Fantasy_Town/Models/windmill.fbx
+ftk:fountain-round-detail: tamanho 2,00 x 0,48 x 2,00  base em y=0,00  centro xz=(0,00,0,00)  arquivo=Assets/Packs/Kenney_Fantasy_Town/Models/fountain-round-detail.fbx
+ftk:lantern: tamanho 0,22 x 1,56 x 0,22  base em y=0,00  centro xz=(0,00,0,00)  arquivo=Assets/Packs/Kenney_Fantasy_Town/Models/lantern.fbx
+ftk:stall-red: tamanho 1,00 x 1,24 x 1,00  base em y=0,00  centro xz=(0,00,0,00)  arquivo=Assets/Packs/Kenney_Fantasy_Town/Models/stall-red.fbx
+--- CAMINHOS ---
+path-corner  mascara=010001  bordas=2
+path-corner-sharp  mascara=100001  bordas=2
+path-straight  mascara=001001  bordas=2
+path-corner  mascara=010001  bordas=2
+path-corner-sharp  mascara=100001  bordas=2
+path-crossing  mascara=111111  bordas=6
+path-end  mascara=000001  bordas=1
+path-intersectionA  mascara=110001  bordas=3
+path-intersectionB  mascara=011001  bordas=3
+path-intersectionC  mascara=001101  bordas=3
+path-intersectionD  mascara=011101  bordas=4
+path-intersectionE  mascara=101101  bordas=4
+path-intersectionF  mascara=010101  bordas=3
+path-intersectionG  mascara=111101  bordas=5
+path-intersectionH  mascara=111001  bordas=4
+path-square  mascara=001001  bordas=2
+path-square-end  mascara=000001  bordas=1
+path-start  mascara=000001  bordas=1
+path-straight  mascara=001001  bordas=2
