@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
     [Header("Animator")]
     public string hitTrigger = "Hit";
     public string dieTrigger = "Die";
-    public float deathDelay = 2f;
+    public float deathDelay = 0f;
 
     public static event Action<EnemyHealth> OnEnemyDied;
     public bool IsDead { get; private set; }
@@ -52,7 +52,7 @@ public class EnemyHealth : MonoBehaviour
         
         foreach (var c in GetComponentsInChildren<Collider>()) c.enabled = false;
         OnEnemyDied?.Invoke(this);
-        Destroy(gameObject, deathDelay);
+        Destroy(gameObject);
     }
 
     void OnMouseDown() { TakeDamage(2f); }

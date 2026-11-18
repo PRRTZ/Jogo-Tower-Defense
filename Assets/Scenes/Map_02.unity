@@ -68276,6 +68276,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310510676}
   m_Mesh: {fileID: 3906130615805142554, guid: e6492658b4ed0be4d8837d941e4fe3e5, type: 3}
+--- !u!1001 &1311639999
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1000000000000000001, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_Name
+      value: DeathParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 60.2098
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 84.82913
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df84eafac1bf4268bd345b41406161de, type: 3}
 --- !u!1 &1313986743
 GameObject:
   m_ObjectHideFlags: 0
@@ -107823,6 +107880,7 @@ GameObject:
   - component: {fileID: 2084341755}
   - component: {fileID: 2084341754}
   - component: {fileID: 2084341753}
+  - component: {fileID: 2084341756}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -107875,6 +107933,7 @@ MonoBehaviour:
   spawnOnStart: 1
   startDelay: 1
   delayBetween: 2
+  wavesDelay: 10
 --- !u!4 &2084341755
 Transform:
   m_ObjectHideFlags: 0
@@ -107890,6 +107949,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2084341756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084341752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a13b95904dcd496f8199225800080c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathEffects
+  deathParticles: {fileID: 1000000000000000003, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+  amount: 23
+  height: 0.5
 --- !u!1 &2085284887
 GameObject:
   m_ObjectHideFlags: 0
@@ -111689,3 +111763,4 @@ SceneRoots:
   - {fileID: 37432240}
   - {fileID: 924961709}
   - {fileID: 111186208}
+  - {fileID: 1311639999}
