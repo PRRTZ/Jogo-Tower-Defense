@@ -35,3 +35,12 @@ Thumbs.db
 *.unitypackage
 
 /Packs
+
+# Configuração para unificar cenas e prefabs da Unity sem conflitos corrompidos
+*.unity binary
+*.prefab binary
+*.asset binary
+*.mat binary
+
+# Força o Git a tratar arquivos da Unity corretamente
+* text=auto

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TestEnemySpawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
     [Header("Inimigos")]
     public GameObject[] enemyPrefabs;        // arraste TODOS os prefabs dos monstros aqui

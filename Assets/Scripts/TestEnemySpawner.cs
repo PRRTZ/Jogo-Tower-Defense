@@ -12,12 +12,10 @@ public class TestEnemySpawner : MonoBehaviour
     public float wavesDelay = 10f;
     private float countdown = 2f;
     private int waveNum = 0;
-    //private int maxWave = 7;
-
 
     IEnumerator SpawnWave()
     {
-        waveNum ++;
+        waveNum++;
         for (int i = 0; i < waveNum; i++)
         {
             SpawnOne();
@@ -37,17 +35,26 @@ public class TestEnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (countdown <= 0f){
+        if (countdown <= 0f)
+        {
             StartCoroutine(SpawnWave());
             countdown = wavesDelay;
         }
         countdown -= Time.deltaTime;
-        if (Keyboard.current != null && Keyboard.current.tKey.wasPressedThisFrame) SpawnOne();
+        
+        if (Keyboard.current != null && Keyboard.current.tKey.wasPressedThisFrame) 
+        {
+            SpawnOne();
+        }
     }
 
     public void SpawnOne()
     {
-        if (enemyPrefab == null || spawnPoint == null) { Debug.LogWarning("Falta prefab ou SpawnPoint"); return; }
+        if (enemyPrefab == null || spawnPoint == null) 
+        { 
+            Debug.LogWarning("Falta prefab ou SpawnPoint"); 
+            return; 
+        }
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
     }
 }
