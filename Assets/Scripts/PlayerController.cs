@@ -17,8 +17,12 @@ public class PlayerController : MonoBehaviour
     public float groundSnapDistance = 0.6f;   // até quantos metros ele desce "colado" no chão
     public float groundedGrace = 0.15f;       // tempo que ainda conta como no chão para o Animator
 
+    [Header("Câmera")]
+    public bool relativeToCamera = true;      // true = W/A/S/D relativos à câmera (qualquer rotação)
+
     private CharacterController controller;
     private Animator animator;
+    private Camera cam;
 
     private Vector3 velocity;
     private bool jumpRequested;
@@ -28,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+        cam = Camera.main;
 
         if (animator == null)
         {
@@ -99,11 +104,26 @@ public class PlayerController : MonoBehaviour
                 moveZ -= 1f;
         }
 
-        Vector3 moveDirection = new Vector3(
-            moveX,
-            0f,
-            moveZ
-        ).normalized;
+        Vector3 moveDirection;
+
+        if (relativeToCamera)
+        {
+            if (cam == null) cam = Camera.main;
+
+            // Direção da câmera projetada no plano horizontal
+            Vector3 camForward = cam != null ? cam.transform.forward : Vector3.forward;
+            Vector3 camRight = cam != null ? cam.transform.right : Vector3.right;
+            camForward.y = 0f;
+            camRight.y = 0f;
+            camForward.Normalize();
+            camRight.Normalize();
+
+            moveDirection = (camForward * moveZ + camRight * moveX).normalized;
+        }
+        else
+        {
+            moveDirection = new Vector3(moveX, 0f, moveZ).normalized;
+        }
 
         // 4. Rotação do personagem
         if (moveDirection.sqrMagnitude > 0.01f)
