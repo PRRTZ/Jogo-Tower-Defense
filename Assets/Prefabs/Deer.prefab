@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6116480054079365859}
     m_Modifications:
+    - target: {fileID: 1182480202010510491, guid: 09b06d43d0abc834181386c4f8896695, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.68
+      objectReference: {fileID: 0}
     - target: {fileID: 3463154835163740419, guid: 09b06d43d0abc834181386c4f8896695, type: 3}
       propertyPath: m_Name
       value: HealthBar
@@ -57,9 +61,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09b06d43d0abc834181386c4f8896695, type: 3}
---- !u!4 &8855218422890974856 stripped
+--- !u!4 &2832011129162123994 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5602581675403165897, guid: 09b06d43d0abc834181386c4f8896695, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1182480202010510491, guid: 09b06d43d0abc834181386c4f8896695, type: 3}
   m_PrefabInstance: {fileID: 3973389163879566913}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6010233260772476168
@@ -119,7 +123,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8551e42a1b883c44d96cf951f27dd7fa, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8855218422890974856}
+      addedObject: {fileID: 2832011129162123994}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8551e42a1b883c44d96cf951f27dd7fa, type: 3}
       insertIndex: -1
