@@ -13,6 +13,7 @@ public class TowerBuilder : MonoBehaviour
     TowerSpot[] spots;
     Transform player;
     Health playerHealth;
+    Animator playerAnimator;
     TowerSpot nearest;
 
     void Start()
@@ -27,6 +28,7 @@ public class TowerBuilder : MonoBehaviour
         if (pc == null) return;
         player = pc.transform;
         playerHealth = pc.GetComponent<Health>();
+        playerAnimator = pc.GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -70,12 +72,19 @@ public class TowerBuilder : MonoBehaviour
     {
         if (towerPrefabs == null || towerPrefabs.Length == 0 || towerPrefabs[selected] == null) return;
         spot.tower = Instantiate(towerPrefabs[selected], spot.BuildPosition, spot.transform.rotation);
+        PlayInteractAnimation();
     }
 
     void Remove(TowerSpot spot)
     {
         Destroy(spot.tower);
         spot.tower = null;
+        PlayInteractAnimation();
+    }
+
+    void PlayInteractAnimation()
+    {
+        if (playerAnimator != null) playerAnimator.SetTrigger("Interact");
     }
 
     // aviso provisório na tela (depois vira a UI de opções)
