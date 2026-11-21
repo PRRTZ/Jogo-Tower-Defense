@@ -88826,6 +88826,10 @@ PrefabInstance:
       propertyPath: m_ChildAlignment
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5555431176837972243, guid: 82b7ca1a7bc1c8b4e903bc4c0d515200, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6783311375894900495, guid: 82b7ca1a7bc1c8b4e903bc4c0d515200, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
