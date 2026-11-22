@@ -1,0 +1,692 @@
+using System.Collections.Generic;
+using System.Text;
+using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+// Menu principal montado por código: adicione este script a um objeto vazio numa cena nova.
+// Todas as imagens são OPCIONAIS: o que ficar vazio usa o visual gerado por código.
+public class MainMenu : MonoBehaviour
+{
+    [Header("Textos")]
+    public string gameTitle = "Tower Defense";
+    public string subtitle = "Defenda a base dos bichinhos de pelúcia!";
+    [TextArea(3, 8)]
+    public string aboutText = "Defenda a base contra ondas de bichinhos de pelúcia! Construa torres nos pontos livres do mapa, derrote os inimigos antes que cheguem à base e conclua a missão dentro do tempo.";
+    [TextArea(3, 8)]
+    public string controlsText = "WASD / Setas: mover    Shift: correr    Espaço: pular\nJ ou clique esquerdo: atacar com a espada\nE: construir ou remover torre perto de um ponto livre\n1 a 4: escolher o tipo de torre";
+    [TextArea(3, 8)]
+    public string creditsText = "Feito por Alice Neumann e [nome da dupla] - CG & RV, UPF 2026/2\nModelos: Kenney, KayKit e Quaternius (assets gratuitos)\nEngine: Unity 6";
+
+    [Header("Mapas (nome da cena no Build Settings)")]
+    public string[] mapScenes = { "GameScene", "Map_02" };
+    public string[] mapNames = { "Mapa 1 - Castelo", "Mapa 2 - Vilarejo" };
+
+    [Header("Imagens (opcional - arraste aqui)")]
+    public Sprite backgroundSprite;                  // fundo da tela (cobre tudo, sem distorcer)
+    public Sprite logoSprite;                        // logo: substitui o texto do título
+    public Vector2 logoSize = new Vector2(900, 300);
+    public Sprite buttonSprite;                      // botões (use Border no Sprite Editor para esticar bem)
+    public Sprite buttonSelectedSprite;              // botão marcado (dificuldade / mapa)
+    public Sprite panelSprite;                       // cartões do Ranking e das Informações
+    public Sprite inputSprite;                       // campo do nome
+    public Sprite[] floatingSprites;                 // imagens que flutuam no fundo (vazio = bolhas)
+    public int floatingCount = 14;
+    public Texture2D cursorTexture;                  // cursor do mouse (Texture Type = Cursor)
+    public Vector2 cursorHotspot = Vector2.zero;
+
+    [Header("Cores e fonte")]
+    public TMP_FontAsset font;                                       // opcional: uma fonte fofa
+    public Color topColor = new Color(1f, 0.84f, 0.91f);             // degradê do fundo (se não houver imagem)
+    public Color bottomColor = new Color(0.73f, 0.84f, 1f);
+    public Color textColor = new Color(0.27f, 0.16f, 0.35f);         // textos gerais
+    public Color buttonTextColor = new Color(0.27f, 0.16f, 0.35f);   // texto dos botões
+    public Color titleOutlineColor = new Color(0.27f, 0.16f, 0.35f); // contorno do título
+    public bool tintCustomButtons = false;                           // marque para tingir seu Button Sprite com as cores pastel
+
+    [Header("Áudio (opcional)")]
+    public AudioClip music;
+    public AudioClip clickSound;
+    public AudioClip hoverSound;
+    [Range(0f, 1f)] public float volume = 0.5f;
+
+    // paleta pastel (usada quando os botões não têm sprite próprio)
+    static readonly Color Pink = new Color(1f, 0.56f, 0.69f);
+    static readonly Color Mint = new Color(0.58f, 0.88f, 0.74f);
+    static readonly Color Lilac = new Color(0.73f, 0.63f, 0.94f);
+    static readonly Color Sun = new Color(1f, 0.84f, 0.4f);
+    static readonly Color Sky = new Color(0.55f, 0.8f, 1f);
+
+    Canvas canvas;
+    Sprite roundSprite, circleSprite;
+    GameObject mainPanel, playPanel, rankingPanel, infoPanel, currentPanel;
+    TMP_Text titleText, difficultyDesc, statusText;
+    RectTransform titleRect;
+    TMP_InputField nameInput;
+    Transform rankingRow;
+    readonly List<Image> diffButtons = new List<Image>();
+    readonly List<Image> mapButtons = new List<Image>();
+    int selDiff, selMap;
+    float statusUntil;
+    AudioSource audioSrc;
+
+    class Floater { public RectTransform rt; public Vector2 basePos; public float speed, phase, amp; public bool sway; }
+    readonly List<Floater> floaters = new List<Floater>();
+
+    // ---------------------------------------------------------------- início
+    void Start()
+    {
+        Time.timeScale = 1f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        if (cursorTexture != null) Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
+
+        EnsureEventSystem();
+        roundSprite = MakeRoundedSprite(64, 24);
+        circleSprite = MakeRoundedSprite(128, 64);
+
+        selDiff = Mathf.Clamp(GameSession.DifficultyIndex, 0, GameSession.Difficulties.Length - 1);
+        selMap = Mathf.Clamp(GameSession.MapIndex, 0, Mathf.Max(0, mapScenes.Length - 1));
+
+        SetupAudio();
+        MenuButtonFx.Hovered += PlayHover;
+
+        BuildCanvas();
+        BuildBackground();
+        BuildMainPanel();
+        BuildPlayPanel();
+        BuildRankingPanel();
+        BuildInfoPanel();
+        Show(mainPanel);
+    }
+
+    void OnDestroy()
+    {
+        MenuButtonFx.Hovered -= PlayHover;
+        if (cursorTexture != null) Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);   // devolve o cursor normal
+    }
+
+    void Update()
+    {
+        float t = Time.unscaledTime;
+
+        foreach (var f in floaters)
+        {
+            f.rt.anchoredPosition = f.basePos + new Vector2(
+                Mathf.Sin(t * f.speed + f.phase) * f.amp,
+                Mathf.Cos(t * f.speed * 0.8f + f.phase) * f.amp);
+            if (f.sway) f.rt.localRotation = Quaternion.Euler(0f, 0f, Mathf.Sin(t * f.speed + f.phase) * 8f);
+        }
+
+        if (titleRect != null)
+        {
+            titleRect.localRotation = Quaternion.Euler(0f, 0f, Mathf.Sin(t * 1.6f) * 2f);
+            float s = 1f + Mathf.Sin(t * 2.2f) * 0.025f;
+            titleRect.localScale = new Vector3(s, s, 1f);
+        }
+
+        if (statusText != null && statusText.text != "" && t > statusUntil) statusText.text = "";
+
+        // ESC volta ao menu principal
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame
+            && currentPanel != mainPanel && currentPanel != null)
+            Show(mainPanel);
+    }
+
+    // ---------------------------------------------------------------- painéis
+    void BuildMainPanel()
+    {
+        mainPanel = MakePanel("MainPanel");
+        Transform p = mainPanel.transform;
+
+        if (logoSprite != null)
+        {
+            var go = new GameObject("Logo", typeof(RectTransform), typeof(Image), typeof(LayoutElement));
+            go.transform.SetParent(p, false);
+            var im = go.GetComponent<Image>();
+            im.sprite = logoSprite;
+            im.preserveAspect = true;
+            im.raycastTarget = false;
+            var le = go.GetComponent<LayoutElement>();
+            le.preferredWidth = logoSize.x;
+            le.preferredHeight = logoSize.y;
+            titleRect = (RectTransform)go.transform;
+        }
+        else
+        {
+            titleText = Label(p, gameTitle, 130, 1500, 180, TextAlignmentOptions.Center, FontStyles.Bold);
+            titleText.color = Color.white;
+            titleText.outlineWidth = 0.22f;
+            titleText.outlineColor = titleOutlineColor;
+            titleRect = titleText.rectTransform;
+        }
+
+        Label(p, subtitle, 40, 1400, 70);
+        Spacer(p, 30);
+
+        MakeButton(p, "Jogar", Pink, 560, 110, 54, () => Show(playPanel));
+        MakeButton(p, "Ranking", Sun, 560, 110, 54, () => Show(rankingPanel));
+        MakeButton(p, "Informações", Sky, 560, 110, 54, () => Show(infoPanel));
+        MakeButton(p, "Sair", Lilac, 560, 110, 54, QuitGame);
+    }
+
+    void BuildPlayPanel()
+    {
+        playPanel = MakePanel("PlayPanel");
+        Transform p = playPanel.transform;
+
+        Label(p, "Escolha a dificuldade", 56, 1200, 80, TextAlignmentOptions.Center, FontStyles.Bold);
+        Transform diffRow = MakeRow(p, 24);
+        for (int i = 0; i < GameSession.Difficulties.Length; i++)
+        {
+            int idx = i;
+            Button b = MakeButton(diffRow, GameSession.Difficulties[i].name, Color.white, 360, 110, 46, () => SelectDifficulty(idx));
+            diffButtons.Add(b.GetComponent<Image>());
+        }
+        difficultyDesc = Label(p, "", 32, 1400, 100);
+
+        Label(p, "Escolha o mapa", 56, 1200, 80, TextAlignmentOptions.Center, FontStyles.Bold);
+        Transform mapRow = MakeRow(p, 24);
+        for (int i = 0; i < mapScenes.Length; i++)
+        {
+            int idx = i;
+            string label = i < mapNames.Length ? mapNames[i] : mapScenes[i];
+            Button b = MakeButton(mapRow, label, Color.white, 520, 110, 40, () => SelectMap(idx));
+            mapButtons.Add(b.GetComponent<Image>());
+        }
+
+        Transform nameRow = MakeRow(p, 20);
+        Label(nameRow, "Seu nome:", 40, 260, 90, TextAlignmentOptions.MidlineRight);
+        nameInput = MakeInput(nameRow, "Jogador", 520, 90);
+
+        statusText = Label(p, "", 32, 1400, 50);
+        statusText.color = new Color(0.8f, 0.15f, 0.25f);
+
+        Transform btnRow = MakeRow(p, 40);
+        MakeButton(btnRow, "Voltar", Lilac, 300, 110, 46, () => Show(mainPanel));
+        MakeButton(btnRow, "Começar!", Mint, 460, 110, 52, StartGame);
+
+        SelectDifficulty(selDiff);
+        SelectMap(selMap);
+    }
+
+    void BuildRankingPanel()
+    {
+        rankingPanel = MakePanel("RankingPanel");
+        Transform p = rankingPanel.transform;
+
+        Label(p, "Ranking", 90, 1200, 120, TextAlignmentOptions.Center, FontStyles.Bold);
+        Label(p, "Os 5 melhores de cada dificuldade (salvo neste computador)", 30, 1400, 50);
+        rankingRow = MakeRow(p, 24);
+
+        Transform btnRow = MakeRow(p, 40);
+        MakeButton(btnRow, "Voltar", Lilac, 300, 100, 44, () => Show(mainPanel));
+        MakeButton(btnRow, "Limpar ranking", Pink, 460, 100, 40, () => { Ranking.Clear(); RefreshRanking(); });
+    }
+
+    void BuildInfoPanel()
+    {
+        infoPanel = MakePanel("InfoPanel");
+        Transform p = infoPanel.transform;
+
+        Label(p, "Informações", 90, 1200, 120, TextAlignmentOptions.Center, FontStyles.Bold);
+
+        GameObject card = MakeCard(p, 1500, 640);
+
+        string all = "<b>Sobre o jogo</b>\n" + aboutText +
+                     "\n\n<b>Controles</b>\n" + controlsText +
+                     "\n\n<b>Créditos</b>\n" + creditsText;
+        TMP_Text t = MakeText(card.transform, all, 34, textColor, TextAlignmentOptions.TopLeft);
+        t.enableAutoSizing = true;
+        t.fontSizeMin = 18;
+        t.fontSizeMax = 34;
+        Stretch(t.rectTransform);
+        t.rectTransform.offsetMin = new Vector2(36, 28);
+        t.rectTransform.offsetMax = new Vector2(-36, -28);
+
+        MakeButton(p, "Voltar", Lilac, 300, 100, 44, () => Show(mainPanel));
+    }
+
+    void Show(GameObject target)
+    {
+        currentPanel = target;
+        foreach (var p in new[] { mainPanel, playPanel, rankingPanel, infoPanel })
+            if (p != null) p.SetActive(p == target);
+        if (target == rankingPanel) RefreshRanking();
+    }
+
+    // ---------------------------------------------------------------- ações
+    void SelectDifficulty(int i)
+    {
+        selDiff = i;
+        for (int k = 0; k < diffButtons.Count; k++) SetSelected(diffButtons[k], k == i);
+
+        DifficultyConfig c = GameSession.Difficulties[i];
+        difficultyDesc.text = c.description + "\n" + c.totalEnemies + " inimigos  •  " + c.waves + " ondas  •  "
+                              + Mathf.RoundToInt(c.missionTimeSeconds) + " s de missão  •  vida da base: " + c.baseMaxHealth;
+    }
+
+    void SelectMap(int i)
+    {
+        selMap = i;
+        for (int k = 0; k < mapButtons.Count; k++) SetSelected(mapButtons[k], k == i);
+    }
+
+    // aparência de botão marcado / desmarcado
+    void SetSelected(Image img, bool selected)
+    {
+        if (buttonSprite != null)
+        {
+            if (buttonSelectedSprite != null)
+            {
+                ApplySprite(img, selected ? buttonSelectedSprite : buttonSprite);
+                img.color = Color.white;
+            }
+            else img.color = selected ? Sun : Color.white;
+        }
+        else img.color = selected ? Sun : new Color(1f, 1f, 1f, 0.85f);
+    }
+
+    void StartGame()
+    {
+        string scene = (mapScenes != null && selMap < mapScenes.Length) ? mapScenes[selMap] : "";
+        if (string.IsNullOrEmpty(scene) || !Application.CanStreamedLevelBeLoaded(scene))
+        {
+            ShowStatus("A cena \"" + scene + "\" não está no Build Settings.");
+            return;
+        }
+
+        string n = nameInput != null ? nameInput.text.Trim() : "";
+        GameSession.PlayerName = string.IsNullOrEmpty(n) ? "Jogador" : n;
+        GameSession.DifficultyIndex = selDiff;
+        GameSession.MapIndex = selMap;
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(scene);
+    }
+
+    void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
+    void ShowStatus(string msg)
+    {
+        statusText.text = msg;
+        statusUntil = Time.unscaledTime + 3f;
+    }
+
+    void RefreshRanking()
+    {
+        for (int i = rankingRow.childCount - 1; i >= 0; i--)
+        {
+            Transform c = rankingRow.GetChild(i);
+            c.SetParent(null);
+            Destroy(c.gameObject);
+        }
+
+        int n = GameSession.Difficulties.Length;
+        float w = Mathf.Min(520f, 1500f / n);
+        for (int d = 0; d < n; d++)
+        {
+            GameObject card = MakeCard(rankingRow, w, 520);
+            TMP_Text t = MakeText(card.transform, BuildRankingText(d), 36, textColor, TextAlignmentOptions.TopLeft);
+            Stretch(t.rectTransform);
+            t.rectTransform.offsetMin = new Vector2(28, 28);
+            t.rectTransform.offsetMax = new Vector2(-28, -28);
+        }
+    }
+
+    string BuildRankingText(int d)
+    {
+        var sb = new StringBuilder();
+        sb.Append("<size=46><b>").Append(GameSession.Difficulties[d].name).Append("</b></size>\n\n");
+        List<Ranking.Entry> list = Ranking.Get(d);
+        for (int i = 0; i < Ranking.MaxEntries; i++)
+        {
+            if (i < list.Count)
+                sb.Append(i + 1).Append(". ").Append(Clean(list[i].name)).Append(" - ").Append(list[i].score).Append(" pts\n");
+            else
+                sb.Append(i + 1).Append(". ---\n");
+        }
+        return sb.ToString();
+    }
+
+    static string Clean(string s) { return string.IsNullOrEmpty(s) ? "" : s.Replace("<", "").Replace(">", ""); }
+
+    // ---------------------------------------------------------------- áudio
+    void SetupAudio()
+    {
+        audioSrc = gameObject.AddComponent<AudioSource>();
+        audioSrc.playOnAwake = false;
+        audioSrc.loop = true;
+        audioSrc.spatialBlend = 0f;
+        audioSrc.volume = volume;
+        if (music != null) { audioSrc.clip = music; audioSrc.Play(); }
+    }
+
+    void PlayClick()
+    {
+        if (clickSound != null && audioSrc != null) audioSrc.PlayOneShot(clickSound, volume);
+    }
+
+    void PlayHover()
+    {
+        if (hoverSound != null && audioSrc != null) audioSrc.PlayOneShot(hoverSound, volume * 0.6f);
+    }
+
+    // ---------------------------------------------------------------- construção da UI
+    void EnsureEventSystem()
+    {
+        if (FindAnyObjectByType<EventSystem>() != null) return;
+        new GameObject("EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
+    }
+
+    void BuildCanvas()
+    {
+        var go = new GameObject("MenuCanvas", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        canvas = go.GetComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        var scaler = go.GetComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1920, 1080);
+        scaler.matchWidthOrHeight = 0.5f;
+    }
+
+    void BuildBackground()
+    {
+        var bg = new GameObject("Background", typeof(RectTransform), typeof(RectMask2D));
+        bg.transform.SetParent(canvas.transform, false);
+        Stretch((RectTransform)bg.transform);
+
+        if (backgroundSprite != null)
+        {
+            // imagem do usuário: cobre a tela inteira mantendo a proporção
+            var im = new GameObject("BackgroundImage", typeof(RectTransform), typeof(Image), typeof(AspectRatioFitter));
+            im.transform.SetParent(bg.transform, false);
+            var img = im.GetComponent<Image>();
+            img.sprite = backgroundSprite;
+            img.raycastTarget = false;
+            var fit = im.GetComponent<AspectRatioFitter>();
+            fit.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
+            fit.aspectRatio = backgroundSprite.rect.width / backgroundSprite.rect.height;
+        }
+        else
+        {
+            var img = bg.AddComponent<Image>();
+            img.sprite = MakeGradient(topColor, bottomColor);
+            img.raycastTarget = false;
+        }
+
+        bool custom = floatingSprites != null && floatingSprites.Length > 0;
+        Color[] tints = { Pink, Mint, Lilac, Sun, Sky, Color.white };
+
+        for (int i = 0; i < floatingCount; i++)
+        {
+            var go = new GameObject("Floater", typeof(RectTransform), typeof(Image));
+            go.transform.SetParent(bg.transform, false);
+            var im = go.GetComponent<Image>();
+            im.raycastTarget = false;
+
+            float size;
+            if (custom)
+            {
+                Sprite s = floatingSprites[Random.Range(0, floatingSprites.Length)];
+                if (s == null) { Destroy(go); continue; }
+                im.sprite = s;
+                im.preserveAspect = true;
+                im.color = Color.white;
+                size = Random.Range(110f, 230f);
+            }
+            else
+            {
+                im.sprite = circleSprite;
+                Color c = tints[Random.Range(0, tints.Length)];
+                c.a = 0.35f;
+                im.color = c;
+                size = Random.Range(70f, 260f);
+            }
+
+            var rt = (RectTransform)go.transform;
+            rt.sizeDelta = new Vector2(size, size);
+            Vector2 pos = new Vector2(Random.Range(-900f, 900f), Random.Range(-500f, 500f));
+            rt.anchoredPosition = pos;
+
+            floaters.Add(new Floater
+            {
+                rt = rt, basePos = pos, sway = custom,
+                speed = Random.Range(0.3f, 0.8f), phase = Random.Range(0f, 6.28f), amp = Random.Range(15f, 40f)
+            });
+        }
+    }
+
+    GameObject MakePanel(string name)
+    {
+        var go = new GameObject(name, typeof(RectTransform), typeof(VerticalLayoutGroup));
+        go.transform.SetParent(canvas.transform, false);
+        Stretch((RectTransform)go.transform);
+        var v = go.GetComponent<VerticalLayoutGroup>();
+        v.childAlignment = TextAnchor.MiddleCenter;
+        v.spacing = 22;
+        v.padding = new RectOffset(40, 40, 40, 40);
+        v.childControlWidth = true;
+        v.childControlHeight = true;
+        v.childForceExpandWidth = false;
+        v.childForceExpandHeight = false;
+        return go;
+    }
+
+    Transform MakeRow(Transform parent, float spacing)
+    {
+        var go = new GameObject("Row", typeof(RectTransform), typeof(HorizontalLayoutGroup));
+        go.transform.SetParent(parent, false);
+        var h = go.GetComponent<HorizontalLayoutGroup>();
+        h.childAlignment = TextAnchor.MiddleCenter;
+        h.spacing = spacing;
+        h.childControlWidth = true;
+        h.childControlHeight = true;
+        h.childForceExpandWidth = false;
+        h.childForceExpandHeight = false;
+        return go.transform;
+    }
+
+    void Spacer(Transform parent, float height)
+    {
+        var go = new GameObject("Spacer", typeof(RectTransform), typeof(LayoutElement));
+        go.transform.SetParent(parent, false);
+        go.GetComponent<LayoutElement>().preferredHeight = height;
+    }
+
+    // usa o sprite do usuário (9-slice se tiver Border) ou o retângulo arredondado gerado por código
+    void ApplySprite(Image img, Sprite custom)
+    {
+        if (custom != null)
+        {
+            img.sprite = custom;
+            img.type = custom.border.sqrMagnitude > 0.001f ? Image.Type.Sliced : Image.Type.Simple;
+        }
+        else
+        {
+            img.sprite = roundSprite;
+            img.type = Image.Type.Sliced;
+        }
+    }
+
+    GameObject MakeCard(Transform parent, float w, float h)
+    {
+        var card = new GameObject("Card", typeof(RectTransform), typeof(Image), typeof(LayoutElement));
+        card.transform.SetParent(parent, false);
+        var img = card.GetComponent<Image>();
+        ApplySprite(img, panelSprite);
+        img.color = panelSprite != null ? Color.white : new Color(1f, 1f, 1f, 0.88f);
+        var le = card.GetComponent<LayoutElement>();
+        le.preferredWidth = w;
+        le.preferredHeight = h;
+        return card;
+    }
+
+    TMP_Text MakeText(Transform parent, string txt, float size, Color color,
+                      TextAlignmentOptions align, FontStyles style = FontStyles.Normal)
+    {
+        var go = new GameObject("Text", typeof(RectTransform));
+        go.transform.SetParent(parent, false);
+        var t = go.AddComponent<TextMeshProUGUI>();
+        if (font != null) t.font = font;
+        t.text = txt;
+        t.fontSize = size;
+        t.color = color;
+        t.alignment = align;
+        t.fontStyle = style;
+        t.raycastTarget = false;
+        return t;
+    }
+
+    TMP_Text Label(Transform parent, string txt, float size, float w, float h,
+                   TextAlignmentOptions align = TextAlignmentOptions.Center, FontStyles style = FontStyles.Normal)
+    {
+        TMP_Text t = MakeText(parent, txt, size, textColor, align, style);
+        var le = t.gameObject.AddComponent<LayoutElement>();
+        le.preferredWidth = w;
+        le.preferredHeight = h;
+        return t;
+    }
+
+    Button MakeButton(Transform parent, string label, Color color, float w, float h, float fontSize,
+                      UnityEngine.Events.UnityAction onClick)
+    {
+        var go = new GameObject("Btn_" + label,
+            typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement), typeof(MenuButtonFx));
+        go.transform.SetParent(parent, false);
+
+        var img = go.GetComponent<Image>();
+        ApplySprite(img, buttonSprite);
+        img.color = (buttonSprite != null && !tintCustomButtons) ? Color.white : color;
+
+        var le = go.GetComponent<LayoutElement>();
+        le.preferredWidth = w;
+        le.preferredHeight = h;
+
+        var btn = go.GetComponent<Button>();
+        btn.targetGraphic = img;
+        var cb = btn.colors;
+        cb.highlightedColor = new Color(0.95f, 0.95f, 0.95f, 1f);
+        cb.pressedColor = new Color(0.82f, 0.82f, 0.82f, 1f);
+        btn.colors = cb;
+        btn.onClick.AddListener(() => { PlayClick(); onClick(); });
+
+        TMP_Text t = MakeText(go.transform, label, fontSize, buttonTextColor, TextAlignmentOptions.Center, FontStyles.Bold);
+        Stretch(t.rectTransform);
+        return btn;
+    }
+
+    TMP_InputField MakeInput(Transform parent, string placeholder, float w, float h)
+    {
+        var go = new GameObject("NameInput", typeof(RectTransform), typeof(Image), typeof(LayoutElement));
+        go.transform.SetParent(parent, false);
+        go.SetActive(false);                                   // monta desativado e liga no fim
+
+        var img = go.GetComponent<Image>();
+        ApplySprite(img, inputSprite != null ? inputSprite : panelSprite);
+        img.color = Color.white;
+        var le = go.GetComponent<LayoutElement>();
+        le.preferredWidth = w; le.preferredHeight = h;
+
+        var vp = new GameObject("Viewport", typeof(RectTransform), typeof(RectMask2D));
+        vp.transform.SetParent(go.transform, false);
+        var vrt = (RectTransform)vp.transform;
+        Stretch(vrt);
+        vrt.offsetMin = new Vector2(24, 8);
+        vrt.offsetMax = new Vector2(-24, -8);
+
+        TMP_Text text = MakeText(vp.transform, "", 40, textColor, TextAlignmentOptions.MidlineLeft);
+        Stretch(text.rectTransform);
+        TMP_Text ph = MakeText(vp.transform, placeholder, 40, new Color(textColor.r, textColor.g, textColor.b, 0.4f),
+                               TextAlignmentOptions.MidlineLeft, FontStyles.Italic);
+        Stretch(ph.rectTransform);
+
+        var input = go.AddComponent<TMP_InputField>();
+        input.targetGraphic = img;
+        input.textViewport = vrt;
+        input.textComponent = text;
+        input.placeholder = ph;
+        input.characterLimit = 12;
+        go.SetActive(true);
+
+        input.text = PlayerPrefs.GetString("player_name", "");
+        input.onValueChanged.AddListener(v => PlayerPrefs.SetString("player_name", v));
+        return input;
+    }
+
+    static void Stretch(RectTransform rt)
+    {
+        rt.anchorMin = Vector2.zero;
+        rt.anchorMax = Vector2.one;
+        rt.offsetMin = Vector2.zero;
+        rt.offsetMax = Vector2.zero;
+    }
+
+    // ---------------------------------------------------------------- sprites gerados por código
+    // retângulo arredondado (usado em 9-slice) ou círculo, se radius = size/2
+    static Sprite MakeRoundedSprite(int size, int radius)
+    {
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.wrapMode = TextureWrapMode.Clamp;
+        tex.filterMode = FilterMode.Bilinear;
+        float half = size / 2f;
+        for (int y = 0; y < size; y++)
+            for (int x = 0; x < size; x++)
+            {
+                float dx = Mathf.Max(Mathf.Abs(x + 0.5f - half) - (half - radius), 0f);
+                float dy = Mathf.Max(Mathf.Abs(y + 0.5f - half) - (half - radius), 0f);
+                float dist = Mathf.Sqrt(dx * dx + dy * dy) - radius;     // < 0 = dentro
+                tex.SetPixel(x, y, new Color(1f, 1f, 1f, Mathf.Clamp01(0.5f - dist)));
+            }
+        tex.Apply();
+        return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), 100f, 0,
+                             SpriteMeshType.FullRect, new Vector4(radius, radius, radius, radius));
+    }
+
+    static Sprite MakeGradient(Color top, Color bottom)
+    {
+        var tex = new Texture2D(2, 256, TextureFormat.RGBA32, false);
+        tex.wrapMode = TextureWrapMode.Clamp;
+        tex.filterMode = FilterMode.Bilinear;
+        for (int y = 0; y < 256; y++)
+        {
+            Color c = Color.Lerp(bottom, top, y / 255f);
+            tex.SetPixel(0, y, c);
+            tex.SetPixel(1, y, c);
+        }
+        tex.Apply();
+        return Sprite.Create(tex, new Rect(0, 0, 2, 256), new Vector2(0.5f, 0.5f), 100f);
+    }
+}
+
+// Efeito de "pulinho" ao passar o mouse / clicar nos botões
+public class MenuButtonFx : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+{
+    public static System.Action Hovered;     // o MainMenu escuta para tocar o som de hover
+
+    float target = 1f;
+    bool over;
+
+    public void OnPointerEnter(PointerEventData e) { over = true; target = 1.07f; if (Hovered != null) Hovered(); }
+    public void OnPointerExit(PointerEventData e) { over = false; target = 1f; }
+    public void OnPointerDown(PointerEventData e) { target = 0.95f; }
+    public void OnPointerUp(PointerEventData e) { target = over ? 1.07f : 1f; }
+
+    void Update()
+    {
+        float s = Mathf.Lerp(transform.localScale.x, target, 14f * Time.unscaledDeltaTime);
+        transform.localScale = new Vector3(s, s, 1f);
+    }
+
+    void OnDisable() { transform.localScale = Vector3.one; target = 1f; over = false; }
+}
