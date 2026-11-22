@@ -7,7 +7,9 @@ public class PlayerAttack : MonoBehaviour
 {
     [Header("Ataque Normal")]
     public float damage = 2f;             // 2 = 1 coração
-    public float range = 1.8f;            // alcance à frente do player (m)
+    // nome novo de propósito: o alcance antigo (1.8) salvo no prefab e nas cenas deixa de valer
+    // e os dois mapas passam a usar este valor
+    public float attackRange = 2.8f;      // alcance à frente do player (m)
     [Range(10f, 180f)]
     public float arcAngle = 100f;         // abertura do golpe normal em graus
     public float hitDelay = 0.25f;        // segundos até o golpe acertar
@@ -16,9 +18,19 @@ public class PlayerAttack : MonoBehaviour
     [Header("Entrada")]
     public bool useMouse = true;          // ativado para usar o clique esquerdo
 
+    [Header("Efeito do golpe")]
+    public bool showSlash = true;
+    public Color slashColor = new Color(1f, 1f, 1f, 0.85f);
+    public float slashHeight = 0.6f;      // altura do rastro acima do chão
+    public float slashSweep = 0.08f;      // tempo da varredura (s)
+    public float slashFade = 0.15f;       // tempo para sumir (s)
+    [Tooltip("Opcional. Vazio = material transparente automático (URP Particles/Unlit).")]
+    public Material slashMaterial;
+
     Animator anim;
     Health health;
     float nextAttack;
+    SlashEffect slash;
 
     void Awake()
     {
@@ -60,6 +72,7 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(hitDelay);
         if (health != null && health.IsDead) yield break;
 
+        ShowSlash();
         DealDamage();
     }
 
@@ -68,7 +81,7 @@ public class PlayerAttack : MonoBehaviour
         var already = new HashSet<EnemyHealth>();
         Vector3 origin = transform.position + Vector3.up * 0.8f;
 
-        foreach (var col in Physics.OverlapSphere(origin, range, ~0, QueryTriggerInteraction.Ignore))
+        foreach (var col in Physics.OverlapSphere(origin, attackRange, ~0, QueryTriggerInteraction.Ignore))
         {
             var enemy = col.GetComponentInParent<EnemyHealth>();
             if (enemy == null || enemy.IsDead || !already.Add(enemy)) continue;
@@ -82,9 +95,24 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    void ShowSlash()
+    {
+        if (!showSlash) return;
+        if (slash == null) slash = SlashEffect.Create(slashMaterial);   // criado uma vez e reaproveitado
+
+        Quaternion yaw = Quaternion.Euler(0f, transform.eulerAngles.y, 0f);
+        slash.Play(transform.position + Vector3.up * slashHeight, yaw, attackRange, arcAngle,
+                   slashColor, slashSweep, slashFade);
+    }
+
+    void OnDestroy()
+    {
+        if (slash != null) Destroy(slash.gameObject);
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position + Vector3.up * 0.8f, range);
+        Gizmos.DrawWireSphere(transform.position + Vector3.up * 0.8f, attackRange);
     }
 }

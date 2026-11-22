@@ -782,14 +782,14 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 2
-  m_Spacing: 0
+  m_Spacing: 5
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_ReverseArrangement: 1
 --- !u!114 &7107074634336655531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,9 +804,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   playerHealth: {fileID: 7128114354328243693}
   heartSize: 64
-  fullHeart: {fileID: 1491285489860683338, guid: 05a3f6da5a49baa4fa09e1309c2804d7, type: 3}
-  halfHeart: {fileID: 451435218, guid: 05a3f6da5a49baa4fa09e1309c2804d7, type: 3}
-  emptyHeart: {fileID: -585392448, guid: 05a3f6da5a49baa4fa09e1309c2804d7, type: 3}
+  fullHeart: {fileID: -183834797, guid: 350505c602175dd4f8471d2a7b7f3356, type: 3}
+  halfHeart: {fileID: 872464435, guid: 350505c602175dd4f8471d2a7b7f3356, type: 3}
+  emptyHeart: {fileID: 1297275709, guid: 350505c602175dd4f8471d2a7b7f3356, type: 3}
 --- !u!1 &2312020898616310834
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,6 +2140,7 @@ MonoBehaviour:
   animDampTime: 0.1
   groundSnapDistance: 0.6
   groundedGrace: 0.15
+  relativeToCamera: 1
 --- !u!114 &7128114354328243693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2181,11 +2182,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   damage: 25
-  range: 1.8
+  attackRange: 2.8
   arcAngle: 100
   hitDelay: 0.25
   cooldown: 0.6
   useMouse: 1
+  showSlash: 1
+  slashColor: {r: 1, g: 1, b: 1, a: 0.85}
+  slashHeight: 0.6
+  slashSweep: 0.08
+  slashFade: 0.15
+  slashMaterial: {fileID: 0}
 --- !u!1 &8263727801734027933
 GameObject:
   m_ObjectHideFlags: 0
