@@ -13,6 +13,10 @@ public class EnemyHealth : MonoBehaviour
     public string dieTrigger = "Die";
     public float deathDelay = 0f;
 
+    [Header("Teste")]
+    [Tooltip("Ligado: clicar no inimigo tira 2 de vida. Deixe desligado no jogo (com moedas, vira trapaça).")]
+    public bool debugClickDamage = false;
+
     public static event Action<EnemyHealth> OnEnemyDied;
     public bool IsDead { get; private set; }
 
@@ -26,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        
+
         // Garante que todos os renderizadores visuais do monstro fiquem ativos
         foreach (var r in GetComponentsInChildren<Renderer>(true))
         {
@@ -34,6 +38,13 @@ public class EnemyHealth : MonoBehaviour
             var sk = r as SkinnedMeshRenderer;
             if (sk != null) sk.updateWhenOffscreen = true;
         }
+    }
+
+    /// <summary>Muda a vida máxima e enche a vida (usado pelo EnemySpawner para fortalecer a cada onda).</summary>
+    public void SetMaxHealth(float value)
+    {
+        maxHealth = Mathf.Max(1f, value);
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(float amount)
@@ -49,11 +60,14 @@ public class EnemyHealth : MonoBehaviour
     {
         IsDead = true;
         if (anim != null) anim.SetTrigger(dieTrigger);
-        
+
         foreach (var c in GetComponentsInChildren<Collider>()) c.enabled = false;
         OnEnemyDied?.Invoke(this);
         Destroy(gameObject);
     }
 
-    void OnMouseDown() { TakeDamage(2f); }
+    void OnMouseDown()
+    {
+        if (debugClickDamage) TakeDamage(2f);
+    }
 }

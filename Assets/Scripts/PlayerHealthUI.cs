@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlayerHealthUI : MonoBehaviour
 {
     [Header("Referências")]
-    public Health playerHealth; 
+    public Health playerHealth;
 
     [Header("Configurações dos Corações")]
     public float heartSize = 32; // Use múltiplos de 16 (ex: 32 ou 48) para manter o pixel art nítido
@@ -31,8 +31,17 @@ public class PlayerHealthUI : MonoBehaviour
     {
         if (playerHealth != null)
         {
+            // a vida máxima mudou (upgrade na forja): refaz os corações
+            if (HeartCount() != heartImages.Count) CreateHearts();
+
             UpdateHearts();
         }
+    }
+
+    int HeartCount()
+    {
+        float maxH = playerHealth.maxHealth;
+        return Mathf.CeilToInt(maxH <= 10 ? maxH / 2f : maxH / 20f);
     }
 
     void CreateHearts()
@@ -43,8 +52,8 @@ public class PlayerHealthUI : MonoBehaviour
         }
         heartImages.Clear();
 
-        float maxH = playerHealth.maxHealth;
-        int totalHearts = Mathf.CeilToInt(maxH <= 10 ? maxH / 2f : maxH / 20f);
+        if (playerHealth == null) return;
+        int totalHearts = HeartCount();
 
         for (int i = 0; i < totalHearts; i++)
         {
@@ -58,7 +67,7 @@ public class PlayerHealthUI : MonoBehaviour
 
             Image heartImage = heartObj.GetComponent<Image>();
             heartImage.sprite = fullHeart;
-            heartImage.preserveAspect = true; 
+            heartImage.preserveAspect = true;
             heartImages.Add(heartImage);
         }
     }
