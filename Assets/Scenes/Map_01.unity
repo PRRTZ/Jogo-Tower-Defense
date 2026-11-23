@@ -49934,11 +49934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf85c19db5b2a94fa7a5828537d4c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyUI
-<<<<<<< Updated upstream
   moneyText: {fileID: 190906009}
-=======
-  moneyText: {fileID: 285526555}
->>>>>>> Stashed changes
   noMoneyColor: {r: 1, g: 0.3, b: 0.3, a: 1}
   overrideColor: 1
   textColor: {r: 1, g: 0.84, b: 0.25, a: 1}
@@ -89003,12 +88999,6 @@ SceneRoots:
   - {fileID: 1231980959}
   - {fileID: 1263352989}
   - {fileID: 190906008}
-<<<<<<< Updated upstream
   - {fileID: 2032632271}
-<<<<<<< HEAD
-=======
   - {fileID: 1431676893}
->>>>>>> Stashed changes
-=======
   - {fileID: 1020832552}
->>>>>>> 01ff235638718b3e869262de1961e3e0083c5d7d

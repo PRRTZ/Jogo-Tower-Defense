@@ -33258,6 +33258,9 @@ MonoBehaviour:
   playerDiedText: "Voc\xEA foi derrotado!"
   victoryText: "Voc\xEA defendeu a vila!"
   menuScene: MainMenu
+  victoryMusic: {fileID: 0}
+  defeatMusic: {fileID: 0}
+  endMusicVolume: 0.5
   playerDeathDelay: 1.5
 --- !u!114 &571689811
 MonoBehaviour:
