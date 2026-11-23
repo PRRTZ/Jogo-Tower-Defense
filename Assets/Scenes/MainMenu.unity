@@ -436,17 +436,35 @@ MonoBehaviour:
     Modelos: Kenney, KayKit e Quaternius (assets gratuitos)
 
     Engine: Unity 6'
+  extraControlsText: "U: upgrade da torre perto do player    E (em uma torre): vender\nN: chamar a pr\xF3xima onda antes da hora (ganha b\xF4nus)\nForja: chegue perto e aperte E para melhorar dano e vida\nR: jogar de novo    M: voltar ao menu (na tela de fim de jogo)"
+  useGameTheme: 1
   mapScenes:
   - GameScene
   - Map_02
   mapNames:
   - Mapa 1 - Castelo
   - Mapa 2 - Vilarejo
+  backgroundSprite: {fileID: 0}
+  logoSprite: {fileID: 0}
+  logoSize: {x: 900, y: 300}
+  buttonSprite: {fileID: 0}
+  buttonSelectedSprite: {fileID: 0}
+  panelSprite: {fileID: 0}
+  inputSprite: {fileID: 0}
+  floatingSprites: []
+  floatingCount: 14
+  cursorTexture: {fileID: 0}
+  cursorHotspot: {x: 0, y: 0}
   font: {fileID: 0}
   topColor: {r: 1, g: 0.84, b: 0.91, a: 1}
   bottomColor: {r: 0.73, g: 0.84, b: 1, a: 1}
+  textColor: {r: 0.27, g: 0.16, b: 0.35, a: 1}
+  buttonTextColor: {r: 0.27, g: 0.16, b: 0.35, a: 1}
+  titleOutlineColor: {r: 0.27, g: 0.16, b: 0.35, a: 1}
+  tintCustomButtons: 0
   music: {fileID: 0}
   clickSound: {fileID: 0}
+  hoverSound: {fileID: 0}
   volume: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

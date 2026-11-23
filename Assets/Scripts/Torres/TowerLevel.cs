@@ -15,14 +15,14 @@ public class TowerPrice
 [Serializable]
 public class TowerUpgradeSettings
 {
-    [Tooltip("Dano multiplicado a cada nível (1.5 = +50%).")]
-    [Min(1f)] public float damageMultiplier = 1.5f;
+    [Tooltip("Dano multiplicado a cada nível (1.35 = +35%).")]
+    [Min(1f)] public float damageMultiplier = 1.35f;
 
-    [Tooltip("Intervalo entre tiros multiplicado a cada nível (0.8 = 20% mais rápido).")]
-    [Range(0.1f, 1f)] public float cooldownMultiplier = 0.8f;
+    [Tooltip("Intervalo entre tiros multiplicado a cada nível (0.88 = 12% mais rápido).")]
+    [Range(0.1f, 1f)] public float cooldownMultiplier = 0.88f;
 
     [Tooltip("Alcance somado a cada nível.")]
-    [Min(0f)] public float rangeBonus = 1f;
+    [Min(0f)] public float rangeBonus = 0.5f;
 
     [Tooltip("Quanto a torre cresce a cada nível (0.08 = 8%). 0 = não muda o tamanho.")]
     [Min(0f)] public float scalePerLevel = 0.08f;

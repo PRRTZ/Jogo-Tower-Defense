@@ -1,35 +1,51 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// HUD das ondas, no topo da tela:
-///   "ONDA 3 / 10"
+///   "ONDA 3 / 15"
 ///   "Inimigos restantes: 4"   ou   "Próxima onda em 8s  ·  [N] Chamar agora (+15)"
-/// E avisos no centro: "ONDA 4!" quando começa e "Onda concluída! +40 moedas" quando termina.
+///   "Pontos: 1234  ·  Normal"
+/// Barra de vida do CHEFE (aparece só na última onda).
+/// Avisos no centro: "ONDA 4!", "Onda concluída!", "O CHEFE CHEGOU!", "FÚRIA!", "CHEFE DERROTADO!".
 /// Coloque no GameManager (cria o próprio Canvas).
 /// </summary>
 public class WaveHUD : MonoBehaviour
 {
     [SerializeField] private Color titleColor = Color.white;
     [SerializeField] private Color bannerColor = new Color(1f, 0.84f, 0.25f, 1f);
+    [SerializeField] private Color bossColor = new Color(0.9f, 0.2f, 0.2f, 1f);
     [SerializeField] private float bannerDuration = 1.8f;
 
     private TextMeshProUGUI waveText;
     private TextMeshProUGUI infoText;
+    private TextMeshProUGUI scoreText;
     private TextMeshProUGUI bannerText;
     private Coroutine bannerRoutine;
+
+    private GameObject bossBar;
+    private TextMeshProUGUI bossNameText;
+    private Image bossFill;
+    private float bossShown = 1f;
 
     private void OnEnable()
     {
         EnemySpawner.OnWaveStarted += HandleWaveStarted;
         EnemySpawner.OnWaveCleared += HandleWaveCleared;
+        EnemySpawner.OnBossSpawned += HandleBossSpawned;
+        EnemySpawner.OnBossRage += HandleBossRage;
+        EnemySpawner.OnBossDefeated += HandleBossDefeated;
     }
 
     private void OnDisable()
     {
         EnemySpawner.OnWaveStarted -= HandleWaveStarted;
         EnemySpawner.OnWaveCleared -= HandleWaveCleared;
+        EnemySpawner.OnBossSpawned -= HandleBossSpawned;
+        EnemySpawner.OnBossRage -= HandleBossRage;
+        EnemySpawner.OnBossDefeated -= HandleBossDefeated;
     }
 
     private void Start()
@@ -51,12 +67,54 @@ public class WaveHUD : MonoBehaviour
         Outline(infoText);
         Place(infoText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -72f), new Vector2(1100f, 40f));
 
+        scoreText = UIFactory.CreateText(canvas.transform, "", 24f);
+        scoreText.color = new Color(1f, 0.92f, 0.6f);
+        Outline(scoreText);
+        Place(scoreText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -108f), new Vector2(900f, 36f));
+
+        BuildBossBar(canvas.transform);
+
         bannerText = UIFactory.CreateText(canvas.transform, "", 80f);
         bannerText.fontStyle = FontStyles.Bold;
         bannerText.color = bannerColor;
         Outline(bannerText);
         Place(bannerText.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0f, 120f), new Vector2(1400f, 120f));
         bannerText.gameObject.SetActive(false);
+    }
+
+    private void BuildBossBar(Transform parent)
+    {
+        bossBar = new GameObject("BarraChefe", typeof(RectTransform));
+        var rt = (RectTransform)bossBar.transform;
+        rt.SetParent(parent, false);
+        Place(rt, new Vector2(0.5f, 1f), new Vector2(0f, -150f), new Vector2(760f, 70f));
+
+        bossNameText = UIFactory.CreateText(rt, "", 26f);
+        bossNameText.fontStyle = FontStyles.Bold;
+        bossNameText.color = bossColor;
+        Outline(bossNameText);
+        Place(bossNameText.rectTransform, new Vector2(0.5f, 1f), Vector2.zero, new Vector2(760f, 32f));
+
+        // fundo escuro
+        var bg = new GameObject("Fundo", typeof(RectTransform), typeof(Image));
+        var bgRt = (RectTransform)bg.transform;
+        bgRt.SetParent(rt, false);
+        Place(bgRt, new Vector2(0.5f, 0f), Vector2.zero, new Vector2(760f, 28f));
+        bg.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.75f);
+
+        // preenchimento vermelho (encolhe da direita para a esquerda)
+        var fill = new GameObject("Vida", typeof(RectTransform), typeof(Image));
+        var fillRt = (RectTransform)fill.transform;
+        fillRt.SetParent(bgRt, false);
+        fillRt.anchorMin = Vector2.zero;
+        fillRt.anchorMax = Vector2.one;
+        fillRt.offsetMin = new Vector2(4f, 4f);
+        fillRt.offsetMax = new Vector2(-4f, -4f);
+        fillRt.pivot = new Vector2(0f, 0.5f);
+        bossFill = fill.GetComponent<Image>();
+        bossFill.color = bossColor;
+
+        bossBar.SetActive(false);
     }
 
     private static void Outline(TextMeshProUGUI t)
@@ -79,20 +137,23 @@ public class WaveHUD : MonoBehaviour
 
         int wave = spawner.CurrentWave;
         string max = spawner.MaxWave > 0 ? " / " + spawner.MaxWave : "";
+        string bossTag = spawner.IsBossWave ? "  <color=#FF5555>CHEFE</color>" : "";
 
         switch (spawner.CurrentPhase)
         {
             case EnemySpawner.Phase.Preparing:
+                bool nextIsBoss = spawner.bossEnabled && spawner.MaxWave > 0 && wave + 1 == spawner.MaxWave;
                 waveText.text = wave == 0 ? "PREPARE-SE" : "ONDA " + wave + max;
                 int secs = Mathf.CeilToInt(spawner.PrepTimeLeft);
                 int bonus = spawner.EarlyCallBonus;
-                infoText.text = "Próxima onda em " + secs + "s"
+                infoText.text = (nextIsBoss ? "<color=#FF5555>O CHEFE vem na próxima onda!</color>   " : "")
+                    + "Próxima onda em " + secs + "s"
                     + (bonus > 0 ? "   ·   [N] Chamar agora <color=#FFD640>(+" + bonus + ")</color>" : "   ·   [N] Chamar agora");
                 break;
 
             case EnemySpawner.Phase.Spawning:
             case EnemySpawner.Phase.Fighting:
-                waveText.text = "ONDA " + wave + max;
+                waveText.text = "ONDA " + wave + max + bossTag;
                 infoText.text = "Inimigos restantes: " + spawner.AliveEnemies;
                 break;
 
@@ -101,28 +162,60 @@ public class WaveHUD : MonoBehaviour
                 infoText.text = "Todas as ondas vencidas!";
                 break;
         }
+
+        int score = ScoreManager.Instance != null ? ScoreManager.Instance.Score : 0;
+        scoreText.text = "Pontos: " + score + "   ·   " + GameSession.Current.name;
+
+        UpdateBossBar(spawner);
+    }
+
+    private void UpdateBossBar(EnemySpawner spawner)
+    {
+        var boss = spawner.Boss;
+        if (boss == null || boss.IsDead)
+        {
+            if (bossBar.activeSelf) bossBar.SetActive(false);
+            return;
+        }
+
+        if (!bossBar.activeSelf) { bossBar.SetActive(true); bossShown = 1f; }
+
+        float target = boss.maxHealth > 0f ? Mathf.Clamp01(boss.CurrentHealth / boss.maxHealth) : 0f;
+        bossShown = Mathf.Lerp(bossShown, target, 8f * Time.deltaTime);   // desce suave
+        bossFill.rectTransform.localScale = new Vector3(bossShown, 1f, 1f);
+
+        var controller = boss.GetComponent<BossController>();
+        bool raged = controller != null && controller.Raged;
+        bossNameText.text = spawner.BossDisplayName.ToUpperInvariant() + (raged ? "  <color=#FFD640>FÚRIA!</color>" : "");
     }
 
     private void HandleWaveStarted(int wave)
     {
-        ShowBanner("ONDA " + wave + "!");
+        var spawner = EnemySpawner.Instance;
+        bool boss = spawner != null && spawner.IsBossWave;
+        ShowBanner(boss ? "ONDA FINAL!" : "ONDA " + wave + "!", boss ? bossColor : bannerColor);
     }
 
     private void HandleWaveCleared(int wave, int bonus)
     {
-        ShowBanner("Onda concluída!  <size=60%>+" + bonus + " moedas</size>");
+        ShowBanner("Onda concluída!  <size=60%>+" + bonus + " moedas</size>", bannerColor);
     }
 
-    private void ShowBanner(string text)
+    private void HandleBossSpawned(EnemyHealth boss) => ShowBanner("O CHEFE CHEGOU!", bossColor);
+    private void HandleBossRage() => ShowBanner("O CHEFE ESTÁ FURIOSO!", bossColor);
+    private void HandleBossDefeated() => ShowBanner("CHEFE DERROTADO!", bannerColor);
+
+    private void ShowBanner(string text, Color color)
     {
         if (bannerText == null) return;
         if (bannerRoutine != null) StopCoroutine(bannerRoutine);
-        bannerRoutine = StartCoroutine(BannerRoutine(text));
+        bannerRoutine = StartCoroutine(BannerRoutine(text, color));
     }
 
-    private IEnumerator BannerRoutine(string text)
+    private IEnumerator BannerRoutine(string text, Color color)
     {
         bannerText.text = text;
+        bannerText.color = color;
         bannerText.gameObject.SetActive(true);
         var rt = bannerText.rectTransform;
 

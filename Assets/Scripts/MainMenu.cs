@@ -22,8 +22,15 @@ public class MainMenu : MonoBehaviour
     [TextArea(3, 8)]
     public string creditsText = "Feito por Alice Neumann e [nome da dupla] - CG & RV, UPF 2026/2\nModelos: Kenney, KayKit e Quaternius (assets gratuitos)\nEngine: Unity 6";
 
+    [TextArea(3, 8)]
+    public string extraControlsText = "U: upgrade da torre perto do player    E (em uma torre): vender\nN: chamar a próxima onda antes da hora (ganha bônus)\nForja: chegue perto e aperte E para melhorar dano e vida\nR: jogar de novo    M: voltar ao menu (na tela de fim de jogo)";
+
+    [Header("Tema")]
+    [Tooltip("Ligado: visual de madeira e céu, no estilo do jogo (ignora as cores pastel abaixo). Desligado: visual original.")]
+    public bool useGameTheme = true;
+
     [Header("Mapas (nome da cena no Build Settings)")]
-    public string[] mapScenes = { "GameScene", "Map_02" };
+    public string[] mapScenes = { "Map_01", "Map_02" };
     public string[] mapNames = { "Mapa 1 - Castelo", "Mapa 2 - Vilarejo" };
 
     [Header("Imagens (opcional - arraste aqui)")]
@@ -54,12 +61,26 @@ public class MainMenu : MonoBehaviour
     public AudioClip hoverSound;
     [Range(0f, 1f)] public float volume = 0.5f;
 
-    // paleta pastel (usada quando os botões não têm sprite próprio)
+    // paleta pastel (visual original)
     static readonly Color Pink = new Color(1f, 0.56f, 0.69f);
     static readonly Color Mint = new Color(0.58f, 0.88f, 0.74f);
     static readonly Color Lilac = new Color(0.73f, 0.63f, 0.94f);
     static readonly Color Sun = new Color(1f, 0.84f, 0.4f);
     static readonly Color Sky = new Color(0.55f, 0.8f, 1f);
+
+    // paleta do jogo (madeira, folhas, ouro) - usada com "Use Game Theme"
+    static readonly Color Leaf = new Color(0.45f, 0.72f, 0.33f);
+    static readonly Color Gold = new Color(1f, 0.78f, 0.28f);
+    static readonly Color Water = new Color(0.42f, 0.64f, 0.88f);
+    static readonly Color Berry = new Color(0.84f, 0.38f, 0.32f);
+    static readonly Color Wood = new Color(0.74f, 0.52f, 0.32f);
+    static readonly Color Parchment = new Color(0.98f, 0.91f, 0.75f);
+    static readonly Color Cream = new Color(1f, 0.97f, 0.88f);
+    static readonly Color DarkWood = new Color(0.26f, 0.15f, 0.08f);
+
+    // escolhe a cor do tema do jogo ou a pastel original
+    Color C(Color game, Color pastel) { return useGameTheme ? game : pastel; }
+    Color CardText() { return useGameTheme ? DarkWood : textColor; }
 
     Canvas canvas;
     Sprite roundSprite, circleSprite;
@@ -86,8 +107,17 @@ public class MainMenu : MonoBehaviour
         if (cursorTexture != null) Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
 
         EnsureEventSystem();
-        roundSprite = MakeRoundedSprite(64, 24);
+        if (useGameTheme)
+        {
+            topColor = new Color(0.33f, 0.58f, 0.90f);       // céu
+            bottomColor = new Color(0.62f, 0.84f, 0.52f);    // horizonte de grama
+            textColor = Cream;
+            buttonTextColor = Cream;
+            titleOutlineColor = DarkWood;
+        }
+        roundSprite = useGameTheme ? MakeWoodSprite() : MakeRoundedSprite(64, 24);
         circleSprite = MakeRoundedSprite(128, 64);
+        FixMapScenes();
 
         selDiff = Mathf.Clamp(GameSession.DifficultyIndex, 0, GameSession.Difficulties.Length - 1);
         selMap = Mathf.Clamp(GameSession.MapIndex, 0, Mathf.Max(0, mapScenes.Length - 1));
@@ -159,8 +189,8 @@ public class MainMenu : MonoBehaviour
         else
         {
             titleText = Label(p, gameTitle, 130, 1500, 180, TextAlignmentOptions.Center, FontStyles.Bold);
-            titleText.color = Color.white;
-            titleText.outlineWidth = 0.22f;
+            titleText.color = useGameTheme ? Gold : Color.white;
+            titleText.outlineWidth = useGameTheme ? 0.28f : 0.22f;
             titleText.outlineColor = titleOutlineColor;
             titleRect = titleText.rectTransform;
         }
@@ -168,10 +198,10 @@ public class MainMenu : MonoBehaviour
         Label(p, subtitle, 40, 1400, 70);
         Spacer(p, 30);
 
-        MakeButton(p, "Jogar", Pink, 560, 110, 54, () => Show(playPanel));
-        MakeButton(p, "Ranking", Sun, 560, 110, 54, () => Show(rankingPanel));
-        MakeButton(p, "Informações", Sky, 560, 110, 54, () => Show(infoPanel));
-        MakeButton(p, "Sair", Lilac, 560, 110, 54, QuitGame);
+        MakeButton(p, "Jogar", C(Leaf, Pink), 560, 110, 54, () => Show(playPanel));
+        MakeButton(p, "Ranking", C(Gold, Sun), 560, 110, 54, () => Show(rankingPanel));
+        MakeButton(p, "Informações", C(Water, Sky), 560, 110, 54, () => Show(infoPanel));
+        MakeButton(p, "Sair", C(Berry, Lilac), 560, 110, 54, QuitGame);
     }
 
     void BuildPlayPanel()
@@ -204,11 +234,11 @@ public class MainMenu : MonoBehaviour
         nameInput = MakeInput(nameRow, "Jogador", 520, 90);
 
         statusText = Label(p, "", 32, 1400, 50);
-        statusText.color = new Color(0.8f, 0.15f, 0.25f);
+        statusText.color = useGameTheme ? new Color(1f, 0.45f, 0.4f) : new Color(0.8f, 0.15f, 0.25f);
 
         Transform btnRow = MakeRow(p, 40);
-        MakeButton(btnRow, "Voltar", Lilac, 300, 110, 46, () => Show(mainPanel));
-        MakeButton(btnRow, "Começar!", Mint, 460, 110, 52, StartGame);
+        MakeButton(btnRow, "Voltar", C(Wood, Lilac), 300, 110, 46, () => Show(mainPanel));
+        MakeButton(btnRow, "Começar!", C(Leaf, Mint), 460, 110, 52, StartGame);
 
         SelectDifficulty(selDiff);
         SelectMap(selMap);
@@ -224,8 +254,8 @@ public class MainMenu : MonoBehaviour
         rankingRow = MakeRow(p, 24);
 
         Transform btnRow = MakeRow(p, 40);
-        MakeButton(btnRow, "Voltar", Lilac, 300, 100, 44, () => Show(mainPanel));
-        MakeButton(btnRow, "Limpar ranking", Pink, 460, 100, 40, () => { Ranking.Clear(); RefreshRanking(); });
+        MakeButton(btnRow, "Voltar", C(Wood, Lilac), 300, 100, 44, () => Show(mainPanel));
+        MakeButton(btnRow, "Limpar ranking", C(Berry, Pink), 460, 100, 40, () => { Ranking.Clear(); RefreshRanking(); });
     }
 
     void BuildInfoPanel()
@@ -239,8 +269,9 @@ public class MainMenu : MonoBehaviour
 
         string all = "<b>Sobre o jogo</b>\n" + aboutText +
                      "\n\n<b>Controles</b>\n" + controlsText +
+                     (string.IsNullOrEmpty(extraControlsText) ? "" : "\n" + extraControlsText) +
                      "\n\n<b>Créditos</b>\n" + creditsText;
-        TMP_Text t = MakeText(card.transform, all, 34, textColor, TextAlignmentOptions.TopLeft);
+        TMP_Text t = MakeText(card.transform, all, 34, CardText(), TextAlignmentOptions.TopLeft);
         t.enableAutoSizing = true;
         t.fontSizeMin = 18;
         t.fontSizeMax = 34;
@@ -248,7 +279,7 @@ public class MainMenu : MonoBehaviour
         t.rectTransform.offsetMin = new Vector2(36, 28);
         t.rectTransform.offsetMax = new Vector2(-36, -28);
 
-        MakeButton(p, "Voltar", Lilac, 300, 100, 44, () => Show(mainPanel));
+        MakeButton(p, "Voltar", C(Wood, Lilac), 300, 100, 44, () => Show(mainPanel));
     }
 
     void Show(GameObject target)
@@ -266,8 +297,7 @@ public class MainMenu : MonoBehaviour
         for (int k = 0; k < diffButtons.Count; k++) SetSelected(diffButtons[k], k == i);
 
         DifficultyConfig c = GameSession.Difficulties[i];
-        difficultyDesc.text = c.description + "\n" + c.totalEnemies + " inimigos  •  " + c.waves + " ondas  •  "
-                              + Mathf.RoundToInt(c.missionTimeSeconds) + " s de missão  •  vida da base: " + c.baseMaxHealth;
+        difficultyDesc.text = c.description + "\n" + c.waves + " ondas  •  chefe na última onda  •  pontos x" + c.scoreMultiplier.ToString("0.#");
     }
 
     void SelectMap(int i)
@@ -286,8 +316,9 @@ public class MainMenu : MonoBehaviour
                 ApplySprite(img, selected ? buttonSelectedSprite : buttonSprite);
                 img.color = Color.white;
             }
-            else img.color = selected ? Sun : Color.white;
+            else img.color = selected ? C(Gold, Sun) : Color.white;
         }
+        else if (useGameTheme) img.color = selected ? Gold : Wood;
         else img.color = selected ? Sun : new Color(1f, 1f, 1f, 0.85f);
     }
 
@@ -337,7 +368,7 @@ public class MainMenu : MonoBehaviour
         for (int d = 0; d < n; d++)
         {
             GameObject card = MakeCard(rankingRow, w, 520);
-            TMP_Text t = MakeText(card.transform, BuildRankingText(d), 36, textColor, TextAlignmentOptions.TopLeft);
+            TMP_Text t = MakeText(card.transform, BuildRankingText(d), 36, CardText(), TextAlignmentOptions.TopLeft);
             Stretch(t.rectTransform);
             t.rectTransform.offsetMin = new Vector2(28, 28);
             t.rectTransform.offsetMax = new Vector2(-28, -28);
@@ -426,7 +457,8 @@ public class MainMenu : MonoBehaviour
         }
 
         bool custom = floatingSprites != null && floatingSprites.Length > 0;
-        Color[] tints = { Pink, Mint, Lilac, Sun, Sky, Color.white };
+        Color[] tints = useGameTheme ? new[] { Color.white, Color.white, new Color(1f, 0.97f, 0.9f) }
+                                     : new[] { Pink, Mint, Lilac, Sun, Sky, Color.white };
 
         for (int i = 0; i < floatingCount; i++)
         {
@@ -449,9 +481,9 @@ public class MainMenu : MonoBehaviour
             {
                 im.sprite = circleSprite;
                 Color c = tints[Random.Range(0, tints.Length)];
-                c.a = 0.35f;
+                c.a = useGameTheme ? 0.45f : 0.35f;
                 im.color = c;
-                size = Random.Range(70f, 260f);
+                size = useGameTheme ? Random.Range(140f, 340f) : Random.Range(70f, 260f);
             }
 
             var rt = (RectTransform)go.transform;
@@ -525,7 +557,7 @@ public class MainMenu : MonoBehaviour
         card.transform.SetParent(parent, false);
         var img = card.GetComponent<Image>();
         ApplySprite(img, panelSprite);
-        img.color = panelSprite != null ? Color.white : new Color(1f, 1f, 1f, 0.88f);
+        img.color = panelSprite != null ? Color.white : (useGameTheme ? Parchment : new Color(1f, 1f, 1f, 0.88f));
         var le = card.GetComponent<LayoutElement>();
         le.preferredWidth = w;
         le.preferredHeight = h;
@@ -552,6 +584,11 @@ public class MainMenu : MonoBehaviour
                    TextAlignmentOptions align = TextAlignmentOptions.Center, FontStyles style = FontStyles.Normal)
     {
         TMP_Text t = MakeText(parent, txt, size, textColor, align, style);
+        if (useGameTheme)
+        {
+            t.outlineWidth = 0.18f;
+            t.outlineColor = DarkWood;
+        }
         var le = t.gameObject.AddComponent<LayoutElement>();
         le.preferredWidth = w;
         le.preferredHeight = h;
@@ -583,6 +620,11 @@ public class MainMenu : MonoBehaviour
 
         TMP_Text t = MakeText(go.transform, label, fontSize, buttonTextColor, TextAlignmentOptions.Center, FontStyles.Bold);
         Stretch(t.rectTransform);
+        if (useGameTheme)
+        {
+            t.outlineWidth = 0.2f;
+            t.outlineColor = DarkWood;
+        }
         return btn;
     }
 
@@ -594,7 +636,7 @@ public class MainMenu : MonoBehaviour
 
         var img = go.GetComponent<Image>();
         ApplySprite(img, inputSprite != null ? inputSprite : panelSprite);
-        img.color = Color.white;
+        img.color = (useGameTheme && inputSprite == null && panelSprite == null) ? Parchment : Color.white;
         var le = go.GetComponent<LayoutElement>();
         le.preferredWidth = w; le.preferredHeight = h;
 
@@ -605,9 +647,10 @@ public class MainMenu : MonoBehaviour
         vrt.offsetMin = new Vector2(24, 8);
         vrt.offsetMax = new Vector2(-24, -8);
 
-        TMP_Text text = MakeText(vp.transform, "", 40, textColor, TextAlignmentOptions.MidlineLeft);
+        Color inputText = CardText();
+        TMP_Text text = MakeText(vp.transform, "", 40, inputText, TextAlignmentOptions.MidlineLeft);
         Stretch(text.rectTransform);
-        TMP_Text ph = MakeText(vp.transform, placeholder, 40, new Color(textColor.r, textColor.g, textColor.b, 0.4f),
+        TMP_Text ph = MakeText(vp.transform, placeholder, 40, new Color(inputText.r, inputText.g, inputText.b, 0.45f),
                                TextAlignmentOptions.MidlineLeft, FontStyles.Italic);
         Stretch(ph.rectTransform);
 
@@ -651,6 +694,50 @@ public class MainMenu : MonoBehaviour
         tex.Apply();
         return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), 100f, 0,
                              SpriteMeshType.FullRect, new Vector4(radius, radius, radius, radius));
+    }
+
+    // tábua de madeira em pixel art (cinza: a cor de cada botão vem do "tint")
+    // borda escura, brilho em cima, sombra embaixo e veios da madeira; 9-slice com pixels grandes
+    static Sprite MakeWoodSprite()
+    {
+        const int w = 32, h = 24, b = 6;
+        var tex = new Texture2D(w, h, TextureFormat.RGBA32, false);
+        tex.wrapMode = TextureWrapMode.Clamp;
+        tex.filterMode = FilterMode.Point;
+        Color outline = new Color(0.30f, 0.30f, 0.30f, 1f);
+        Color shadow = new Color(0.70f, 0.70f, 0.70f, 1f);
+        Color fill = new Color(0.90f, 0.90f, 0.90f, 1f);
+        Color grain = new Color(0.82f, 0.82f, 0.82f, 1f);
+        Color light = Color.white;
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
+            {
+                bool corner = (x == 0 || x == w - 1) && (y == 0 || y == h - 1);
+                Color c;
+                if (corner) c = Color.clear;                                        // canto "arredondado" de pixel
+                else if (x == 0 || x == w - 1 || y == 0 || y == h - 1) c = outline; // contorno
+                else if (y == h - 2) c = light;                                     // brilho em cima
+                else if (y <= 2) c = shadow;                                        // sombra embaixo
+                else if (y == 8 || y == 15) c = grain;                              // veios da madeira
+                else c = fill;
+                tex.SetPixel(x, y, c);
+            }
+        tex.Apply();
+        // 25 pixels por unidade = cada pixel da textura fica com ~4 unidades na tela (visual pixel art)
+        return Sprite.Create(tex, new Rect(0, 0, w, h), new Vector2(0.5f, 0.5f), 25f, 0,
+                             SpriteMeshType.FullRect, new Vector4(b, b, b, b));
+    }
+
+    // a cena do mapa 1 se chama Map_01 (o padrão antigo era GameScene)
+    void FixMapScenes()
+    {
+        if (mapScenes == null) return;
+        for (int i = 0; i < mapScenes.Length; i++)
+        {
+            if (Application.CanStreamedLevelBeLoaded(mapScenes[i])) continue;
+            string alt = "Map_0" + (i + 1);
+            if (Application.CanStreamedLevelBeLoaded(alt)) mapScenes[i] = alt;
+        }
     }
 
     static Sprite MakeGradient(Color top, Color bottom)
