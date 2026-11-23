@@ -40,6 +40,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        if (PauseSettingsMenu.IsOpen) return;
         if (health != null && health.IsDead) return;
         if (Time.time < nextAttack) return;
 

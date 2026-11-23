@@ -393,6 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2020865317}
   - component: {fileID: 2020865318}
+  - component: {fileID: 2020865319}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -429,17 +430,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
   gameTitle: Tower Defense
   subtitle: "Defenda a base dos bichinhos de pel\xFAcia!"
-  aboutText: "Defenda a base contra ondas de bichinhos de pel\xFAcia! Construa torres nos pontos livres do mapa, derrote os inimigos antes que cheguem \xE0 base e conclua a miss\xE3o dentro do tempo."
-  controlsText: "WASD / Setas: mover    Shift: correr    Espa\xE7o: pular\nJ ou clique esquerdo: atacar com a espada\nE: construir ou remover torre perto de um ponto livre\n1 a 4: escolher o tipo de torre"
-  creditsText: 'Feito por Alice Neumann e [nome da dupla] - CG & RV, UPF 2026/2
-
-    Modelos: Kenney, KayKit e Quaternius (assets gratuitos)
-
-    Engine: Unity 6'
-  extraControlsText: "U: upgrade da torre perto do player    E (em uma torre): vender\nN: chamar a pr\xF3xima onda antes da hora (ganha b\xF4nus)\nForja: chegue perto e aperte E para melhorar dano e vida\nR: jogar de novo    M: voltar ao menu (na tela de fim de jogo)"
   useGameTheme: 1
   mapScenes:
-  - GameScene
+  - Map_01
   - Map_02
   mapNames:
   - Mapa 1 - Castelo
@@ -455,7 +448,7 @@ MonoBehaviour:
   floatingCount: 14
   cursorTexture: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  font: {fileID: 0}
+  font: {fileID: 11400000, guid: 973823cbb36cdf546b36e671f306f910, type: 2}
   topColor: {r: 1, g: 0.84, b: 0.91, a: 1}
   bottomColor: {r: 0.73, g: 0.84, b: 1, a: 1}
   textColor: {r: 0.27, g: 0.16, b: 0.35, a: 1}
@@ -466,6 +459,22 @@ MonoBehaviour:
   clickSound: {fileID: 0}
   hoverSound: {fileID: 0}
   volume: 0.5
+--- !u!114 &2020865319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020865316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b0b781af937f64586bc959a90a3e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuVideoBackground
+  clip: {fileID: 32900000, guid: 0ea9b80e621fe2c4d8569b540bce033f, type: 3}
+  playbackSpeed: 1
+  hideFloatingDecor: 1
+  dim: 0.15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

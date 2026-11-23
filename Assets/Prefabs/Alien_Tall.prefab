@@ -203,6 +203,7 @@ MonoBehaviour:
   hitTrigger: Hit
   dieTrigger: Die
   deathDelay: 2
+  debugClickDamage: 0
 --- !u!114 &3189082356277624724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +221,8 @@ MonoBehaviour:
   skipFirstWaypoints: 0
   followWaypointHeight: 1
   debugLog: 1
+  playFootsteps: 0
+  footstepInterval: 0.5
 --- !u!114 &5468498699368402559
 MonoBehaviour:
   m_ObjectHideFlags: 0

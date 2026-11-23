@@ -10,11 +10,16 @@ public class EnemyMovement : MonoBehaviour
     public bool followWaypointHeight = true;       // acompanha a altura dos pontos
     public bool debugLog = true;                   // escreve o diagnóstico no Console
 
+    [Header("Passos")]
+    public bool playFootsteps = true;
+    [Min(0.1f)] public float footstepInterval = 0.5f;
+
     public static event Action<EnemyMovement> OnReachedBase;
 
     readonly List<Transform> pts = new List<Transform>();
     int index = 0;
     EnemyHealth health;
+    float footstepTimer;
 
     void Start()
     {
@@ -79,7 +84,19 @@ public class EnemyMovement : MonoBehaviour
         if (flat.sqrMagnitude > 0.0001f)
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(flat), turnSpeed * Time.deltaTime);
 
-        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        Vector3 previousPosition = transform.position;
+        transform.position = Vector3.MoveTowards(previousPosition, target, speed * Time.deltaTime);
+
+        if (playFootsteps && (transform.position - previousPosition).sqrMagnitude > 0.0001f)
+        {
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0f)
+            {
+                SoundManager.PlayAt(Sfx.Footstep, transform.position);
+                footstepTimer = footstepInterval;
+            }
+        }
+        else footstepTimer = 0f;
 
         if ((transform.position - target).sqrMagnitude < 0.0001f)
         {

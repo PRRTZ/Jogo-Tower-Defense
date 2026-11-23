@@ -24,9 +24,9 @@ public class GameOverManager : MonoBehaviour
     public static bool IsGameOver { get; private set; }
 
     [Header("Textos")]
-    [SerializeField] private string reachedBaseText = "Um inimigo chegou à sua base!";
-    [SerializeField] private string playerDiedText = "Você foi derrotado!";
-    [SerializeField] private string victoryText = "Você defendeu a vila!";
+    [SerializeField] private string reachedBaseText = "Um inimigo chegou a sua base!";
+    [SerializeField] private string playerDiedText = "Voce foi derrotado!";
+    [SerializeField] private string victoryText = "Voce defendeu a vila!";
 
     [Header("Menu")]
     [Tooltip("Nome da cena do menu principal (precisa estar no Build Settings).")]
@@ -131,24 +131,25 @@ public class GameOverManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        titleText.text = victory ? "VITÓRIA!" : "GAME OVER";
+        titleText.text = victory ? "VITORIA!" : "GAME OVER";
         titleText.color = victory ? new Color(1f, 0.84f, 0.25f) : new Color(1f, 0.3f, 0.3f);
-        reasonText.text = reason;
+        reasonText.text = UIFactory.RemoveDiacritics(reason);
 
         var spawner = EnemySpawner.Instance;
         if (spawner != null)
         {
             string max = spawner.MaxWave > 0 ? " / " + spawner.MaxWave : "";
-            waveText.text = "Onda alcançada: " + spawner.CurrentWave + max;
+            waveText.text = "Onda alcancada: " + spawner.CurrentWave + max;
         }
         else waveText.text = "";
 
         // pontuação e ranking (Top 5 por dificuldade, mostrado no menu)
         int score = ScoreManager.Instance != null ? ScoreManager.Instance.FinishMatch(victory) : 0;
         int position = Ranking.AddAndGetPosition(GameSession.DifficultyIndex, GameSession.PlayerName, score);
-        scoreText.text = "Pontos: " + score + "   <size=75%>(" + GameSession.Current.name + ")</size>";
+        scoreText.text = "Pontos: " + score + "   <size=75%>("
+            + UIFactory.RemoveDiacritics(GameSession.Current.name) + ")</size>";
         rankText.text = position == 1 ? "<color=#FFD640>NOVO RECORDE!</color>"
-                      : position > 0 ? "Você ficou em " + position + "º no ranking!"
+                      : position > 0 ? "Voce ficou na posicao " + position + " do ranking!"
                       : "";
 
         screen.SetActive(true);
@@ -242,17 +243,20 @@ public class GameOverManager : MonoBehaviour
         var panel = UIFactory.CreatePanel(bg.transform, "Painel", 560f, new Vector2(0.5f, 0.5f), Vector2.zero);
         panel.GetComponent<UnityEngine.UI.VerticalLayoutGroup>().spacing = 14f;
 
-        titleText = UIFactory.CreateText(panel, "GAME OVER", 72f);
+        titleText = UIFactory.CreateText(panel, "GAME OVER", 40f);
         titleText.fontStyle = FontStyles.Bold;
 
-        reasonText = UIFactory.CreateText(panel, "", 28f);
-        waveText = UIFactory.CreateText(panel, "", 24f);
+        reasonText = UIFactory.CreateText(panel, "", 18f);
+        reasonText.enableAutoSizing = true;
+        reasonText.fontSizeMin = 14f;
+        reasonText.fontSizeMax = 18f;
+        waveText = UIFactory.CreateText(panel, "", 16f);
         waveText.color = new Color(0.8f, 0.8f, 0.8f);
 
-        scoreText = UIFactory.CreateText(panel, "", 36f);
+        scoreText = UIFactory.CreateText(panel, "", 22f);
         scoreText.fontStyle = FontStyles.Bold;
         scoreText.color = UIFactory.Gold;
-        rankText = UIFactory.CreateText(panel, "", 26f);
+        rankText = UIFactory.CreateText(panel, "", 16f);
 
         UIFactory.CreateButton(panel, "Jogar de novo  [R]", Restart, UIFactory.ButtonColor, out _, 56f);
         bool hasMenu = Application.CanStreamedLevelBeLoaded(menuScene);

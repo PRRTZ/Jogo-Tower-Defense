@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (PauseSettingsMenu.IsOpen) return;
+
         // 1. Leitura do comando de pulo
         if (Keyboard.current != null &&
             Keyboard.current.spaceKey.wasPressedThisFrame)

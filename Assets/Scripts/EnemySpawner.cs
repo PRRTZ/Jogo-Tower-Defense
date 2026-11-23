@@ -190,6 +190,8 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
+        if (PauseSettingsMenu.IsOpen) return;
+
         var kb = Keyboard.current;
         if (kb == null) return;
 
@@ -214,6 +216,7 @@ public class EnemySpawner : MonoBehaviour
 
         CurrentWave++;
         CurrentPhase = Phase.Spawning;
+        SoundManager.Play(Sfx.WaveStart);
         OnWaveStarted?.Invoke(CurrentWave);
         StartCoroutine(SpawnWave());
     }

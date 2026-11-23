@@ -1857,8 +1857,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47213433}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.90130395, z: -0.43318725, w: 0}
-  m_LocalPosition: {x: 23.85, y: 13.05563, z: -4.915291}
+  m_LocalRotation: {x: 0.4331888, y: -9.0627295e-10, z: 4.3557735e-10, w: 0.90130323}
+  m_LocalPosition: {x: 23.85, y: 14.0456295, z: -27.404331}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7344,7 +7344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8359441016182210672, guid: d8f8cff7dbaffe44d826241e85988623, type: 3}
       propertyPath: m_fontSize
-      value: 64
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 8359441016182210672, guid: d8f8cff7dbaffe44d826241e85988623, type: 3}
       propertyPath: m_margin.x
@@ -7376,7 +7376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8359441016182210672, guid: d8f8cff7dbaffe44d826241e85988623, type: 3}
       propertyPath: m_fontSizeBase
-      value: 64
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 8359441016182210672, guid: d8f8cff7dbaffe44d826241e85988623, type: 3}
       propertyPath: m_sharedMaterial
@@ -11237,17 +11237,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ccffd8d40f14544fba410ef0ac1e6ea, type: 3}
   m_PrefabInstance: {fileID: 508501540}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &285526555 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8359441016182210672, guid: d8f8cff7dbaffe44d826241e85988623, type: 3}
-  m_PrefabInstance: {fileID: 190906008}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &290793213
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22432,8 +22421,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 62, y: 0.5, z: 34.908966}
-  m_Center: {x: 23, y: 0.14999998, z: 11.25833}
+  m_Size: {x: 62, y: 0.6, z: 34.908966}
+  m_Center: {x: 23, y: 0.14999989, z: 11.258331}
 --- !u!1001 &581494058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50089,10 +50078,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f01098a51e03ba428faef236434ce3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverManager
-  reachedBaseText: "Um inimigo chegou \xE0 sua base!"
-  playerDiedText: "Voc\xEA foi derrotado!"
-  victoryText: "Voc\xEA defendeu a vila!"
+  reachedBaseText: Um inimigo chegou a sua base!
+  playerDiedText: Voce foi derrotado!
+  victoryText: Voce defendeu a vila!
   menuScene: MainMenu
+  victoryMusic: {fileID: 0}
+  defeatMusic: {fileID: 0}
+  endMusicVolume: 0.5
   playerDeathDelay: 1.5
 --- !u!114 &1231980961
 MonoBehaviour:
@@ -58217,18 +58209,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   sfxVolume: 1
   musicVolume: 0.4
-  music: {fileID: 8300000, guid: dc4060e65108c99408f58172e8518fa7, type: 3}
+  music: {fileID: 8300000, guid: 3b5516f522898284398eff694a93ac51, type: 3}
   playMusicOnStart: 1
   musicFadeTime: 1.5
   sounds:
   - name: PlayerAttack
     clips:
-    - {fileID: 8300000, guid: bff78d298c711a24ba5d0c570ac7e1b5, type: 3}
+    - {fileID: 8300000, guid: 8b9e49b0eea79c34cbff01e80f41c5fc, type: 3}
     volume: 1
     pitchVariation: 0.05
   - name: PlayerHit
     clips:
-    - {fileID: 8300000, guid: 97edd6e6b723e14488c24e6894a2847f, type: 3}
+    - {fileID: 8300000, guid: bf12ffc995f3ea9429815f6ef5fdb606, type: 3}
     volume: 1
     pitchVariation: 0.05
   - name: PlayerDeath
@@ -58245,9 +58237,6 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: eb015a152b285f048bf340f9c66a4c85, type: 3}
     - {fileID: 8300000, guid: d1035174685ea344caa4ccbda7acf247, type: 3}
-    - {fileID: 8300000, guid: 965bdb22a135c9f499879d0cb2467927, type: 3}
-    - {fileID: 8300000, guid: 7e664c9e326492b45ad04735220c9e76, type: 3}
-    - {fileID: 8300000, guid: 2765f82af217b1a4384e35b9e653d4b7, type: 3}
     volume: 0.15
     pitchVariation: 0.05
   - name: PlaceTower
@@ -58287,17 +58276,17 @@ MonoBehaviour:
     pitchVariation: 0.05
   - name: Defeat
     clips:
-    - {fileID: 8300000, guid: ebc115471b5bbc24ca0ba87ff4d45528, type: 3}
+    - {fileID: 8300000, guid: e4b0777523b73af40bc8897aacc4fe93, type: 3}
     volume: 0.8
     pitchVariation: 0.05
   - name: WaveStart
     clips:
-    - {fileID: 0}
+    - {fileID: 8300000, guid: 3b610e5e0c764c349aef86470cf823b9, type: 3}
     volume: 1
     pitchVariation: 0.05
   - name: ButtonClick
     clips:
-    - {fileID: 0}
+    - {fileID: 8300000, guid: 74d86fdb9a804674ead2b2af22e11197, type: 3}
     volume: 1
     pitchVariation: 0.05
   minDistance: 6
@@ -88898,6 +88887,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 124147070747715353, guid: 82b7ca1a7bc1c8b4e903bc4c0d515200, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8365163
+      objectReference: {fileID: 0}
+    - target: {fileID: 124147070747715353, guid: 82b7ca1a7bc1c8b4e903bc4c0d515200, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.12940955
+      objectReference: {fileID: 0}
+    - target: {fileID: 124147070747715353, guid: 82b7ca1a7bc1c8b4e903bc4c0d515200, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.22414392
+      objectReference: {fileID: 0}
+    - target: {fileID: 124147070747715353, guid: 82b7ca1a7bc1c8b4e903bc4c0d515200, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.48296294
+      objectReference: {fileID: 0}
+    - target: {fileID: 124147070747715353, guid: 82b7ca1a7bc1c8b4e903bc4c0d515200, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 124147070747715353, guid: 82b7ca1a7bc1c8b4e903bc4c0d515200, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 839536413312569711, guid: 82b7ca1a7bc1c8b4e903bc4c0d515200, type: 3}
       propertyPath: m_SizeDelta.x
       value: 600

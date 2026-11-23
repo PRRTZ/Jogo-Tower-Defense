@@ -2040,6 +2040,7 @@ GameObject:
   - component: {fileID: 7128114354328243693}
   - component: {fileID: 1523717304725459203}
   - component: {fileID: 5555431176837972243}
+  - component: {fileID: 4972631334999287190}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2155,6 +2156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   maxHealth: 100
   fillImage: {fileID: 0}
+  dieBelowVoid: 1
+  voidDeathY: -10
 --- !u!114 &1523717304725459203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2193,6 +2196,21 @@ MonoBehaviour:
   slashSweep: 0.08
   slashFade: 0.15
   slashMaterial: {fileID: 0}
+--- !u!114 &4972631334999287190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8240261225263188232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d73b598fe5ed31469356ca312dd6659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSounds
+  walkInterval: 0.45
+  runInterval: 0.3
+  runSpeedThreshold: 7
 --- !u!1 &8263727801734027933
 GameObject:
   m_ObjectHideFlags: 0

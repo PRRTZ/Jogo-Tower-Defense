@@ -15,16 +15,6 @@ public class MainMenu : MonoBehaviour
     [Header("Textos")]
     public string gameTitle = "Tower Defense";
     public string subtitle = "Defenda a base dos bichinhos de pelúcia!";
-    [TextArea(3, 8)]
-    public string aboutText = "Defenda a base contra ondas de bichinhos de pelúcia! Construa torres nos pontos livres do mapa, derrote os inimigos antes que cheguem à base e conclua a missão dentro do tempo.";
-    [TextArea(3, 8)]
-    public string controlsText = "WASD / Setas: mover    Shift: correr    Espaço: pular\nJ ou clique esquerdo: atacar com a espada\nE: construir ou remover torre perto de um ponto livre\n1 a 4: escolher o tipo de torre";
-    [TextArea(3, 8)]
-    public string creditsText = "Feito por Alice Neumann e [nome da dupla] - CG & RV, UPF 2026/2\nModelos: Kenney, KayKit e Quaternius (assets gratuitos)\nEngine: Unity 6";
-
-    [TextArea(3, 8)]
-    public string extraControlsText = "U: upgrade da torre perto do player    E (em uma torre): vender\nN: chamar a próxima onda antes da hora (ganha bônus)\nForja: chegue perto e aperte E para melhorar dano e vida\nR: jogar de novo    M: voltar ao menu (na tela de fim de jogo)";
-
     [Header("Tema")]
     [Tooltip("Ligado: visual de madeira e céu, no estilo do jogo (ignora as cores pastel abaixo). Desligado: visual original.")]
     public bool useGameTheme = true;
@@ -39,7 +29,7 @@ public class MainMenu : MonoBehaviour
     public Vector2 logoSize = new Vector2(900, 300);
     public Sprite buttonSprite;                      // botões (use Border no Sprite Editor para esticar bem)
     public Sprite buttonSelectedSprite;              // botão marcado (dificuldade / mapa)
-    public Sprite panelSprite;                       // cartões do Ranking e das Informações
+    public Sprite panelSprite;                       // cartões do Ranking
     public Sprite inputSprite;                       // campo do nome
     public Sprite[] floatingSprites;                 // imagens que flutuam no fundo (vazio = bolhas)
     public int floatingCount = 14;
@@ -84,7 +74,7 @@ public class MainMenu : MonoBehaviour
 
     Canvas canvas;
     Sprite roundSprite, circleSprite;
-    GameObject mainPanel, playPanel, rankingPanel, infoPanel, currentPanel;
+    GameObject mainPanel, playPanel, rankingPanel, currentPanel;
     TMP_Text titleText, difficultyDesc, statusText;
     RectTransform titleRect;
     TMP_InputField nameInput;
@@ -112,7 +102,7 @@ public class MainMenu : MonoBehaviour
             topColor = new Color(0.33f, 0.58f, 0.90f);       // céu
             bottomColor = new Color(0.62f, 0.84f, 0.52f);    // horizonte de grama
             textColor = Cream;
-            buttonTextColor = Cream;
+            buttonTextColor = DarkWood;
             titleOutlineColor = DarkWood;
         }
         roundSprite = useGameTheme ? MakeWoodSprite() : MakeRoundedSprite(64, 24);
@@ -130,7 +120,6 @@ public class MainMenu : MonoBehaviour
         BuildMainPanel();
         BuildPlayPanel();
         BuildRankingPanel();
-        BuildInfoPanel();
         Show(mainPanel);
     }
 
@@ -188,20 +177,19 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            titleText = Label(p, gameTitle, 130, 1500, 180, TextAlignmentOptions.Center, FontStyles.Bold);
+            titleText = Label(p, gameTitle, 76, 1500, 120, TextAlignmentOptions.Center, FontStyles.Bold);
             titleText.color = useGameTheme ? Gold : Color.white;
             titleText.outlineWidth = useGameTheme ? 0.28f : 0.22f;
             titleText.outlineColor = titleOutlineColor;
             titleRect = titleText.rectTransform;
         }
 
-        Label(p, subtitle, 40, 1400, 70);
-        Spacer(p, 30);
+        Label(p, subtitle, 22, 1400, 46);
+        Spacer(p, 18);
 
-        MakeButton(p, "Jogar", C(Leaf, Pink), 560, 110, 54, () => Show(playPanel));
-        MakeButton(p, "Ranking", C(Gold, Sun), 560, 110, 54, () => Show(rankingPanel));
-        MakeButton(p, "Informações", C(Water, Sky), 560, 110, 54, () => Show(infoPanel));
-        MakeButton(p, "Sair", C(Berry, Lilac), 560, 110, 54, QuitGame);
+        MakeButton(p, "Jogar", C(Leaf, Pink), 480, 82, 28, () => Show(playPanel));
+        MakeButton(p, "Ranking", C(Gold, Sun), 480, 82, 28, () => Show(rankingPanel));
+        MakeButton(p, "Sair", C(Berry, Lilac), 480, 82, 28, QuitGame);
     }
 
     void BuildPlayPanel()
@@ -209,36 +197,36 @@ public class MainMenu : MonoBehaviour
         playPanel = MakePanel("PlayPanel");
         Transform p = playPanel.transform;
 
-        Label(p, "Escolha a dificuldade", 56, 1200, 80, TextAlignmentOptions.Center, FontStyles.Bold);
+        Label(p, "Escolha a dificuldade", 24, 1200, 48, TextAlignmentOptions.Center, FontStyles.Bold);
         Transform diffRow = MakeRow(p, 24);
         for (int i = 0; i < GameSession.Difficulties.Length; i++)
         {
             int idx = i;
-            Button b = MakeButton(diffRow, GameSession.Difficulties[i].name, Color.white, 360, 110, 46, () => SelectDifficulty(idx));
+            Button b = MakeButton(diffRow, GameSession.Difficulties[i].name, Color.white, 300, 72, 20, () => SelectDifficulty(idx));
             diffButtons.Add(b.GetComponent<Image>());
         }
-        difficultyDesc = Label(p, "", 32, 1400, 100);
+        difficultyDesc = Label(p, "", 18, 1400, 76);
 
-        Label(p, "Escolha o mapa", 56, 1200, 80, TextAlignmentOptions.Center, FontStyles.Bold);
+        Label(p, "Escolha o mapa", 24, 1200, 48, TextAlignmentOptions.Center, FontStyles.Bold);
         Transform mapRow = MakeRow(p, 24);
         for (int i = 0; i < mapScenes.Length; i++)
         {
             int idx = i;
             string label = i < mapNames.Length ? mapNames[i] : mapScenes[i];
-            Button b = MakeButton(mapRow, label, Color.white, 520, 110, 40, () => SelectMap(idx));
+            Button b = MakeButton(mapRow, label, Color.white, 400, 72, 18, () => SelectMap(idx));
             mapButtons.Add(b.GetComponent<Image>());
         }
 
         Transform nameRow = MakeRow(p, 20);
-        Label(nameRow, "Seu nome:", 40, 260, 90, TextAlignmentOptions.MidlineRight);
-        nameInput = MakeInput(nameRow, "Jogador", 520, 90);
+        Label(nameRow, "Seu nome:", 17, 260, 64, TextAlignmentOptions.MidlineRight);
+        nameInput = MakeInput(nameRow, "Jogador", 520, 64);
 
-        statusText = Label(p, "", 32, 1400, 50);
+        statusText = Label(p, "", 16, 1400, 36);
         statusText.color = useGameTheme ? new Color(1f, 0.45f, 0.4f) : new Color(0.8f, 0.15f, 0.25f);
 
         Transform btnRow = MakeRow(p, 40);
-        MakeButton(btnRow, "Voltar", C(Wood, Lilac), 300, 110, 46, () => Show(mainPanel));
-        MakeButton(btnRow, "Começar!", C(Leaf, Mint), 460, 110, 52, StartGame);
+        MakeButton(btnRow, "Voltar", C(Wood, Lilac), 280, 72, 20, () => Show(mainPanel));
+        MakeButton(btnRow, "Comecar!", C(Leaf, Mint), 380, 72, 22, StartGame);
 
         SelectDifficulty(selDiff);
         SelectMap(selMap);
@@ -249,43 +237,19 @@ public class MainMenu : MonoBehaviour
         rankingPanel = MakePanel("RankingPanel");
         Transform p = rankingPanel.transform;
 
-        Label(p, "Ranking", 90, 1200, 120, TextAlignmentOptions.Center, FontStyles.Bold);
-        Label(p, "Os 5 melhores de cada dificuldade (salvo neste computador)", 30, 1400, 50);
+        Label(p, "Ranking", 36, 1200, 64, TextAlignmentOptions.Center, FontStyles.Bold);
+        Label(p, "Os 5 melhores de cada dificuldade", 16, 1400, 40);
         rankingRow = MakeRow(p, 24);
 
         Transform btnRow = MakeRow(p, 40);
-        MakeButton(btnRow, "Voltar", C(Wood, Lilac), 300, 100, 44, () => Show(mainPanel));
-        MakeButton(btnRow, "Limpar ranking", C(Berry, Pink), 460, 100, 40, () => { Ranking.Clear(); RefreshRanking(); });
-    }
-
-    void BuildInfoPanel()
-    {
-        infoPanel = MakePanel("InfoPanel");
-        Transform p = infoPanel.transform;
-
-        Label(p, "Informações", 90, 1200, 120, TextAlignmentOptions.Center, FontStyles.Bold);
-
-        GameObject card = MakeCard(p, 1500, 640);
-
-        string all = "<b>Sobre o jogo</b>\n" + aboutText +
-                     "\n\n<b>Controles</b>\n" + controlsText +
-                     (string.IsNullOrEmpty(extraControlsText) ? "" : "\n" + extraControlsText) +
-                     "\n\n<b>Créditos</b>\n" + creditsText;
-        TMP_Text t = MakeText(card.transform, all, 34, CardText(), TextAlignmentOptions.TopLeft);
-        t.enableAutoSizing = true;
-        t.fontSizeMin = 18;
-        t.fontSizeMax = 34;
-        Stretch(t.rectTransform);
-        t.rectTransform.offsetMin = new Vector2(36, 28);
-        t.rectTransform.offsetMax = new Vector2(-36, -28);
-
-        MakeButton(p, "Voltar", C(Wood, Lilac), 300, 100, 44, () => Show(mainPanel));
+        MakeButton(btnRow, "Voltar", C(Wood, Lilac), 280, 68, 20, () => Show(mainPanel));
+        MakeButton(btnRow, "Limpar ranking", C(Berry, Pink), 390, 68, 18, () => { Ranking.Clear(); RefreshRanking(); });
     }
 
     void Show(GameObject target)
     {
         currentPanel = target;
-        foreach (var p in new[] { mainPanel, playPanel, rankingPanel, infoPanel })
+        foreach (var p in new[] { mainPanel, playPanel, rankingPanel })
             if (p != null) p.SetActive(p == target);
         if (target == rankingPanel) RefreshRanking();
     }
@@ -297,7 +261,7 @@ public class MainMenu : MonoBehaviour
         for (int k = 0; k < diffButtons.Count; k++) SetSelected(diffButtons[k], k == i);
 
         DifficultyConfig c = GameSession.Difficulties[i];
-        difficultyDesc.text = c.description + "\n" + c.waves + " ondas  •  chefe na última onda  •  pontos x" + c.scoreMultiplier.ToString("0.#");
+        difficultyDesc.text = UIFactory.RemoveDiacritics(c.description + "\n" + c.waves + " ondas  |  chefe na ultima onda  |  pontos x" + c.scoreMultiplier.ToString("0.#"));
     }
 
     void SelectMap(int i)
@@ -309,6 +273,13 @@ public class MainMenu : MonoBehaviour
     // aparência de botão marcado / desmarcado
     void SetSelected(Image img, bool selected)
     {
+        if (buttonSprite == null && PixelWoodUITheme.WideButton() != null)
+        {
+            PixelWoodUITheme.ApplyWideBar(img, selected ? 1 : 0);
+            img.color = Color.white;
+            return;
+        }
+
         if (buttonSprite != null)
         {
             if (buttonSelectedSprite != null)
@@ -368,7 +339,7 @@ public class MainMenu : MonoBehaviour
         for (int d = 0; d < n; d++)
         {
             GameObject card = MakeCard(rankingRow, w, 520);
-            TMP_Text t = MakeText(card.transform, BuildRankingText(d), 36, CardText(), TextAlignmentOptions.TopLeft);
+            TMP_Text t = MakeText(card.transform, BuildRankingText(d), 18, CardText(), TextAlignmentOptions.TopLeft);
             Stretch(t.rectTransform);
             t.rectTransform.offsetMin = new Vector2(28, 28);
             t.rectTransform.offsetMax = new Vector2(-28, -28);
@@ -378,7 +349,7 @@ public class MainMenu : MonoBehaviour
     string BuildRankingText(int d)
     {
         var sb = new StringBuilder();
-        sb.Append("<size=46><b>").Append(GameSession.Difficulties[d].name).Append("</b></size>\n\n");
+        sb.Append("<size=22><b>").Append(GameSession.Difficulties[d].name).Append("</b></size>\n\n");
         List<Ranking.Entry> list = Ranking.Get(d);
         for (int i = 0; i < Ranking.MaxEntries; i++)
         {
@@ -557,7 +528,14 @@ public class MainMenu : MonoBehaviour
         card.transform.SetParent(parent, false);
         var img = card.GetComponent<Image>();
         ApplySprite(img, panelSprite);
-        img.color = panelSprite != null ? Color.white : (useGameTheme ? Parchment : new Color(1f, 1f, 1f, 0.88f));
+        if (panelSprite == null && PixelWoodUITheme.TowerSlot() != null)
+        {
+            PixelWoodUITheme.ApplyTowerSlot(img, 5);
+        }
+        else
+        {
+            img.color = panelSprite != null ? Color.white : (useGameTheme ? Parchment : new Color(1f, 1f, 1f, 0.88f));
+        }
         var le = card.GetComponent<LayoutElement>();
         le.preferredWidth = w;
         le.preferredHeight = h;
@@ -571,7 +549,7 @@ public class MainMenu : MonoBehaviour
         go.transform.SetParent(parent, false);
         var t = go.AddComponent<TextMeshProUGUI>();
         if (font != null) t.font = font;
-        t.text = txt;
+        t.text = UIFactory.RemoveDiacritics(txt);
         t.fontSize = size;
         t.color = color;
         t.alignment = align;
@@ -604,7 +582,16 @@ public class MainMenu : MonoBehaviour
 
         var img = go.GetComponent<Image>();
         ApplySprite(img, buttonSprite);
-        img.color = (buttonSprite != null && !tintCustomButtons) ? Color.white : color;
+        if (buttonSprite == null && PixelWoodUITheme.WideButton() != null)
+        {
+            PixelWoodUITheme.ApplyWideBar(img, 0);
+            img.type = img.sprite.border.sqrMagnitude > 0.001f ? Image.Type.Sliced : Image.Type.Simple;
+            img.color = Color.white;
+        }
+        else
+        {
+            img.color = (buttonSprite != null && !tintCustomButtons) ? Color.white : color;
+        }
 
         var le = go.GetComponent<LayoutElement>();
         le.preferredWidth = w;
@@ -612,11 +599,17 @@ public class MainMenu : MonoBehaviour
 
         var btn = go.GetComponent<Button>();
         btn.targetGraphic = img;
+        if (buttonSprite == null) PixelWoodUITheme.ApplyButton(btn, img);
         var cb = btn.colors;
         cb.highlightedColor = new Color(0.95f, 0.95f, 0.95f, 1f);
         cb.pressedColor = new Color(0.82f, 0.82f, 0.82f, 1f);
         btn.colors = cb;
-        btn.onClick.AddListener(() => { PlayClick(); onClick(); });
+        btn.onClick.AddListener(() =>
+        {
+            PlayClick();
+            SoundManager.Play(Sfx.ButtonClick);
+            onClick();
+        });
 
         TMP_Text t = MakeText(go.transform, label, fontSize, buttonTextColor, TextAlignmentOptions.Center, FontStyles.Bold);
         Stretch(t.rectTransform);
@@ -636,7 +629,11 @@ public class MainMenu : MonoBehaviour
 
         var img = go.GetComponent<Image>();
         ApplySprite(img, inputSprite != null ? inputSprite : panelSprite);
-        img.color = (useGameTheme && inputSprite == null && panelSprite == null) ? Parchment : Color.white;
+        if (inputSprite == null && panelSprite == null && PixelWoodUITheme.WideButton() != null)
+        {
+            PixelWoodUITheme.ApplyWideBar(img, 0);
+        }
+        else img.color = (useGameTheme && inputSprite == null && panelSprite == null) ? Parchment : Color.white;
         var le = go.GetComponent<LayoutElement>();
         le.preferredWidth = w; le.preferredHeight = h;
 
@@ -648,9 +645,9 @@ public class MainMenu : MonoBehaviour
         vrt.offsetMax = new Vector2(-24, -8);
 
         Color inputText = CardText();
-        TMP_Text text = MakeText(vp.transform, "", 40, inputText, TextAlignmentOptions.MidlineLeft);
+        TMP_Text text = MakeText(vp.transform, "", 22, inputText, TextAlignmentOptions.MidlineLeft);
         Stretch(text.rectTransform);
-        TMP_Text ph = MakeText(vp.transform, placeholder, 40, new Color(inputText.r, inputText.g, inputText.b, 0.45f),
+        TMP_Text ph = MakeText(vp.transform, placeholder, 22, new Color(inputText.r, inputText.g, inputText.b, 0.45f),
                                TextAlignmentOptions.MidlineLeft, FontStyles.Italic);
         Stretch(ph.rectTransform);
 

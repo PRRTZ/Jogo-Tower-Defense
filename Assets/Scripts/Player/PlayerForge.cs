@@ -42,7 +42,7 @@ public class PlayerForge : MonoBehaviour
     float lastHealth;
 
     GameObject panel;
-    TextMeshProUGUI damageLine, healthLine;
+    TextMeshProUGUI damageLine, healthLine, forgeHint;
 
     void Awake()
     {
@@ -71,6 +71,7 @@ public class PlayerForge : MonoBehaviour
 
     void Update()
     {
+        if (PauseSettingsMenu.IsOpen) return;
         if (player == null) { FindPlayer(); return; }
 
         Vector3 d = player.position - transform.position;
@@ -78,6 +79,8 @@ public class PlayerForge : MonoBehaviour
         playerNear = d.magnitude <= interactRadius;
 
         bool blocked = GameOverManager.IsGameOver || (health != null && health.IsDead);
+        bool showHint = playerNear && !panel.activeSelf && !blocked;
+        if (forgeHint.gameObject.activeSelf != showHint) forgeHint.gameObject.SetActive(showHint);
 
         if (panel.activeSelf)
         {
@@ -149,17 +152,26 @@ public class PlayerForge : MonoBehaviour
     void BuildUI()
     {
         var canvas = UIFactory.CreateCanvas("UI_Forja", 20);
+        forgeHint = UIFactory.CreateText(canvas.transform, "[E] Abrir forja", 16f);
+        forgeHint.outlineWidth = 0.2f;
+        forgeHint.outlineColor = Color.black;
+        var hintRt = forgeHint.rectTransform;
+        hintRt.anchorMin = hintRt.anchorMax = hintRt.pivot = new Vector2(0.5f, 0f);
+        hintRt.anchoredPosition = new Vector2(0f, 160f);
+        hintRt.sizeDelta = new Vector2(1000f, 40f);
+        forgeHint.gameObject.SetActive(false);
+
         var rt = UIFactory.CreatePanel(canvas.transform, "PainelForja", 560f, new Vector2(0.5f, 0.5f), new Vector2(0f, -40f));
         panel = rt.gameObject;
 
-        var title = UIFactory.CreateText(rt, "FORJA", 36f);
+        var title = UIFactory.CreateText(rt, "FORJA", 26f);
         title.fontStyle = FontStyles.Bold;
         title.color = UIFactory.Gold;
 
-        damageLine = UIFactory.CreateText(rt, "", 26f, TextAlignmentOptions.Left);
-        healthLine = UIFactory.CreateText(rt, "", 26f, TextAlignmentOptions.Left);
+        damageLine = UIFactory.CreateText(rt, "", 16f, TextAlignmentOptions.Left);
+        healthLine = UIFactory.CreateText(rt, "", 16f, TextAlignmentOptions.Left);
 
-        var hint = UIFactory.CreateText(rt, "[E] ou [Esc] fechar", 20f);
+        var hint = UIFactory.CreateText(rt, "[E] ou [Esc] fechar", 14f);
         hint.color = new Color(0.75f, 0.75f, 0.75f);
     }
 
@@ -178,7 +190,7 @@ public class PlayerForge : MonoBehaviour
         string lv = "nv." + level + "/" + costs.Length;
 
         if (level >= costs.Length)
-            return label + "   " + lv + "   " + current.ToString("0.#") + "   <color=#AAAAAA>máximo</color>";
+            return label + "   " + lv + "   " + current.ToString("0.#") + "   <color=#AAAAAA>maximo</color>";
 
         int cost = costs[level];
         var cm = CurrencyManager.Instance;
@@ -186,17 +198,7 @@ public class PlayerForge : MonoBehaviour
         string costText = canPay ? "<color=#FFD640>$" + cost + "</color>" : "<color=#FF5555>$" + cost + "</color>";
 
         return label + "   " + lv + "   " + current.ToString("0.#")
-            + " <color=#7CFC7C>» " + (current + perLevel).ToString("0.#") + "</color>   " + costText;
-    }
-
-    // aviso "[E] Forja" quando o player está perto (mesmo estilo do aviso das torres)
-    void OnGUI()
-    {
-        if (!playerNear || IsOpen || GameOverManager.IsGameOver) return;
-
-        var style = new GUIStyle(GUI.skin.label) { fontSize = 22, alignment = TextAnchor.MiddleCenter };
-        style.normal.textColor = Color.white;
-        GUI.Label(new Rect(0, Screen.height - 160, Screen.width, 40), "[E] Abrir forja", style);
+            + " <color=#7CFC7C>> " + (current + perLevel).ToString("0.#") + "</color>   " + costText;
     }
 
     void OnDrawGizmosSelected()
