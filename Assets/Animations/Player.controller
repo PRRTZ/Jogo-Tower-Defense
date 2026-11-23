@@ -128,8 +128,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Melee_2H_Attack_Chop
-  m_Speed: 2
+  m_Name: Attack
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 5789046116674982051}
@@ -142,7 +142,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -3183232228448455838, guid: 9d86c44ee27c7af47aab0b34c56c192a, type: 3}
+  m_Motion: {fileID: 6561345739285688216, guid: 9d86c44ee27c7af47aab0b34c56c192a, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
