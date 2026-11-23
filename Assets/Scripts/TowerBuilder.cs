@@ -29,6 +29,11 @@ public class TowerBuilder : MonoBehaviour
     /// <summary>Outros menus (forja, game over) ligam isto para o TowerBuilder ignorar as teclas.</summary>
     public static bool InputBlocked;
 
+    // Versão do balanceamento: quando muda, os preços e upgrades salvos nas cenas
+    // voltam para os valores padrão novos (uma única vez). Depois dá para ajustar no Inspector normalmente.
+    const int CurrentBalance = 2;
+    [SerializeField, HideInInspector] int balanceVersion;
+
     // ---------- lido pela interface (TowerBuildUI) ----------
     public TowerSpot NearestSpot => nearest;
     public int SelectedIndex => selected;
@@ -45,6 +50,7 @@ public class TowerBuilder : MonoBehaviour
     {
         Instance = this;
         InputBlocked = false;
+        ApplyBalanceUpdate();
         EnsurePrices();
     }
 
@@ -53,7 +59,28 @@ public class TowerBuilder : MonoBehaviour
         if (Instance == this) Instance = null;
     }
 
-    void OnValidate() => EnsurePrices();
+    void OnValidate()
+    {
+        ApplyBalanceUpdate();
+        EnsurePrices();
+    }
+
+    void ApplyBalanceUpdate()
+    {
+        if (balanceVersion >= CurrentBalance) return;
+        ResetPricesAndUpgrades();
+        balanceVersion = CurrentBalance;
+    }
+
+    /// <summary>Volta preços e upgrades para os valores padrão (também no menu ⋮ do componente).</summary>
+    [ContextMenu("Usar preços e upgrades padrão")]
+    public void ResetPricesAndUpgrades()
+    {
+        upgrade = new TowerUpgradeSettings();
+        if (towerPrefabs == null) return;
+        prices = new TowerPrice[towerPrefabs.Length];
+        for (int i = 0; i < prices.Length; i++) prices[i] = DefaultPrice(towerPrefabs[i]);
+    }
 
     void Start()
     {
@@ -196,11 +223,11 @@ public class TowerBuilder : MonoBehaviour
     static TowerPrice DefaultPrice(GameObject prefab)
     {
         string n = prefab != null ? prefab.name.ToLowerInvariant() : "";
-        if (n.Contains("turret"))   return new TowerPrice { buildCost = 80,  upgradeCosts = new[] { 60, 120 } };
-        if (n.Contains("ballista")) return new TowerPrice { buildCost = 100, upgradeCosts = new[] { 80, 160 } };
-        if (n.Contains("cannon"))   return new TowerPrice { buildCost = 150, upgradeCosts = new[] { 110, 220 } };
-        if (n.Contains("catapult")) return new TowerPrice { buildCost = 200, upgradeCosts = new[] { 150, 300 } };
-        return new TowerPrice();
+        if (n.Contains("turret"))   return new TowerPrice { buildCost = 90,  upgradeCosts = new[] { 120, 240 } };
+        if (n.Contains("ballista")) return new TowerPrice { buildCost = 120, upgradeCosts = new[] { 160, 320 } };
+        if (n.Contains("cannon"))   return new TowerPrice { buildCost = 170, upgradeCosts = new[] { 220, 440 } };
+        if (n.Contains("catapult")) return new TowerPrice { buildCost = 220, upgradeCosts = new[] { 280, 560 } };
+        return new TowerPrice { buildCost = 120, upgradeCosts = new[] { 160, 320 } };
     }
 
     public static string DisplayName(GameObject prefab)

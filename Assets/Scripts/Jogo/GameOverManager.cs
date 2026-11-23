@@ -14,8 +14,9 @@ using UnityEditor.SceneManagement;
 /// Fim da fase:
 ///   - GAME OVER quando um inimigo chega à base (EnemyMovement.OnReachedBase) ou o player morre (Health.OnPlayerDied)
 ///   - VITÓRIA quando todas as ondas são vencidas (EnemySpawner.OnAllWavesCleared)
-/// Pausa o jogo e mostra a tela com "Jogar de novo" (R) e "Sair".
-/// Coloque no GameManager de cada mapa (cria a própria tela).
+/// Pausa o jogo, fecha a pontuação, salva no Ranking do menu e mostra a tela com
+/// "Jogar de novo" (R) e "Menu principal" (M).
+/// Coloque no GameManager de cada mapa (cria a própria tela e o ScoreManager).
 /// </summary>
 public class GameOverManager : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private string playerDiedText = "Você foi derrotado!";
     [SerializeField] private string victoryText = "Você defendeu a vila!";
 
+    [Header("Menu")]
+    [Tooltip("Nome da cena do menu principal (precisa estar no Build Settings).")]
+    [SerializeField] private string menuScene = "MainMenu";
+
     [Header("Tempo")]
     [Tooltip("Espera antes da tela quando o player morre, para dar tempo de ver a animação.")]
     [SerializeField] private float playerDeathDelay = 1.5f;
@@ -35,6 +40,8 @@ public class GameOverManager : MonoBehaviour
     private TextMeshProUGUI titleText;
     private TextMeshProUGUI reasonText;
     private TextMeshProUGUI waveText;
+    private TextMeshProUGUI scoreText;
+    private TextMeshProUGUI rankText;
 
     private void Awake()
     {
@@ -45,6 +52,9 @@ public class GameOverManager : MonoBehaviour
         Time.timeScale = 1f;
         AudioListener.pause = false;
         TowerBuilder.InputBlocked = false;
+
+        // pontuação da partida
+        if (FindAnyObjectByType<ScoreManager>() == null) gameObject.AddComponent<ScoreManager>();
     }
 
     private void OnEnable()
@@ -79,6 +89,7 @@ public class GameOverManager : MonoBehaviour
 
         var kb = Keyboard.current;
         if (kb != null && kb.rKey.wasPressedThisFrame) Restart();
+        if (kb != null && kb.mKey.wasPressedThisFrame) GoToMenu();
     }
 
     // ---------- gatilhos ----------
@@ -106,9 +117,9 @@ public class GameOverManager : MonoBehaviour
         if (IsGameOver) return;
         IsGameOver = true;
 
-        Time.timeScale = 0f;              // congela inimigos, torres e ondas
-        AudioListener.pause = true;
+        Time.timeScale = 0f;              // congela inimigos, torres e ondas (os sons de vitória/derrota continuam)
         TowerBuilder.InputBlocked = true;
+        if (!victory) SoundManager.Play(Sfx.Defeat);   // o som de vitória já toca pelo EventSounds
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
@@ -124,6 +135,14 @@ public class GameOverManager : MonoBehaviour
         }
         else waveText.text = "";
 
+        // pontuação e ranking (Top 5 por dificuldade, mostrado no menu)
+        int score = ScoreManager.Instance != null ? ScoreManager.Instance.FinishMatch(victory) : 0;
+        int position = Ranking.AddAndGetPosition(GameSession.DifficultyIndex, GameSession.PlayerName, score);
+        scoreText.text = "Pontos: " + score + "   <size=75%>(" + GameSession.Current.name + ")</size>";
+        rankText.text = position == 1 ? "<color=#FFD640>NOVO RECORDE!</color>"
+                      : position > 0 ? "Você ficou em " + position + "º no ranking!"
+                      : "";
+
         screen.SetActive(true);
     }
 
@@ -132,7 +151,6 @@ public class GameOverManager : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
-        AudioListener.pause = false;
 
         var scene = SceneManager.GetActiveScene();
         if (SceneUtility.GetBuildIndexByScenePath(scene.path) >= 0)
@@ -147,6 +165,17 @@ public class GameOverManager : MonoBehaviour
 #else
         Debug.LogError("GameOverManager: adicione a cena em File > Build Profiles > Scene List.");
 #endif
+    }
+
+    public void GoToMenu()
+    {
+        if (!Application.CanStreamedLevelBeLoaded(menuScene))
+        {
+            Quit();     // sem menu no Build Settings: só fecha
+            return;
+        }
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(menuScene);
     }
 
     public void Quit()
@@ -184,8 +213,15 @@ public class GameOverManager : MonoBehaviour
         waveText = UIFactory.CreateText(panel, "", 24f);
         waveText.color = new Color(0.8f, 0.8f, 0.8f);
 
+        scoreText = UIFactory.CreateText(panel, "", 36f);
+        scoreText.fontStyle = FontStyles.Bold;
+        scoreText.color = UIFactory.Gold;
+        rankText = UIFactory.CreateText(panel, "", 26f);
+
         UIFactory.CreateButton(panel, "Jogar de novo  [R]", Restart, UIFactory.ButtonColor, out _, 56f);
-        UIFactory.CreateButton(panel, "Sair", Quit, UIFactory.ButtonNeutral, out _, 46f);
+        bool hasMenu = Application.CanStreamedLevelBeLoaded(menuScene);
+        UIFactory.CreateButton(panel, hasMenu ? "Menu principal  [M]" : "Sair", hasMenu ? (UnityEngine.Events.UnityAction)GoToMenu : Quit,
+                               UIFactory.ButtonNeutral, out _, 46f);
     }
 
     // os mapas não têm EventSystem; sem ele os botões não recebem clique
