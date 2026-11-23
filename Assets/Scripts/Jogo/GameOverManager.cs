@@ -32,6 +32,13 @@ public class GameOverManager : MonoBehaviour
     [Tooltip("Nome da cena do menu principal (precisa estar no Build Settings).")]
     [SerializeField] private string menuScene = "MainMenu";
 
+    [Header("Música do fim de jogo (opcional)")]
+    [Tooltip("Toca quando a tela de VITÓRIA abre (em loop, mesmo com o jogo pausado). Vazio = continua a música da fase.")]
+    [SerializeField] private AudioClip victoryMusic;
+    [Tooltip("Toca quando a tela de GAME OVER abre (em loop, mesmo com o jogo pausado). Vazio = continua a música da fase.")]
+    [SerializeField] private AudioClip defeatMusic;
+    [SerializeField, Range(0f, 1f)] private float endMusicVolume = 0.5f;
+
     [Header("Tempo")]
     [Tooltip("Espera antes da tela quando o player morre, para dar tempo de ver a animação.")]
     [SerializeField] private float playerDeathDelay = 1.5f;
@@ -120,6 +127,7 @@ public class GameOverManager : MonoBehaviour
         Time.timeScale = 0f;              // congela inimigos, torres e ondas (os sons de vitória/derrota continuam)
         TowerBuilder.InputBlocked = true;
         if (!victory) SoundManager.Play(Sfx.Defeat);   // o som de vitória já toca pelo EventSounds
+        PlayEndMusic(victory ? victoryMusic : defeatMusic);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
@@ -144,6 +152,34 @@ public class GameOverManager : MonoBehaviour
                       : "";
 
         screen.SetActive(true);
+    }
+
+    // ---------- música ----------
+
+    private AudioSource endMusicSource;
+
+    private void PlayEndMusic(AudioClip clip)
+    {
+        if (clip == null) return;                      // sem música própria: segue a música da fase
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.PlayMusic(clip);              // troca a música de fundo (com fade, funciona pausado)
+            return;
+        }
+
+        // cena sem SoundManager: toca por conta própria
+        if (endMusicSource == null)
+        {
+            endMusicSource = gameObject.AddComponent<AudioSource>();
+            endMusicSource.playOnAwake = false;
+            endMusicSource.loop = true;
+            endMusicSource.spatialBlend = 0f;
+            endMusicSource.ignoreListenerPause = true;
+        }
+        endMusicSource.clip = clip;
+        endMusicSource.volume = endMusicVolume;
+        endMusicSource.Play();
     }
 
     // ---------- botões ----------
