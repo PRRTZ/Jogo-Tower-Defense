@@ -5,6 +5,9 @@ public class Health : MonoBehaviour
 {
     public float maxHealth = 100f;
     public Image fillImage;            // arraste aqui o objeto "Fill"
+    [Header("Queda no void")]
+    [SerializeField] private bool dieBelowVoid = true;
+    [SerializeField] private float voidDeathY = -10f;
     float current;                     // vida atual
 
     public bool IsDead { get; private set; }
@@ -31,18 +34,24 @@ public class Health : MonoBehaviour
     {
         if (IsDead) return;                                  // morto não toma dano
 
+        float previous = current;
         current = Mathf.Max(0f, current - amount);           // nunca abaixo de 0
+        if (current >= previous) return;
         UpdateBar();
 
         if (current <= 0f) { Die(); return; }
+        SoundManager.Play(Sfx.PlayerHit);
         if (anim != null) anim.SetTrigger("Hit");            // reação de dano
     }
 
     public void Heal(float amount)
     {
         if (IsDead) return;
+        float previous = current;
         current = Mathf.Min(maxHealth, current + amount);    // nunca acima do máximo
+        if (current <= previous) return;
         UpdateBar();
+        SoundManager.Play(Sfx.Heal);
     }
 
     void UpdateBar()
@@ -60,6 +69,7 @@ public class Health : MonoBehaviour
     {
         if (IsDead) return;
         IsDead = true;
+        SoundManager.Play(Sfx.PlayerDeath);
 
         if (anim != null)
         {
@@ -76,6 +86,14 @@ public class Health : MonoBehaviour
 
     void Update()
     {
+        if (PauseSettingsMenu.IsOpen) return;
+
+        if (dieBelowVoid && transform.position.y <= voidDeathY)
+        {
+            Die();
+            return;
+        }
+
         // TESTE: aperte H para levar 10 de dano (apague depois)
         if (Input.GetKeyDown(KeyCode.H)) TakeDamage(10f);
     }

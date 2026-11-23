@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Interface de construção das torres (substitui o texto provisório do TowerBuilder).
 ///   Perto de um local vazio:  barra com as torres [1]..[4], nome, papel e preço (a escolhida fica destacada)
-///   Perto de uma torre:       card com nível, status atuais » próximo nível, upgrade e venda
+///   Perto de uma torre:       card com nivel, status atuais > proximo nivel, upgrade e venda
 /// Coloque no GameManager (cria o próprio Canvas). Os sons são opcionais: arraste do "400 Sounds Pack/UI".
 /// Só reconstrói os textos quando algo muda (local, torre escolhida, moedas ou nível).
 /// </summary>
@@ -110,7 +110,7 @@ public class TowerBuildUI : MonoBehaviour
         var row = new GameObject("Cards", typeof(RectTransform), typeof(HorizontalLayoutGroup));
         row.transform.SetParent(buildBar.transform, false);
         var rowLayout = row.GetComponent<HorizontalLayoutGroup>();
-        rowLayout.spacing = 16f;
+        rowLayout.spacing = 12f;
         rowLayout.childControlWidth = rowLayout.childControlHeight = true;
         rowLayout.childForceExpandWidth = rowLayout.childForceExpandHeight = false;
 
@@ -118,8 +118,12 @@ public class TowerBuildUI : MonoBehaviour
             for (int i = 0; i < builder.towerPrefabs.Length && i < 9; i++)
                 cards.Add(CreateCard(row.transform, i, builder.towerPrefabs[i]));
 
-        buildHint = UIFactory.CreateText(buildBar.transform, "", 34f);
+        buildHint = UIFactory.CreateText(buildBar.transform, "", 24f);
         buildHint.fontStyle = FontStyles.Bold;
+        buildHint.enableAutoSizing = true;
+        buildHint.fontSizeMin = 16f;
+        buildHint.fontSizeMax = 24f;
+        buildHint.rectTransform.sizeDelta = new Vector2(1400f, 40f);
         Outline(buildHint);
 
         // card da torre construída
@@ -127,17 +131,26 @@ public class TowerBuildUI : MonoBehaviour
         cardRt.GetComponent<Image>().color = cardColor;
         cardRt.localScale = Vector3.one * uiScale;
         var cardLayout = cardRt.GetComponent<VerticalLayoutGroup>();
-        cardLayout.padding = new RectOffset(24, 24, 18, 20);
+        cardLayout.padding = new RectOffset(16, 16, 12, 14);
         cardLayout.spacing = 10f;
         towerCard = cardRt.gameObject;
-        towerTitle = UIFactory.CreateText(cardRt, "", 40f);
+        towerTitle = UIFactory.CreateText(cardRt, "", 26f);
         towerTitle.fontStyle = FontStyles.Bold;
+        towerTitle.enableAutoSizing = true;
+        towerTitle.fontSizeMin = 18f;
+        towerTitle.fontSizeMax = 26f;
         Outline(towerTitle);
-        towerStats = UIFactory.CreateText(cardRt, "", 32f, TextAlignmentOptions.Left);
-        towerStats.lineSpacing = 8f;
+        towerStats = UIFactory.CreateText(cardRt, "", 16f, TextAlignmentOptions.Left);
+        towerStats.enableAutoSizing = true;
+        towerStats.fontSizeMin = 12f;
+        towerStats.fontSizeMax = 16f;
+        towerStats.lineSpacing = 2f;
         Outline(towerStats);
-        towerActions = UIFactory.CreateText(cardRt, "", 30f);
+        towerActions = UIFactory.CreateText(cardRt, "", 16f);
         towerActions.fontStyle = FontStyles.Bold;
+        towerActions.enableAutoSizing = true;
+        towerActions.fontSizeMin = 12f;
+        towerActions.fontSizeMax = 16f;
         Outline(towerActions);
     }
 
@@ -156,25 +169,31 @@ public class TowerBuildUI : MonoBehaviour
         border.enabled = false;
 
         var layout = go.GetComponent<VerticalLayoutGroup>();
-        layout.padding = new RectOffset(16, 16, 12, 16);
+        layout.padding = new RectOffset(12, 12, 8, 10);
         layout.spacing = 4f;
         layout.childControlWidth = layout.childControlHeight = true;
         layout.childForceExpandWidth = true;
         layout.childForceExpandHeight = false;
 
         var le = go.GetComponent<LayoutElement>();
-        le.preferredWidth = 210f;
+        le.preferredWidth = 240f;
 
-        var key = UIFactory.CreateText(go.transform, "[" + (index + 1) + "]", 26f, TextAlignmentOptions.Left);
+        var key = UIFactory.CreateText(go.transform, "[" + (index + 1) + "]", 16f, TextAlignmentOptions.Left);
         key.color = selectedColor;
         key.fontStyle = FontStyles.Bold;
         Outline(key);
 
-        var name = UIFactory.CreateText(go.transform, TowerBuilder.DisplayName(prefab), 34f);
+        var name = UIFactory.CreateText(go.transform, TowerBuilder.DisplayName(prefab), 22f);
         name.fontStyle = FontStyles.Bold;
+        name.enableAutoSizing = true;
+        name.fontSizeMin = 14f;
+        name.fontSizeMax = 22f;
         Outline(name);
 
-        var role = UIFactory.CreateText(go.transform, RoleOf(prefab), 26f);
+        var role = UIFactory.CreateText(go.transform, RoleOf(prefab), 16f);
+        role.enableAutoSizing = true;
+        role.fontSizeMin = 12f;
+        role.fontSizeMax = 16f;
         role.color = new Color(0.9f, 0.92f, 1f);
         Outline(role);
 
@@ -182,10 +201,13 @@ public class TowerBuildUI : MonoBehaviour
         var badge = new GameObject("Preco", typeof(RectTransform), typeof(Image), typeof(LayoutElement));
         badge.transform.SetParent(go.transform, false);
         badge.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.7f);
-        badge.GetComponent<LayoutElement>().preferredHeight = 52f;
+        badge.GetComponent<LayoutElement>().preferredHeight = 38f;
 
-        var price = UIFactory.CreateText(badge.transform, "", 40f);
+        var price = UIFactory.CreateText(badge.transform, "", 22f);
         price.fontStyle = FontStyles.Bold;
+        price.enableAutoSizing = true;
+        price.fontSizeMin = 16f;
+        price.fontSizeMax = 22f;
         Outline(price);
         var prt = price.rectTransform;
         prt.anchorMin = Vector2.zero;
@@ -200,9 +222,9 @@ public class TowerBuildUI : MonoBehaviour
     {
         var t = prefab != null ? prefab.GetComponent<Tower>() : null;
         if (t == null) return "";
-        if (t.arcHeight > 0f) return "área · em arco";
-        if (t.splashRadius > 0f) return "dano em área";
-        if (t.cooldown <= 0.5f) return "tiro rápido";
+        if (t.arcHeight > 0f) return "area - em arco";
+        if (t.splashRadius > 0f) return "dano em area";
+        if (t.cooldown <= 0.5f) return "tiro rapido";
         if (t.range >= 9f) return "longo alcance";
         return "tiro preciso";
     }
@@ -260,7 +282,7 @@ public class TowerBuildUI : MonoBehaviour
         int sel = builder.SelectedIndex;
         if (sel < 0 || sel >= builder.towerPrefabs.Length) { buildHint.text = ""; return; }
 
-        string name = TowerBuilder.DisplayName(builder.towerPrefabs[sel]);
+        string name = UIFactory.RemoveDiacritics(TowerBuilder.DisplayName(builder.towerPrefabs[sel]));
         int selCost = builder.GetPrice(sel).buildCost;
         buildHint.text = money >= selCost
             ? "[E] Construir " + name
@@ -269,7 +291,7 @@ public class TowerBuildUI : MonoBehaviour
 
     private void RefreshTowerCard(TowerBuilder builder, GameObject towerObject, TowerLevel level, int money)
     {
-        string name = TowerBuilder.DisplayName(towerObject);
+        string name = UIFactory.RemoveDiacritics(TowerBuilder.DisplayName(towerObject));
         var tower = towerObject.GetComponent<Tower>();
 
         if (level == null || tower == null)
@@ -290,11 +312,11 @@ public class TowerBuildUI : MonoBehaviour
             Stat("Dano", tower.damage, tower.damage * up.damageMultiplier, max, "0") + "\n" +
             Stat("Tiros/s", shots, 1f / Mathf.Max(0.01f, tower.cooldown * up.cooldownMultiplier), max, "0.0") + "\n" +
             Stat("Alcance", tower.range, tower.range + up.rangeBonus, max, "0.#");
-        if (tower.splashRadius > 0f) stats += "\nÁrea: " + tower.splashRadius.ToString("0.#");
+        if (tower.splashRadius > 0f) stats += "\nArea: " + tower.splashRadius.ToString("0.#");
         towerStats.text = stats;
 
         string upgradeText;
-        if (max) upgradeText = "<color=#AAAAAA>Nível máximo</color>";
+        if (max) upgradeText = "<color=#AAAAAA>Nivel maximo</color>";
         else
         {
             int cost = level.NextUpgradeCost;
@@ -306,7 +328,7 @@ public class TowerBuildUI : MonoBehaviour
     private static string Stat(string label, float current, float next, bool max, string format)
     {
         string line = label + ":  " + current.ToString(format);
-        if (!max) line += "  <color=" + Green + ">» " + next.ToString(format) + "</color>";
+        if (!max) line += "  <color=" + Green + ">> " + next.ToString(format) + "</color>";
         return line;
     }
 

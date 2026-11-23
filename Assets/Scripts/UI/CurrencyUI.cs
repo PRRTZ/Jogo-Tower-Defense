@@ -26,7 +26,7 @@ public class CurrencyUI : MonoBehaviour
     [SerializeField] private Color ownTextColor = new Color(1f, 0.84f, 0.25f, 1f);
     [Tooltip("Distância do canto superior direito.")]
     [SerializeField] private Vector2 ownTextPosition = new Vector2(-50f, -90f);
-    [SerializeField] private float ownTextFontSize = 36f;
+    [SerializeField] private float ownTextFontSize = 24f;
 
     private string prefix = "";
     private Color normalColor;
@@ -78,7 +78,7 @@ public class CurrencyUI : MonoBehaviour
         rt.sizeDelta = new Vector2(500f, 60f);
     }
 
-    private void UpdateText(int money) => moneyText.text = prefix + money;
+    private void UpdateText(int money) => moneyText.text = UIFactory.RemoveDiacritics(prefix + money);
 
     private void Flash()
     {

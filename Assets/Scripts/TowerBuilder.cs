@@ -166,6 +166,7 @@ public class TowerBuilder : MonoBehaviour
         level.Init(price, upgrade, sellRefund);
 
         PlayInteractAnimation();
+        SoundManager.Play(Sfx.PlaceTower);
         OnBuilt?.Invoke();
     }
 
@@ -178,6 +179,7 @@ public class TowerBuilder : MonoBehaviour
         Destroy(spot.tower);
         spot.tower = null;
         PlayInteractAnimation();
+        SoundManager.Play(Sfx.RemoveTower);
         OnSold?.Invoke();
     }
 
@@ -187,6 +189,7 @@ public class TowerBuilder : MonoBehaviour
         if (level != null && level.TryUpgrade())
         {
             PlayInteractAnimation();
+            SoundManager.Play(Sfx.UpgradeTower);
             OnUpgraded?.Invoke();
         }
         else OnActionFailed?.Invoke();

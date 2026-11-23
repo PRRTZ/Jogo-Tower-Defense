@@ -1,3 +1,5 @@
+using System.Globalization;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,11 +11,28 @@ using UnityEngine.UI;
 /// </summary>
 public static class UIFactory
 {
+    public static TMP_FontAsset DefaultFont { get; set; }
+
     public static readonly Color PanelColor     = new Color(0.08f, 0.09f, 0.12f, 0.90f);
     public static readonly Color ButtonColor    = new Color(0.22f, 0.50f, 0.28f, 1f);
     public static readonly Color ButtonAltColor = new Color(0.55f, 0.24f, 0.20f, 1f);
     public static readonly Color ButtonNeutral  = new Color(0.25f, 0.27f, 0.32f, 1f);
     public static readonly Color Gold           = new Color(1f, 0.84f, 0.25f, 1f);
+
+    public static string RemoveDiacritics(string text)
+    {
+        if (string.IsNullOrEmpty(text)) return text;
+
+        string normalized = text.Normalize(NormalizationForm.FormD);
+        var result = new StringBuilder(normalized.Length);
+        foreach (char character in normalized)
+        {
+            if (CharUnicodeInfo.GetUnicodeCategory(character) != UnicodeCategory.NonSpacingMark)
+                result.Append(character);
+        }
+
+        return result.ToString().Normalize(NormalizationForm.FormC);
+    }
 
     public static Canvas CreateCanvas(string name, int sortingOrder)
     {
@@ -71,7 +90,8 @@ public static class UIFactory
         go.transform.SetParent(parent, false);
 
         var tmp = go.GetComponent<TextMeshProUGUI>();
-        tmp.text = text;
+        if (DefaultFont != null) tmp.font = DefaultFont;
+        tmp.text = RemoveDiacritics(text);
         tmp.fontSize = fontSize;
         tmp.alignment = alignment;
         tmp.color = Color.white;
@@ -94,9 +114,17 @@ public static class UIFactory
         colors.highlightedColor = new Color(1.15f, 1.15f, 1.15f, 1f);
         colors.disabledColor = new Color(0.45f, 0.45f, 0.45f, 0.6f);
         button.colors = colors;
-        if (onClick != null) button.onClick.AddListener(onClick);
+        if (onClick != null)
+            button.onClick.AddListener(() =>
+            {
+                SoundManager.Play(Sfx.ButtonClick);
+                onClick();
+            });
 
-        labelText = CreateText(go.transform, label, 22f);
+        labelText = CreateText(go.transform, label, 18f);
+        labelText.enableAutoSizing = true;
+        labelText.fontSizeMin = 14f;
+        labelText.fontSizeMax = 18f;
         var rt = labelText.rectTransform;
         rt.anchorMin = Vector2.zero;
         rt.anchorMax = Vector2.one;

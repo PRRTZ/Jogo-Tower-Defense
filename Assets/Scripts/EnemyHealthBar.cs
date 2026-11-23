@@ -30,6 +30,16 @@ public class EnemyHealthBar : MonoBehaviour
         if (label != null) label.gameObject.SetActive(false);
     }
 
+    void Start()
+    {
+        if (label == null) return;
+        if (UIFactory.DefaultFont != null) label.font = UIFactory.DefaultFont;
+        label.fontSize = 16f;
+        label.enableAutoSizing = true;
+        label.fontSizeMin = 12f;
+        label.fontSizeMax = 16f;
+    }
+
     // ---- ADAPTE ESTAS DUAS LINHAS aos nomes do seu EnemyHealth ----
     float Cur() { return enemy.CurrentHealth; }
     float Max() { return enemy.maxHealth; }
@@ -64,7 +74,8 @@ public class EnemyHealthBar : MonoBehaviour
         {
             bool hover = showLabelOnHover && IsHovered();
             label.gameObject.SetActive(hover);
-            if (hover) label.text = displayName + "  " + Mathf.CeilToInt(cur) + "/" + Mathf.CeilToInt(max);
+            if (hover) label.text = UIFactory.RemoveDiacritics(displayName) + "  "
+                + Mathf.CeilToInt(cur) + "/" + Mathf.CeilToInt(max);
         }
     }
 

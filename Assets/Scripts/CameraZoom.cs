@@ -41,6 +41,7 @@ public class CameraZoom : MonoBehaviour
 
     void Update()
     {
+        if (PauseSettingsMenu.IsOpen) return;
         if (followComponent == null) return;
 
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");

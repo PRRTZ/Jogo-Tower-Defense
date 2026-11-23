@@ -57,6 +57,7 @@ public class SoundManager : MonoBehaviour
             go.transform.SetParent(transform);
             var s = go.AddComponent<AudioSource>();
             s.playOnAwake = false;
+            s.ignoreListenerPause = true;
             pool[i] = s;
         }
 

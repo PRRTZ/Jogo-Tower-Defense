@@ -6,10 +6,10 @@ using UnityEngine.UI;
 /// <summary>
 /// HUD das ondas, no topo da tela:
 ///   "ONDA 3 / 15"
-///   "Inimigos restantes: 4"   ou   "Próxima onda em 8s  ·  [N] Chamar agora (+15)"
-///   "Pontos: 1234  ·  Normal"
+///   "Inimigos restantes: 4"   ou   "Proxima onda em 8s - [N] Chamar agora (+15)"
+///   "Pontos: 1234 - Normal"
 /// Barra de vida do CHEFE (aparece só na última onda).
-/// Avisos no centro: "ONDA 4!", "Onda concluída!", "O CHEFE CHEGOU!", "FÚRIA!", "CHEFE DERROTADO!".
+/// Avisos no centro: "ONDA 4!", "Onda concluida!", "O CHEFE CHEGOU!", "FURIA!", "CHEFE DERROTADO!".
 /// Coloque no GameManager (cria o próprio Canvas).
 /// </summary>
 public class WaveHUD : MonoBehaviour
@@ -57,24 +57,36 @@ public class WaveHUD : MonoBehaviour
     {
         var canvas = UIFactory.CreateCanvas("UI_Ondas", 6);
 
-        waveText = UIFactory.CreateText(canvas.transform, "", 42f);
+        waveText = UIFactory.CreateText(canvas.transform, "", 34f);
+        waveText.enableAutoSizing = true;
+        waveText.fontSizeMin = 24f;
+        waveText.fontSizeMax = 34f;
         waveText.fontStyle = FontStyles.Bold;
         waveText.color = titleColor;
         Outline(waveText);
-        Place(waveText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -18f), new Vector2(900f, 56f));
+        Place(waveText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -18f), new Vector2(1100f, 50f));
 
-        infoText = UIFactory.CreateText(canvas.transform, "", 26f);
+        infoText = UIFactory.CreateText(canvas.transform, "", 16f);
+        infoText.enableAutoSizing = true;
+        infoText.fontSizeMin = 12f;
+        infoText.fontSizeMax = 16f;
         Outline(infoText);
-        Place(infoText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -72f), new Vector2(1100f, 40f));
+        Place(infoText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -68f), new Vector2(1500f, 34f));
 
-        scoreText = UIFactory.CreateText(canvas.transform, "", 24f);
+        scoreText = UIFactory.CreateText(canvas.transform, "", 18f);
+        scoreText.enableAutoSizing = true;
+        scoreText.fontSizeMin = 14f;
+        scoreText.fontSizeMax = 18f;
         scoreText.color = new Color(1f, 0.92f, 0.6f);
         Outline(scoreText);
-        Place(scoreText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -108f), new Vector2(900f, 36f));
+        Place(scoreText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -102f), new Vector2(1200f, 32f));
 
         BuildBossBar(canvas.transform);
 
-        bannerText = UIFactory.CreateText(canvas.transform, "", 80f);
+        bannerText = UIFactory.CreateText(canvas.transform, "", 48f);
+        bannerText.enableAutoSizing = true;
+        bannerText.fontSizeMin = 32f;
+        bannerText.fontSizeMax = 48f;
         bannerText.fontStyle = FontStyles.Bold;
         bannerText.color = bannerColor;
         Outline(bannerText);
@@ -89,7 +101,10 @@ public class WaveHUD : MonoBehaviour
         rt.SetParent(parent, false);
         Place(rt, new Vector2(0.5f, 1f), new Vector2(0f, -150f), new Vector2(760f, 70f));
 
-        bossNameText = UIFactory.CreateText(rt, "", 26f);
+        bossNameText = UIFactory.CreateText(rt, "", 18f);
+        bossNameText.enableAutoSizing = true;
+        bossNameText.fontSizeMin = 14f;
+        bossNameText.fontSizeMax = 18f;
         bossNameText.fontStyle = FontStyles.Bold;
         bossNameText.color = bossColor;
         Outline(bossNameText);
@@ -146,9 +161,9 @@ public class WaveHUD : MonoBehaviour
                 waveText.text = wave == 0 ? "PREPARE-SE" : "ONDA " + wave + max;
                 int secs = Mathf.CeilToInt(spawner.PrepTimeLeft);
                 int bonus = spawner.EarlyCallBonus;
-                infoText.text = (nextIsBoss ? "<color=#FF5555>O CHEFE vem na próxima onda!</color>   " : "")
-                    + "Próxima onda em " + secs + "s"
-                    + (bonus > 0 ? "   ·   [N] Chamar agora <color=#FFD640>(+" + bonus + ")</color>" : "   ·   [N] Chamar agora");
+                infoText.text = (nextIsBoss ? "<color=#FF5555>O CHEFE vem na proxima onda!</color>   " : "")
+                    + "Proxima onda em " + secs + "s"
+                    + (bonus > 0 ? "   -   [N] Chamar agora <color=#FFD640>(+" + bonus + ")</color>" : "   -   [N] Chamar agora");
                 break;
 
             case EnemySpawner.Phase.Spawning:
@@ -164,7 +179,7 @@ public class WaveHUD : MonoBehaviour
         }
 
         int score = ScoreManager.Instance != null ? ScoreManager.Instance.Score : 0;
-        scoreText.text = "Pontos: " + score + "   ·   " + GameSession.Current.name;
+        scoreText.text = "Pontos: " + score + "   -   " + UIFactory.RemoveDiacritics(GameSession.Current.name);
 
         UpdateBossBar(spawner);
     }
@@ -186,7 +201,8 @@ public class WaveHUD : MonoBehaviour
 
         var controller = boss.GetComponent<BossController>();
         bool raged = controller != null && controller.Raged;
-        bossNameText.text = spawner.BossDisplayName.ToUpperInvariant() + (raged ? "  <color=#FFD640>FÚRIA!</color>" : "");
+        bossNameText.text = UIFactory.RemoveDiacritics(spawner.BossDisplayName.ToUpperInvariant())
+            + (raged ? "  <color=#FFD640>FURIA!</color>" : "");
     }
 
     private void HandleWaveStarted(int wave)
@@ -198,11 +214,11 @@ public class WaveHUD : MonoBehaviour
 
     private void HandleWaveCleared(int wave, int bonus)
     {
-        ShowBanner("Onda concluída!  <size=60%>+" + bonus + " moedas</size>", bannerColor);
+        ShowBanner("Onda concluida!  <size=60%>+" + bonus + " moedas</size>", bannerColor);
     }
 
     private void HandleBossSpawned(EnemyHealth boss) => ShowBanner("O CHEFE CHEGOU!", bossColor);
-    private void HandleBossRage() => ShowBanner("O CHEFE ESTÁ FURIOSO!", bossColor);
+    private void HandleBossRage() => ShowBanner("O CHEFE ESTA FURIOSO!", bossColor);
     private void HandleBossDefeated() => ShowBanner("CHEFE DERROTADO!", bannerColor);
 
     private void ShowBanner(string text, Color color)
@@ -214,7 +230,7 @@ public class WaveHUD : MonoBehaviour
 
     private IEnumerator BannerRoutine(string text, Color color)
     {
-        bannerText.text = text;
+        bannerText.text = UIFactory.RemoveDiacritics(text);
         bannerText.color = color;
         bannerText.gameObject.SetActive(true);
         var rt = bannerText.rectTransform;
