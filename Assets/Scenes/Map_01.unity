@@ -1857,8 +1857,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47213433}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4331888, y: -9.0627295e-10, z: 4.3557735e-10, w: 0.90130323}
-  m_LocalPosition: {x: 23.85, y: 14.0456295, z: -27.404331}
+  m_LocalRotation: {x: 0, y: 0.90130395, z: -0.43318725, w: 0}
+  m_LocalPosition: {x: 23.85, y: 13.05563, z: -4.915291}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40941,6 +40941,63 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3906130615805142554, guid: e6492658b4ed0be4d8837d941e4fe3e5, type: 3}
+--- !u!1001 &1020832552
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1000000000000000001, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_Name
+      value: DeathParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 60.2098
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 84.82913
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000000000000000002, guid: df84eafac1bf4268bd345b41406161de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df84eafac1bf4268bd345b41406161de, type: 3}
 --- !u!1 &1022838634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 14b78124948bd5c4fa8fd632187eb868, type: 3}
@@ -88948,6 +89005,10 @@ SceneRoots:
   - {fileID: 190906008}
 <<<<<<< Updated upstream
   - {fileID: 2032632271}
+<<<<<<< HEAD
 =======
   - {fileID: 1431676893}
 >>>>>>> Stashed changes
+=======
+  - {fileID: 1020832552}
+>>>>>>> 01ff235638718b3e869262de1961e3e0083c5d7d
