@@ -53,12 +53,17 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = Mathf.Max(0f, currentHealth - amount);
 
         if (currentHealth <= 0f) Die();
-        else if (anim != null && !string.IsNullOrEmpty(hitTrigger)) anim.SetTrigger(hitTrigger);
+        else
+        {
+            SoundManager.PlayAt(Sfx.EnemyHit, transform.position);   // SOM: dano no inimigo
+            if (anim != null && !string.IsNullOrEmpty(hitTrigger)) anim.SetTrigger(hitTrigger);
+        }
     }
 
     void Die()
     {
         IsDead = true;
+        SoundManager.PlayAt(Sfx.EnemyDeath, transform.position);     // SOM: morte do inimigo
         if (anim != null) anim.SetTrigger(dieTrigger);
 
         foreach (var c in GetComponentsInChildren<Collider>()) c.enabled = false;

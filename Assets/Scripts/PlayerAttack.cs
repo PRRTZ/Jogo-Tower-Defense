@@ -69,6 +69,8 @@ public class PlayerAttack : MonoBehaviour
             anim.SetTrigger("Attack");
         }
 
+        SoundManager.Play(Sfx.PlayerAttack);                 // SOM: golpe da espada
+
         yield return new WaitForSeconds(hitDelay);
         if (health != null && health.IsDead) yield break;
 
