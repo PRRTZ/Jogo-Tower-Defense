@@ -11427,6 +11427,112 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185441472}
   m_Mesh: {fileID: 3906130615805142554, guid: e6492658b4ed0be4d8837d941e4fe3e5, type: 3}
+--- !u!1001 &186289990
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3377181292992421420, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_Name
+      value: Magic circle 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.9100038
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 40.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3220440682565326704, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 186289992}
+  m_SourcePrefab: {fileID: 100100000, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+--- !u!1 &186289991 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3220440682565326704, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
+  m_PrefabInstance: {fileID: 186289990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &186289992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186289991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &188765660
 GameObject:
   m_ObjectHideFlags: 0
@@ -33151,6 +33257,7 @@ MonoBehaviour:
   reachedBaseText: "Um inimigo chegou \xE0 sua base!"
   playerDiedText: "Voc\xEA foi derrotado!"
   victoryText: "Voc\xEA defendeu a vila!"
+  menuScene: MainMenu
   playerDeathDelay: 1.5
 --- !u!114 &571689811
 MonoBehaviour:
@@ -33166,6 +33273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveHUD
   titleColor: {r: 1, g: 1, b: 1, a: 1}
   bannerColor: {r: 1, g: 0.84, b: 0.25, a: 1}
+  bossColor: {r: 0.9, g: 0.2, b: 0.2, a: 1}
   bannerDuration: 1.8
 --- !u!114 &571689812
 MonoBehaviour:
@@ -33234,21 +33342,22 @@ MonoBehaviour:
   - {fileID: 1155613460320865812, guid: 2009942101e83934bb1a141bc6692cfe, type: 3}
   - {fileID: 1839943960478252971, guid: b95ed062d4dd37f42bbdd0f6bcd18b05, type: 3}
   prices:
-  - buildCost: 80
-    upgradeCosts: 3c00000078000000i
-  - buildCost: 100
-    upgradeCosts: 50000000a0000000i
-  - buildCost: 200
-    upgradeCosts: 960000002c010000i
-  - buildCost: 150
-    upgradeCosts: 6e000000dc000000i
+  - buildCost: 90
+    upgradeCosts: 78000000f0000000i
+  - buildCost: 120
+    upgradeCosts: a000000040010000i
+  - buildCost: 220
+    upgradeCosts: 1801000030020000i
+  - buildCost: 170
+    upgradeCosts: dc000000b8010000i
   upgrade:
-    damageMultiplier: 1.5
-    cooldownMultiplier: 0.8
-    rangeBonus: 1
+    damageMultiplier: 1.35
+    cooldownMultiplier: 0.88
+    rangeBonus: 0.5
     scalePerLevel: 0.08
   sellRefund: 0.5
   interactRadius: 2.5
+  balanceVersion: 2
 --- !u!114 &571689816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33269,10 +33378,10 @@ MonoBehaviour:
   - {fileID: 1762856863361180374, guid: 3ccad25abbd983e42b074ab718feffe9, type: 3}
   - {fileID: 2088395468906079549, guid: 8acd2993bba937c4f88b32affda23792, type: 3}
   - {fileID: 8104823223114628952, guid: e2e6e579b58a6c14fa9f0dab49786c0f, type: 3}
-  - {fileID: 5991407186386455683, guid: 2f5f839bbba511944acdb93e83d27e83, type: 3}
   - {fileID: 2224474084393921780, guid: a515a534f307ef04185a4813011a0ed6, type: 3}
   - {fileID: 7601588956140370502, guid: c8c195ca0104687459957f0570cf6495, type: 3}
   spawnPoint: {fileID: 0}
+  useDifficulty: 1
   spawnOnStart: 1
   startDelay: 1
   wavesDelay: 10
@@ -33282,9 +33391,25 @@ MonoBehaviour:
   enemiesPerWave: 1
   unlockedAtStart: 0
   unlockPerWave: 1
+  healthMultiplier: 1
   healthGrowthPerWave: 0.15
+  speedMultiplier: 1
+  speedGrowthPerWave: 0.03
+  maxSpeedMultiplier: 1.5
   baseKillReward: 10
   rewardGrowthPerWave: 0.1
+  rewardMultiplier: 1
+  bossEnabled: 1
+  bossPrefab: {fileID: 919132149155446097, guid: 68604213393698e4383eca8817341d41, type: 3}
+  bossName: 
+  bossScale: 2.2
+  bossHealthMultiplier: 15
+  bossSpeedFactor: 0.6
+  bossEscortInterval: 8
+  bossEscortCount: 2
+  bossRageAt: 0.5
+  bossRageSpeedMultiplier: 1.6
+  bossReward: 300
   waveClearBonusBase: 20
   waveClearBonusPerWave: 10
   earlyCallBonusPerSecond: 2
@@ -82210,8 +82335,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438297172}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.90130395, z: -0.43318725, w: 0}
-  m_LocalPosition: {x: 23.85, y: 13.05563, z: -4.915291}
+  m_LocalRotation: {x: 0.4331888, y: -9.0627295e-10, z: 4.3557735e-10, w: 0.90130323}
+  m_LocalPosition: {x: 23.85, y: 14.0456295, z: -27.404331}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -120088,3 +120213,4 @@ SceneRoots:
   - {fileID: 1824346845}
   - {fileID: 1438888258}
   - {fileID: 1149216554}
+  - {fileID: 186289990}
