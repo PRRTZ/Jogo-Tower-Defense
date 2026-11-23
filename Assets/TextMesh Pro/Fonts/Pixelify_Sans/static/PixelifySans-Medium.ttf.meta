@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 396e0fd3abe52444f8439927b385562c
+guid: bb6e772fe9c608941926ebceb3f82349
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Micro 5
+  - Pixelify Sans
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
