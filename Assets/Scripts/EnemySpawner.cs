@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Ondas em fases:
 ///   Preparação (sem inimigos, dá para construir) -> Onda (inimigos saindo) -> Combate (espera todos sumirem)
 ///   -> bônus de moedas e um pouco de vida para o player -> Preparação da próxima...
 /// A cada onda os monstros ficam com mais vida e mais rápidos.
-/// A ÚLTIMA onda tem um CHEFE: muita vida, chama reforços e fica furioso (mais rápido) com metade da vida.
+/// A ÚLTIMA onda tem um CHEFE: muita vida, chama reforços e fica furioso (ruge parado e depois anda um pouco mais rápido).
+/// Os números também são ajustados por mapa (GameSession.Maps em GameData.cs).
 /// Vencendo a última onda, dispara OnAllWavesCleared (vitória).
 ///
 /// Com "Use Difficulty" ligado, os números vêm da dificuldade escolhida no menu (GameData.cs).
@@ -77,14 +79,34 @@ public class EnemySpawner : MonoBehaviour
     public string bossName = "";             // vazio = nome do prefab
     public float bossScale = 2.2f;           // tamanho do chefe
     [Tooltip("Vida do chefe = vida de um monstro da última onda x este valor.")]
-    public float bossHealthMultiplier = 15f;
+    public float bossHealthMultiplier = 6f;
     [Tooltip("Velocidade do chefe em relação aos outros monstros (0.6 = 40% mais lento).")]
     public float bossSpeedFactor = 0.6f;
-    public float bossEscortInterval = 8f;    // segundos entre os reforços
+    public float bossEscortInterval = 10f;   // segundos entre os reforços
     public int bossEscortCount = 2;          // monstros por reforço
-    [Range(0.1f, 0.9f)] public float bossRageAt = 0.5f;   // fica furioso com esta fração da vida
-    public float bossRageSpeedMultiplier = 1.6f;
+    [Tooltip("Vida dos reforços em relação a um monstro normal da onda (0.5 = metade).")]
+    public float bossEscortHealthFactor = 0.5f;
+    [Tooltip("Limite de reforços vivos ao mesmo tempo.")]
+    public int bossMaxEscortsAlive = 6;
+    [Range(0.1f, 0.9f)] public float bossRageAt = 0.35f;  // fica furioso com esta fração da vida
+    public float bossRageSpeedMultiplier = 1.2f;
+    [Tooltip("Intervalo dos reforços x este valor quando furioso (1 = não muda).")]
+    public float bossRageEscortFactor = 1f;
+    [Tooltip("Segundos parado rugindo ao ficar furioso.")]
+    public float bossRageRoarTime = 2f;
     public int bossReward = 300;             // moedas ao derrotar o chefe
+
+    [Header("Aura do chefe")]
+    [Tooltip("Efeito preso no chefe (ex.: Hovl Studio > Character auras > Star aura). Vazio = sem aura.")]
+    public GameObject bossAuraPrefab;
+    [Tooltip("Largura da aura em relação à largura do chefe (1.3 = 30% maior que o modelo).")]
+    public float bossAuraSize = 1.3f;
+    [Tooltip("Largura da aura no tamanho original do prefab, em metros (Star aura ≈ 2).")]
+    public float bossAuraPrefabWidth = 2f;
+
+    [Header("Torres")]
+    [Tooltip("Dano de todas as torres construídas (1 = valor do prefab). Com 'Use Difficulty', vem da dificuldade.")]
+    public float towerDamageMultiplier = 1f;
 
     [Header("Recompensas")]
     public int waveClearBonusBase = 20;      // bônus ao terminar a onda = base + porOnda * número da onda
@@ -102,9 +124,13 @@ public class EnemySpawner : MonoBehaviour
     public bool HasMoreWaves => maxWave <= 0 || CurrentWave < maxWave;
     public bool IsBossWave => bossEnabled && maxWave > 0 && CurrentWave == maxWave;
     public EnemyHealth Boss { get; private set; }
+    /// <summary>Quanto a vida dos monstros já cresceu nesta onda (1 na 1ª onda). O golpe do player usa isto.</summary>
+    public float WaveHealthGrowth => Mathf.Pow(1f + healthGrowthPerWave, Mathf.Max(0, CurrentWave - 1));
     public string BossDisplayName { get; private set; } = "";
 
     readonly HashSet<GameObject> alive = new HashSet<GameObject>();
+    readonly HashSet<GameObject> escorts = new HashSet<GameObject>();
+    int startingMoneyBonus;
     float countdown;
     int nextIndex;
     Health playerHealth;
@@ -112,7 +138,31 @@ public class EnemySpawner : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        if (useDifficulty) ApplyDifficulty(GameSession.Current);
+        if (useDifficulty)
+        {
+            ApplyDifficulty(GameSession.Current);
+            ApplyMap(FindMapBalance());
+        }
+    }
+
+    // acha o ajuste pelo nome da cena (funciona mesmo dando Play direto no mapa); senão usa o MapIndex do menu
+    static MapBalance FindMapBalance()
+    {
+        string scene = SceneManager.GetActiveScene().name;
+        foreach (var m in GameSession.Maps)
+            if (m != null && m.scene == scene) return m;
+        return GameSession.CurrentMap;
+    }
+
+    void ApplyMap(MapBalance m)
+    {
+        if (m == null) return;
+        healthMultiplier *= m.enemyHealthMultiplier;
+        bossHealthMultiplier *= m.bossHealthMultiplier;
+        rewardMultiplier *= m.rewardMultiplier;
+        waveClearBonusBase = Mathf.RoundToInt(waveClearBonusBase * m.rewardMultiplier);
+        waveClearBonusPerWave = Mathf.RoundToInt(waveClearBonusPerWave * m.rewardMultiplier);
+        startingMoneyBonus += m.startingMoneyBonus;
     }
 
     void OnEnable()
@@ -149,12 +199,20 @@ public class EnemySpawner : MonoBehaviour
         bossHealthMultiplier = d.bossHealthMultiplier;
         bossEscortInterval = d.bossEscortInterval;
         bossEscortCount = d.bossEscortCount;
+        towerDamageMultiplier = d.towerDamageMultiplier > 0f ? d.towerDamageMultiplier : 1f;
+        bossEscortHealthFactor = d.bossEscortHealthFactor;
+        bossMaxEscortsAlive = d.bossMaxEscortsAlive;
+        bossRageAt = d.bossRageAt;
+        bossRageSpeedMultiplier = d.bossRageSpeedMultiplier;
+        bossRageEscortFactor = d.bossRageEscortFactor;
+        bossRageRoarTime = d.bossRageRoarTime;
         rewardMultiplier = d.rewardMultiplier;
         baseKillReward = d.killReward;
         rewardGrowthPerWave = d.rewardGrowthPerWave;
         waveClearBonusBase = d.waveBonusBase;
         waveClearBonusPerWave = d.waveBonusPerWave;
         earlyCallBonusPerSecond = d.earlyCallBonusPerSecond;
+        startingMoneyBonus += d.startingMoney;
     }
 
     void Start()
@@ -168,6 +226,9 @@ public class EnemySpawner : MonoBehaviour
 
         var pc = FindAnyObjectByType<PlayerController>();
         if (pc != null) playerHealth = pc.GetComponent<Health>();
+
+        if (startingMoneyBonus > 0 && CurrencyManager.Instance != null)
+            CurrencyManager.Instance.AddMoney(startingMoneyBonus);
 
         countdown = startDelay;
         CurrentPhase = Phase.Preparing;
@@ -293,12 +354,19 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
+        SpawnOne(index, 1f);
+    }
+
+    GameObject SpawnOne(int index, float healthFactor)
+    {
+        if (spawnPoint == null || enemyPrefabs == null || enemyPrefabs.Length == 0) return null;
         var prefab = enemyPrefabs[index % enemyPrefabs.Length];
-        if (prefab == null) return;
+        if (prefab == null) return null;
 
         var enemy = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
-        ApplyWaveStrength(enemy, 1f, 1f);
+        ApplyWaveStrength(enemy, healthFactor, 1f);
         alive.Add(enemy);
+        return enemy;
     }
 
     /// <summary>Reforços chamados pelo chefe: saem do ponto de spawn com a força da onda atual.</summary>
@@ -312,9 +380,23 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             if (Boss == null) yield break;          // chefe morreu: para de chamar
-            SpawnNext();
+            escorts.RemoveWhere(g => g == null);
+            if (bossMaxEscortsAlive > 0 && escorts.Count >= bossMaxEscortsAlive) yield break;  // já tem reforço demais
+
+            var e = SpawnEscortOne();
+            if (e != null) escorts.Add(e);
             yield return new WaitForSeconds(delayBetween);
         }
+    }
+
+    // reforço: próximo monstro liberado, com menos vida que um monstro normal da onda
+    GameObject SpawnEscortOne()
+    {
+        if (enemyPrefabs == null || enemyPrefabs.Length == 0) return null;
+        int pool = enemyPrefabs.Length;
+        if (unlockedAtStart > 0)
+            pool = Mathf.Clamp(unlockedAtStart + Mathf.Max(0, CurrentWave - 1) * unlockPerWave, 1, enemyPrefabs.Length);
+        return SpawnOne(nextIndex++ % pool, bossEscortHealthFactor);
     }
 
     void SpawnBoss()
@@ -326,19 +408,73 @@ public class EnemySpawner : MonoBehaviour
         var boss = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
         boss.name = "BOSS_" + prefab.name;
         boss.transform.localScale *= bossScale;
+
+        // a vida do chefe parte da vida de um monstro COMUM (não da vida salva no prefab do chefe),
+        // assim trocar o prefab do chefe não muda o balanceamento
+        var bossHealth = boss.GetComponent<EnemyHealth>();
+        if (bossHealth != null) bossHealth.maxHealth = RegularEnemyBaseHealth();
         ApplyWaveStrength(boss, bossHealthMultiplier, bossSpeedFactor);
 
         var reward = boss.GetComponent<EnemyReward>();
         if (reward == null) reward = boss.AddComponent<EnemyReward>();
         reward.Reward = Mathf.RoundToInt(bossReward * rewardMultiplier);
 
+        AttachBossAura(boss);
+
         var controller = boss.AddComponent<BossController>();
-        controller.Setup(this, bossEscortInterval, bossEscortCount, bossRageAt, bossRageSpeedMultiplier);
+        // furioso nunca fica mais rápido que um monstro normal da onda
+        float rageSpeed = bossSpeedFactor > 0f ? Mathf.Min(bossRageSpeedMultiplier, 1f / bossSpeedFactor) : bossRageSpeedMultiplier;
+        controller.Setup(this, bossEscortInterval, bossEscortCount, bossRageAt, rageSpeed, bossRageEscortFactor, bossRageRoarTime);
 
         Boss = boss.GetComponent<EnemyHealth>();
         BossDisplayName = string.IsNullOrEmpty(bossName) ? prefab.name.Replace("_", " ") : bossName;
         alive.Add(boss);
         OnBossSpawned?.Invoke(Boss);
+    }
+
+    // prende a aura no chefe, do tamanho do modelo (mede a largura real pelos renderers)
+    void AttachBossAura(GameObject boss)
+    {
+        if (bossAuraPrefab == null || boss == null) return;
+
+        float width = 0f;
+        bool found = false;
+        Bounds b = new Bounds(boss.transform.position, Vector3.zero);
+        foreach (var r in boss.GetComponentsInChildren<Renderer>())
+        {
+            if (r is ParticleSystemRenderer || r is TrailRenderer || r is LineRenderer) continue;
+            if (r.GetComponentInParent<Canvas>() != null) continue;           // barra de vida etc.
+            if (!found) { b = r.bounds; found = true; } else b.Encapsulate(r.bounds);
+        }
+        width = found ? Mathf.Max(b.size.x, b.size.z) : bossScale;
+        if (width < 0.1f) width = bossScale;
+
+        var aura = Instantiate(bossAuraPrefab, boss.transform.position, Quaternion.identity);
+        aura.name = "Aura";
+        float s = width * bossAuraSize / Mathf.Max(0.1f, bossAuraPrefabWidth);
+        aura.transform.localScale = bossAuraPrefab.transform.localScale * s;
+
+        // partículas crescem com a escala do objeto e acompanham o chefe andando
+        foreach (var ps in aura.GetComponentsInChildren<ParticleSystem>())
+        {
+            var main = ps.main;
+            main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+        }
+
+        aura.transform.SetParent(boss.transform, true);   // mantém o tamanho calculado
+    }
+
+    // vida de prefab de um monstro comum (o 1º da lista); 50 se não achar
+    float RegularEnemyBaseHealth()
+    {
+        if (enemyPrefabs != null)
+            foreach (var p in enemyPrefabs)
+            {
+                if (p == null) continue;
+                var h = p.GetComponent<EnemyHealth>();
+                if (h != null && h.maxHealth > 1f) return h.maxHealth;
+            }
+        return 50f;
     }
 
     /// <summary>Chamado pelo BossController quando o chefe fica furioso.</summary>

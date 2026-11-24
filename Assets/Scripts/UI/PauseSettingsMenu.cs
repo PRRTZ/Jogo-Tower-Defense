@@ -6,13 +6,16 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
 /// <summary>
-/// Abre as opções da partida pelo ícone de configurações do prefab UI.
+/// Menu de pausa: abre pelo Esc ou pelo ícone de configurações do prefab UI.
+/// Continuar (Esc), Recomeçar a fase, Voltar ao menu principal e Sair do jogo. O jogo fica parado enquanto aberto.
 /// </summary>
 public class PauseSettingsMenu : MonoBehaviour
 {
     [SerializeField] private TMP_FontAsset hudFont;
 
     public static bool IsOpen { get; private set; }
+    /// <summary>Frame em que a pausa fechou (o clique em "Continuar" não vira ataque).</summary>
+    public static int ClosedFrame { get; private set; } = -1;
 
     private GameObject screen;
     private float previousTimeScale;
@@ -72,10 +75,16 @@ public class PauseSettingsMenu : MonoBehaviour
 
     private void Update()
     {
-        if (!IsOpen) return;
-
         var kb = Keyboard.current;
-        if (kb != null && kb.escapeKey.wasPressedThisFrame) Resume();
+        if (kb == null || !kb.escapeKey.wasPressedThisFrame || screen == null) return;
+
+        if (IsOpen) { Resume(); return; }
+
+        // Esc abre a pausa, menos quando está fechando a forja ou o jogo já acabou
+        if (GameOverManager.IsGameOver) return;
+        if (PlayerForge.IsOpen || PlayerForge.ClosedFrame == Time.frameCount) return;
+        SoundManager.Play(Sfx.ButtonClick);
+        OpenSettings();
     }
 
     private void OpenSettings()
@@ -129,9 +138,22 @@ public class PauseSettingsMenu : MonoBehaviour
         GameOverManager.Instance.GoToMenu();
     }
 
+    private void QuitGame()
+    {
+        Resume();
+
+        if (GameOverManager.Instance != null) { GameOverManager.Instance.Quit(); return; }
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
     private void RestoreGameState()
     {
         IsOpen = false;
+        ClosedFrame = Time.frameCount;
         Time.timeScale = previousTimeScale;
         AudioListener.pause = previousAudioPaused;
         TowerBuilder.InputBlocked = GameOverManager.IsGameOver || previousTowerInputBlocked;
@@ -159,9 +181,10 @@ public class PauseSettingsMenu : MonoBehaviour
         title.fontStyle = FontStyles.Bold;
         title.color = UIFactory.Gold;
 
-        UIFactory.CreateButton(panel, "Continuar", Resume, UIFactory.ButtonColor, out _, 54f);
-        UIFactory.CreateButton(panel, "Resetar fase", RestartLevel, UIFactory.ButtonNeutral, out _, 54f);
+        UIFactory.CreateButton(panel, "Continuar  [Esc]", Resume, UIFactory.ButtonColor, out _, 54f);
+        UIFactory.CreateButton(panel, "Recomecar fase", RestartLevel, UIFactory.ButtonNeutral, out _, 54f);
         UIFactory.CreateButton(panel, "Voltar ao menu principal", ReturnToMenu, UIFactory.ButtonNeutral, out _, 54f);
+        UIFactory.CreateButton(panel, "Sair do jogo", QuitGame, UIFactory.ButtonAltColor, out _, 54f);
 
         screen.SetActive(false);
     }

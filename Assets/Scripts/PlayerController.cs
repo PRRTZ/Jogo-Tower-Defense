@@ -20,6 +20,17 @@ public class PlayerController : MonoBehaviour
     [Header("Câmera")]
     public bool relativeToCamera = true;      // true = W/A/S/D relativos à câmera (qualquer rotação)
 
+    [Header("Mira com o mouse")]
+    [Tooltip("Desligado (padrão): olha para onde anda e só vira para o mouse ao atacar. " +
+             "Ligado: sempre olha para o mouse.")]
+    public bool alwaysFaceMouse = false;
+    [Tooltip("Graus por segundo ao girar para o mouse quando 'Always Face Mouse' está ligado.")]
+    public float faceMouseTurnSpeed = 1080f;
+    [Tooltip("Segundos que o personagem continua virado para o mouse depois de atacar (cobre o golpe).")]
+    public float attackFacingTime = 0.45f;
+
+    private float aimLockUntil;               // até quando mantém a direção do ataque
+
     private CharacterController controller;
     private Animator animator;
     private Camera cam;
@@ -127,8 +138,18 @@ public class PlayerController : MonoBehaviour
             moveDirection = new Vector3(moveX, 0f, moveZ).normalized;
         }
 
-        // 4. Rotação do personagem
-        if (moveDirection.sqrMagnitude > 0.01f)
+        // 4. Rotação do personagem: durante o golpe mantém a direção do mouse;
+        //    fora dele olha para onde anda (ou sempre para o mouse, se ligado)
+        if (Time.time < aimLockUntil)
+        {
+            // segura a direção do ataque
+        }
+        else if (alwaysFaceMouse && TryGetMouseDirection(out Vector3 aimDir))
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation,
+                Quaternion.LookRotation(aimDir), faceMouseTurnSpeed * Time.deltaTime);
+        }
+        else if (moveDirection.sqrMagnitude > 0.01f)
         {
             transform.rotation = Quaternion.LookRotation(moveDirection);
         }
@@ -186,6 +207,35 @@ public class PlayerController : MonoBehaviour
         {
             jumpRequested = false;
         }
+    }
+
+    /// <summary>Direção horizontal do personagem até o ponto do chão embaixo do mouse.</summary>
+    public bool TryGetMouseDirection(out Vector3 dir)
+    {
+        dir = Vector3.zero;
+        var mouse = Mouse.current;
+        if (mouse == null) return false;
+        if (cam == null) cam = Camera.main;
+        if (cam == null) return false;
+
+        // plano horizontal na altura do personagem: não depende de colliders no chão
+        Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
+        Plane ground = new Plane(Vector3.up, transform.position);
+        if (!ground.Raycast(ray, out float dist)) return false;
+
+        dir = ray.GetPoint(dist) - transform.position;
+        dir.y = 0f;
+        if (dir.sqrMagnitude < 0.04f) return false;   // mouse em cima do personagem: mantém a direção
+        dir.Normalize();
+        return true;
+    }
+
+    /// <summary>Vira o personagem na hora para o mouse e segura essa direção durante o golpe (usado pelo ataque).</summary>
+    public void SnapToMouse()
+    {
+        if (TryGetMouseDirection(out Vector3 dir))
+            transform.rotation = Quaternion.LookRotation(dir);
+        aimLockUntil = Time.time + attackFacingTime;
     }
 
     // Desce o personagem até o chão se ele estiver a até groundSnapDistance de distância
