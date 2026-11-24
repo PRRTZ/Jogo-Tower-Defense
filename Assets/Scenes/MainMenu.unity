@@ -428,8 +428,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47cb2c0a6477184eba7f0d0f2429c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  gameTitle: Tower Defense
-  subtitle: "Defenda a base dos bichinhos de pel\xFAcia!"
+  gameTitle: Fluff Invasion
+  subtitle: 
+  animateTitle: 0
+  titleFontSize: 76
+  subtitleFontSize: 22
+  colorfulTitle: 1
+  titleColors:
+  - {r: 0.7735849, g: 0.4269313, b: 0.4269313, a: 1}
+  - {r: 0.7830189, g: 0.61459595, b: 0.4321378, a: 1}
+  - {r: 0.754717, g: 0.71123433, b: 0.41651833, a: 1}
+  - {r: 0.40469635, g: 0.7075472, b: 0.37046102, a: 1}
+  - {r: 0.3721075, g: 0.5363002, b: 0.6981132, a: 1}
+  - {r: 0.56105286, g: 0.4199893, b: 0.735849, a: 1}
+  titleColorSpeed: 4
+  smoothTitleColors: 1
   useGameTheme: 1
   mapScenes:
   - Map_01
@@ -455,10 +468,22 @@ MonoBehaviour:
   buttonTextColor: {r: 0.27, g: 0.16, b: 0.35, a: 1}
   titleOutlineColor: {r: 0.27, g: 0.16, b: 0.35, a: 1}
   tintCustomButtons: 0
-  music: {fileID: 0}
-  clickSound: {fileID: 0}
+  music: {fileID: 8300000, guid: dc4060e65108c99408f58172e8518fa7, type: 3}
+  clickSound: {fileID: 8300000, guid: 74d86fdb9a804674ead2b2af22e11197, type: 3}
   hoverSound: {fileID: 0}
-  volume: 0.5
+  volume: 1
+  skyColor: {r: 0.33, g: 0.58, b: 0.9, a: 1}
+  grassColor: {r: 0.62, g: 0.84, b: 0.52, a: 1}
+  themeTitleColor: {r: 0.7647059, g: 0.5921569, b: 0.77254903, a: 1}
+  themeOutlineColor: {r: 0.26, g: 0.15, b: 0.08, a: 1}
+  themeTextColor: {r: 1, g: 0.97, b: 0.88, a: 1}
+  themeButtonTextColor: {r: 0.26, g: 0.15, b: 0.08, a: 1}
+  themeCardTextColor: {r: 0.26, g: 0.15, b: 0.08, a: 1}
+  playButtonColor: {r: 0.661024, g: 0.83137256, b: 0.6, a: 1}
+  rankingButtonColor: {r: 0.8862745, g: 0.76714826, b: 0.5568628, a: 1}
+  quitButtonColor: {r: 0.7647059, g: 0.47758725, b: 0.43529412, a: 1}
+  backButtonColor: {r: 0.764151, g: 0.59248316, b: 0.43614277, a: 1}
+  cardColor: {r: 0.98, g: 0.91, b: 0.75, a: 1}
 --- !u!114 &2020865319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b0b781af937f64586bc959a90a3e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuVideoBackground
-  clip: {fileID: 32900000, guid: 0ea9b80e621fe2c4d8569b540bce033f, type: 3}
+  clip: {fileID: 32900000, guid: 77d8e0976a36fc642bba10a5621536ac, type: 3}
   playbackSpeed: 1
   hideFloatingDecor: 1
   dim: 0.15
