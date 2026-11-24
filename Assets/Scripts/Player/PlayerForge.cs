@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 
 /// <summary>
 /// Forja: o player chega perto, aperta E e abre o menu de upgrades do próprio player.
-///   [1] Dano  (+3 por nível no PlayerAttack)
+///   [1] Dano  (+50% do dano base por nível no PlayerAttack: 14 -> 21 -> 28 -> 35 -> 42)
+///       cada nível só libera a partir de uma onda (Damage Unlock Wave), para não completar a forja logo no começo
 ///   [2] Vida  (+20 = 1 coração por nível no Health, e cura tudo na compra)
 ///   [E] / [Esc] fecha
 /// O menu fecha sozinho se o player se afastar ou levar dano. O jogo NÃO pausa.
@@ -15,13 +16,18 @@ using UnityEngine.InputSystem;
 public class PlayerForge : MonoBehaviour
 {
     public static bool IsOpen { get; private set; }
+    /// <summary>Frame em que a forja fechou (o Esc que fecha a forja não abre a pausa).</summary>
+    public static int ClosedFrame { get; private set; } = -1;
 
     [Header("Interação")]
     [SerializeField] private float interactRadius = 2.5f;
 
     [Header("Dano")]
-    [SerializeField] private float damagePerLevel = 3f;
-    [SerializeField] private int[] damageCosts = { 50, 100, 200, 400 };   // um por nível
+    [Tooltip("Dano a mais por nível, em fração do dano base (0.5 = +50%).")]
+    [SerializeField] private float damageBonusPerLevel = 0.5f;
+    [SerializeField] private int[] damageCosts = { 40, 80, 130, 200 };    // um por nível
+    [Tooltip("Onda a partir da qual cada nível de dano pode ser comprado (mesma ordem dos custos).")]
+    [SerializeField] private int[] damageUnlockWave = { 3, 7, 10, 13 };
 
     [Header("Vida")]
     [SerializeField] private float healthPerLevel = 20f;                  // 20 = 1 coração
@@ -107,6 +113,7 @@ public class PlayerForge : MonoBehaviour
     void SetOpen(bool open)
     {
         if (panel == null) return;
+        if (IsOpen && !open) ClosedFrame = Time.frameCount;
         panel.SetActive(open);
         IsOpen = open;
         if (!GameOverManager.IsGameOver) TowerBuilder.InputBlocked = open;   // teclas 1, 2 e E não vão para as torres
@@ -122,10 +129,11 @@ public class PlayerForge : MonoBehaviour
     void BuyDamage()
     {
         if (attack == null || damageLevel >= damageCosts.Length) return;
+        if (!DamageUnlocked(damageLevel)) return;
         if (!Pay(damageCosts[damageLevel])) return;
 
         damageLevel++;
-        attack.damage = baseDamage + damagePerLevel * damageLevel;
+        attack.damage = baseDamage * (1f + damageBonusPerLevel * damageLevel);
         Refresh();
     }
 
@@ -140,6 +148,21 @@ public class PlayerForge : MonoBehaviour
         lastHealth = health.CurrentHealth;
         Refresh();
     }
+
+    // nível "level" (0 = primeiro) já pode ser comprado? libera na preparação antes da onda indicada
+    bool DamageUnlocked(int level)
+    {
+        if (damageUnlockWave == null || level >= damageUnlockWave.Length) return true;
+        int unlock = damageUnlockWave[level];
+        if (unlock <= 1) return true;
+        var sp = EnemySpawner.Instance;
+        if (sp == null) return true;
+        int nextWave = sp.CurrentPhase == EnemySpawner.Phase.Preparing ? sp.CurrentWave + 1 : sp.CurrentWave;
+        return nextWave >= unlock;
+    }
+
+    int DamageUnlockWave(int level) =>
+        damageUnlockWave != null && level < damageUnlockWave.Length ? damageUnlockWave[level] : 0;
 
     static bool Pay(int cost)
     {
@@ -179,8 +202,14 @@ public class PlayerForge : MonoBehaviour
     {
         if (panel == null || !panel.activeSelf) return;
 
-        damageLine.text = Line("[1] Dano", damageLevel, damageCosts,
-            attack != null ? attack.damage : 0f, damagePerLevel);
+        // mostra o dano REAL do golpe agora (com o crescimento da onda atual)
+        float dmgNow = attack != null ? attack.CurrentDamage : 0f;
+        float dmgStep = attack != null && attack.damage > 0f
+            ? dmgNow * (baseDamage * damageBonusPerLevel) / attack.damage : 0f;
+        damageLine.text = Line("[1] Dano", damageLevel, damageCosts, dmgNow, dmgStep);
+        if (damageLevel < damageCosts.Length && !DamageUnlocked(damageLevel))
+            damageLine.text = "[1] Dano   nv." + damageLevel + "/" + damageCosts.Length + "   " + dmgNow.ToString("0.#")
+                + "   <color=#AAAAAA>libera na onda " + DamageUnlockWave(damageLevel) + "</color>";
         healthLine.text = Line("[2] Vida", healthLevel, healthCosts,
             health != null ? health.maxHealth : 0f, healthPerLevel);
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
@@ -14,6 +15,17 @@ public class PlayerAttack : MonoBehaviour
     public float arcAngle = 100f;         // abertura do golpe normal em graus
     public float hitDelay = 0.25f;        // segundos até o golpe acertar
     public float cooldown = 0.6f;         // intervalo entre ataques
+
+    [Header("Força do golpe")]
+    [Tooltip("Multiplica o Damage acima (1 = sem bônus). O Damage dos mapas está em 14.")]
+    public float damageBonus = 1f;
+    [Tooltip("Ligado: o dano cresce com as ondas (veja Wave Scale Strength). Desligado: dano fixo, só a forja aumenta.")]
+    public bool scaleWithWaves = false;
+    [Tooltip("Quanto do crescimento de vida dos monstros o golpe acompanha. 1 = tudo (sempre os mesmos golpes para matar), " +
+             "0.5 = metade (precisa de mais golpes com o tempo; a forja compensa), 0 = não cresce.")]
+    [Range(0f, 1f)] public float waveScaleStrength = 0f;
+    [Tooltip("Monstros a até esta distância levam o golpe mesmo fora do arco (encostados no player).")]
+    public float pointBlankRadius = 1.2f;
 
     [Header("Entrada")]
     public bool useMouse = true;          // ativado para usar o clique esquerdo
@@ -29,6 +41,7 @@ public class PlayerAttack : MonoBehaviour
 
     Animator anim;
     Health health;
+    PlayerController controller;
     float nextAttack;
     SlashEffect slash;
 
@@ -36,11 +49,25 @@ public class PlayerAttack : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         health = GetComponent<Health>();
+        controller = GetComponent<PlayerController>();
+    }
+
+    /// <summary>Dano real do golpe agora (com bônus e crescimento por onda).</summary>
+    public float CurrentDamage
+    {
+        get
+        {
+            float dmg = damage * damageBonus;
+            var sp = EnemySpawner.Instance;
+            if (scaleWithWaves && sp != null) dmg *= Mathf.Pow(sp.WaveHealthGrowth, waveScaleStrength);
+            return dmg;
+        }
     }
 
     void Update()
     {
-        if (PauseSettingsMenu.IsOpen) return;
+        if (PauseSettingsMenu.IsOpen || PauseSettingsMenu.ClosedFrame == Time.frameCount) return;
+        if (GameOverManager.IsGameOver) return;
         if (health != null && health.IsDead) return;
         if (Time.time < nextAttack) return;
 
@@ -54,8 +81,9 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
 
-        // Ataque direto pelo botão esquerdo do mouse
-        if (useMouse && mouse != null && mouse.leftButton.wasPressedThisFrame)
+        // Ataque direto pelo botão esquerdo do mouse (não ataca ao clicar em botões da tela)
+        if (useMouse && mouse != null && mouse.leftButton.wasPressedThisFrame &&
+            (EventSystem.current == null || !EventSystem.current.IsPointerOverGameObject()))
         {
             StartCoroutine(Attack());
         }
@@ -64,6 +92,7 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator Attack()
     {
         nextAttack = Time.time + cooldown;
+        if (controller != null) controller.SnapToMouse();    // golpe sai para onde o mouse aponta
 
         if (anim != null)
         {
@@ -91,10 +120,11 @@ public class PlayerAttack : MonoBehaviour
 
             Vector3 to = enemy.transform.position - transform.position;
             to.y = 0f;
-            if (to.sqrMagnitude > 0.001f &&
+            bool pointBlank = to.magnitude <= pointBlankRadius;
+            if (!pointBlank && to.sqrMagnitude > 0.001f &&
                 Vector3.Angle(transform.forward, to) > arcAngle * 0.5f) continue;
 
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(CurrentDamage);
         }
     }
 

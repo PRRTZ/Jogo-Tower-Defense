@@ -62,7 +62,9 @@ public class TowerLevel : MonoBehaviour
         tower = GetComponent<Tower>();
         if (tower != null)
         {
-            baseDamage = tower.damage;
+            // multiplicador global de dano das torres (vem da dificuldade, pelo EnemySpawner)
+            float mult = EnemySpawner.Instance != null ? EnemySpawner.Instance.towerDamageMultiplier : 1f;
+            baseDamage = tower.damage * mult;
             baseCooldown = tower.cooldown;
             baseRange = tower.range;
         }

@@ -16,6 +16,19 @@ public class EnemyMovement : MonoBehaviour
 
     public static event Action<EnemyMovement> OnReachedBase;
 
+    /// <summary>Quanto o monstro já andou no caminho (maior = mais perto da base). Usado pelas torres para mirar.</summary>
+    public float Progress
+    {
+        get
+        {
+            if (pts.Count == 0) return 0f;
+            if (index >= pts.Count) return pts.Count * 1000f;
+            Vector3 d = pts[index].position - transform.position;
+            d.y = 0f;
+            return index * 1000f - d.magnitude;   // waypoint atual pesa mais; dentro dele, quem está mais perto do próximo ponto vem antes
+        }
+    }
+
     readonly List<Transform> pts = new List<Transform>();
     int index = 0;
     EnemyHealth health;

@@ -57,18 +57,23 @@ public class Tower : MonoBehaviour
 
     EnemyHealth FindTarget()
     {
-        // mantém o alvo atual enquanto ele estiver vivo e dentro do alcance
-        if (target != null && !target.IsDead && FlatDistance(target.transform) <= range)
-            return target;
-
-        // senão, escolhe o inimigo vivo mais próximo dentro do alcance
+        // mira no inimigo dentro do alcance que está MAIS PERTO DA BASE (mais avançado no caminho),
+        // para os da frente não passarem enquanto a torre atira nos de trás
         EnemyHealth best = null;
+        float bestProgress = float.MinValue;
         float bestDist = float.MaxValue;
         foreach (var e in FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None))
         {
             if (e.IsDead) continue;
             float d = FlatDistance(e.transform);
-            if (d <= range && d < bestDist) { best = e; bestDist = d; }
+            if (d > range) continue;
+
+            var move = e.GetComponent<EnemyMovement>();
+            float progress = move != null ? move.Progress : -d;   // sem movimento: o mais próximo
+            if (progress > bestProgress || (Mathf.Approximately(progress, bestProgress) && d < bestDist))
+            {
+                best = e; bestProgress = progress; bestDist = d;
+            }
         }
         return best;
     }

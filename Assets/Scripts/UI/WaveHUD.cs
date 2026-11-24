@@ -214,7 +214,7 @@ public class WaveHUD : MonoBehaviour
 
     private void HandleWaveCleared(int wave, int bonus)
     {
-        ShowBanner("Onda concluida!  <size=60%>+" + bonus + " moedas</size>", bannerColor);
+        ShowBanner(bonus > 0 ? "Onda concluida!  <size=60%>+" + bonus + " moedas</size>" : "Onda concluida!", bannerColor);
     }
 
     private void HandleBossSpawned(EnemyHealth boss) => ShowBanner("O CHEFE CHEGOU!", bossColor);
