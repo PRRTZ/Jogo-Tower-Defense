@@ -28,7 +28,7 @@ gigante, furioso e chamando reforços. Resista até o fim e feche o portal de ve
 | | Link |
 |---|---|
 | Executável (Windows) | **[Baixar o jogo](https://github.com/PRRTZ/Jogo-Tower-Defense/releases/tag/V1.0)** |
-| Vídeo demonstrativo | **[Assistir à demonstração](https://youtu.be/NZmpliFDs-U)** |
+| Vídeo demonstrativo | **[Assistir à demonstração](https://youtu.be/N7_vApKua7w)** |
 
 ## Equipe
 
