@@ -28,7 +28,7 @@ gigante, furioso e chamando reforços. Resista até o fim e feche o portal de ve
 | | Link |
 |---|---|
 | Executável (Windows) | **[Baixar o jogo](COLOQUE_AQUI_O_LINK_DO_EXECUTAVEL)** |
-| Vídeo demonstrativo | **[Assistir à demonstração](COLOQUE_AQUI_O_LINK_DO_VIDEO)** |
+| Vídeo demonstrativo | **[Assistir à demonstração](https://youtu.be/NZmpliFDs-U)** |
 
 ## Equipe
 
