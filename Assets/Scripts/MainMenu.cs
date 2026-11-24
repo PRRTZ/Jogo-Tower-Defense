@@ -15,6 +15,30 @@ public class MainMenu : MonoBehaviour
     [Header("Textos")]
     public string gameTitle = "Tower Defense";
     public string subtitle = "Defenda a base dos bichinhos de pelúcia!";
+    [Tooltip("Desmarque para o título ficar parado (sem balançar).")]
+    public bool animateTitle = true;
+    [Tooltip("Tamanho da fonte do título.")]
+    public float titleFontSize = 76f;
+    [Tooltip("Tamanho da fonte do subtítulo.")]
+    public float subtitleFontSize = 22f;
+
+    [Header("Título colorido")]
+    [Tooltip("Ligado: cada letra do título com uma cor, trocando sozinhas. Desligado: usa Theme Title Color.")]
+    public bool colorfulTitle = false;
+    [Tooltip("Cores usadas nas letras, em ordem. Adicione ou remova cores à vontade.")]
+    public Color[] titleColors =
+    {
+        new Color(1f, 0.30f, 0.30f),   // vermelho
+        new Color(1f, 0.62f, 0.20f),   // laranja
+        new Color(1f, 0.90f, 0.25f),   // amarelo
+        new Color(0.40f, 0.85f, 0.35f),// verde
+        new Color(0.30f, 0.65f, 1f),   // azul
+        new Color(0.70f, 0.45f, 1f),   // roxo
+    };
+    [Tooltip("Quantas vezes por segundo as cores andam pelas letras (0 = paradas).")]
+    [Range(0f, 20f)] public float titleColorSpeed = 4f;
+    [Tooltip("Ligado: as cores se misturam suavemente. Desligado: trocam de uma vez (efeito pisca-pisca).")]
+    public bool smoothTitleColors = true;
     [Header("Tema")]
     [Tooltip("Ligado: visual de madeira e céu, no estilo do jogo (ignora as cores pastel abaixo). Desligado: visual original.")]
     public bool useGameTheme = true;
@@ -58,19 +82,32 @@ public class MainMenu : MonoBehaviour
     static readonly Color Sun = new Color(1f, 0.84f, 0.4f);
     static readonly Color Sky = new Color(0.55f, 0.8f, 1f);
 
-    // paleta do jogo (madeira, folhas, ouro) - usada com "Use Game Theme"
-    static readonly Color Leaf = new Color(0.45f, 0.72f, 0.33f);
-    static readonly Color Gold = new Color(1f, 0.78f, 0.28f);
-    static readonly Color Water = new Color(0.42f, 0.64f, 0.88f);
-    static readonly Color Berry = new Color(0.84f, 0.38f, 0.32f);
-    static readonly Color Wood = new Color(0.74f, 0.52f, 0.32f);
-    static readonly Color Parchment = new Color(0.98f, 0.91f, 0.75f);
-    static readonly Color Cream = new Color(1f, 0.97f, 0.88f);
-    static readonly Color DarkWood = new Color(0.26f, 0.15f, 0.08f);
+    [Header("Cores do tema do jogo (com Use Game Theme ligado)")]
+    public Color skyColor = new Color(0.33f, 0.58f, 0.90f);          // fundo: em cima
+    public Color grassColor = new Color(0.62f, 0.84f, 0.52f);        // fundo: embaixo
+    public Color themeTitleColor = new Color(1f, 0.78f, 0.28f);      // título
+    public Color themeOutlineColor = new Color(0.26f, 0.15f, 0.08f); // contorno do título e dos textos
+    public Color themeTextColor = new Color(1f, 0.97f, 0.88f);       // textos sobre o céu (subtítulo, "Escolha a dificuldade"...)
+    public Color themeButtonTextColor = new Color(0.26f, 0.15f, 0.08f); // texto dos botões
+    public Color themeCardTextColor = new Color(0.26f, 0.15f, 0.08f);   // texto dos cartões do Ranking e do campo do nome
+    public Color playButtonColor = new Color(0.45f, 0.72f, 0.33f);   // Jogar e Começar
+    public Color rankingButtonColor = new Color(1f, 0.78f, 0.28f);   // Ranking e opção marcada
+    public Color quitButtonColor = new Color(0.84f, 0.38f, 0.32f);   // Sair e Limpar ranking
+    public Color backButtonColor = new Color(0.74f, 0.52f, 0.32f);   // Voltar e opção não marcada
+    public Color cardColor = new Color(0.98f, 0.91f, 0.75f);         // cartões do Ranking e campo do nome
+
+    // nomes usados no resto do código
+    Color Leaf => playButtonColor;
+    Color Gold => rankingButtonColor;
+    Color Berry => quitButtonColor;
+    Color Wood => backButtonColor;
+    Color Parchment => cardColor;
+    Color Cream => themeTextColor;
+    Color DarkWood => themeOutlineColor;
 
     // escolhe a cor do tema do jogo ou a pastel original
     Color C(Color game, Color pastel) { return useGameTheme ? game : pastel; }
-    Color CardText() { return useGameTheme ? DarkWood : textColor; }
+    Color CardText() { return useGameTheme ? themeCardTextColor : textColor; }
 
     Canvas canvas;
     Sprite roundSprite, circleSprite;
@@ -99,10 +136,10 @@ public class MainMenu : MonoBehaviour
         EnsureEventSystem();
         if (useGameTheme)
         {
-            topColor = new Color(0.33f, 0.58f, 0.90f);       // céu
-            bottomColor = new Color(0.62f, 0.84f, 0.52f);    // horizonte de grama
+            topColor = skyColor;                              // céu
+            bottomColor = grassColor;                         // horizonte de grama
             textColor = Cream;
-            buttonTextColor = DarkWood;
+            buttonTextColor = themeButtonTextColor;
             titleOutlineColor = DarkWood;
         }
         roundSprite = useGameTheme ? MakeWoodSprite() : MakeRoundedSprite(64, 24);
@@ -141,12 +178,14 @@ public class MainMenu : MonoBehaviour
             if (f.sway) f.rt.localRotation = Quaternion.Euler(0f, 0f, Mathf.Sin(t * f.speed + f.phase) * 8f);
         }
 
-        if (titleRect != null)
+        if (titleRect != null && animateTitle)
         {
             titleRect.localRotation = Quaternion.Euler(0f, 0f, Mathf.Sin(t * 1.6f) * 2f);
             float s = 1f + Mathf.Sin(t * 2.2f) * 0.025f;
             titleRect.localScale = new Vector3(s, s, 1f);
         }
+
+        if (colorfulTitle) ApplyTitleColors(t);
 
         if (statusText != null && statusText.text != "" && t > statusUntil) statusText.text = "";
 
@@ -154,6 +193,37 @@ public class MainMenu : MonoBehaviour
         if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame
             && currentPanel != mainPanel && currentPanel != null)
             Show(mainPanel);
+    }
+
+    // pinta cada letra do título com uma cor da lista e vai deslocando as cores com o tempo
+    void ApplyTitleColors(float t)
+    {
+        if (titleText == null || titleColors == null || titleColors.Length == 0) return;
+
+        titleText.color = Color.white;          // a cor do texto multiplica a das letras: branco = cores puras
+        titleText.ForceMeshUpdate();
+        TMP_TextInfo info = titleText.textInfo;
+        int n = titleColors.Length;
+        float pos = t * titleColorSpeed;
+        int letter = 0;
+
+        for (int i = 0; i < info.characterCount; i++)
+        {
+            TMP_CharacterInfo ch = info.characterInfo[i];
+            if (!ch.isVisible) continue;        // espaços não contam
+
+            float k = pos + letter++;
+            int a = ((int)Mathf.Floor(k) % n + n) % n;
+            int b = (a + 1) % n;
+            Color c = smoothTitleColors ? Color.Lerp(titleColors[a], titleColors[b], k - Mathf.Floor(k)) : titleColors[a];
+
+            Color32 c32 = c;
+            Color32[] cols = info.meshInfo[ch.materialReferenceIndex].colors32;
+            int v = ch.vertexIndex;
+            cols[v] = c32; cols[v + 1] = c32; cols[v + 2] = c32; cols[v + 3] = c32;
+        }
+
+        titleText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
     }
 
     // ---------------------------------------------------------------- painéis
@@ -177,14 +247,14 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            titleText = Label(p, gameTitle, 76, 1500, 120, TextAlignmentOptions.Center, FontStyles.Bold);
-            titleText.color = useGameTheme ? Gold : Color.white;
+            titleText = Label(p, gameTitle, titleFontSize, 1500, Mathf.Max(120f, titleFontSize * 1.6f), TextAlignmentOptions.Center, FontStyles.Bold);
+            titleText.color = useGameTheme ? themeTitleColor : Color.white;
             titleText.outlineWidth = useGameTheme ? 0.28f : 0.22f;
             titleText.outlineColor = titleOutlineColor;
             titleRect = titleText.rectTransform;
         }
 
-        Label(p, subtitle, 22, 1400, 46);
+        Label(p, subtitle, subtitleFontSize, 1400, Mathf.Max(46f, subtitleFontSize * 2f));
         Spacer(p, 18);
 
         MakeButton(p, "Jogar", C(Leaf, Pink), 480, 82, 28, () => Show(playPanel));
